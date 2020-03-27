@@ -53,7 +53,7 @@
 %% For proofs, please use the proof environment (the amsthm package is loaded by the MDPI class).
 
 %=================================================================
-\Title{Spatiotemporal Analysis of Bike Sharing System during the COVID-19 Outbreak: a Case Study of Beijing}
+\Title{Spatiotemporal Analysis of Bike Sharing System during the COVID-19 Epidemics: a Case Study of Beijing}
 
 \newcommand{\orcidauthorA}{0000-0001-7546-7068} % Add \orcidA{} behind the author's name
 \newcommand{\orcidauthorB}{0000-0003-0084-381X} % Add \orcidB{} behind the author's name
@@ -68,7 +68,11 @@ $^{2}$ \quad China Location-Based Service, 100191 Beijing, China; xw.chai@chinal
 
 \corres{Correspondence:  guoxian@bucea.edu.cn; Tel.: +86-010-6120 9335}
 
-\abstract{a}
+\abstract{During the epidemics of COVID-19, the whole world is experiencing huge hygienic and economic crisis.
+As estimating the overall loss is troublesome, we try to reveal the aspect of behavior changes of Beijing citizens in order to infer the impact on people's daily life and economics.
+Big data of BSS (Bike Sharing System) ...
+Method and conclusion ...
+}
 
 \keyword{Bike sharing system; coronavirus; spatiotemporal analysis}
 
@@ -81,7 +85,9 @@ $^{2}$ \quad China Location-Based Service, 100191 Beijing, China; xw.chai@chinal
 
 \begin{document}
 \section{Introduction}
-Timeline of the outbreak of coronavirus \cite{li2020early}, huge impact on public health and all the aspects of economy, from spring festival till today (March 2020).
+Timeline of the outbreak of coronavirus \cite{li2020early}, huge impact on public health and all the domains of economy, from spring festival till today (March 2020).
+
+Studies have been mostly conducted on epidemiology, e.g. transmission dynamics,  \cite{li2020early,chinazzi2020effect}, 
 
 The 3rd generation of Bike Sharing System (BSS) emerges in China in 2015 thanks to rapid development of GIS-based and IT-based system. 
 The 3rd BSS is no longer constrained by docking stations, thus covers more residents. 
@@ -95,10 +101,14 @@ Our work aims at analyzing the differences between the patterns of epidemics and
 
 \textbf{Contribution:} people's behavior pattern, share bike usage $\to$ impact on economy.
 
-\section{Data Sets and Methods}
-The infected residential areas.
+\section{Materials and Methods}
+The infected residential areas...
+
 \subsection{Data Sets}
-BSS spatiotemporal data, positioning data come from lock \& unlock of bike, which are not affected by the recycle of excess bikes.
+\textbf{BSS spatiotemporal data} Temporal positioning datasets come from 900 thousand share bikes belonging to 3 main BSS operators (Mobike, DiDi Bike, Hellobike and ofo) in Beijing.
+The datasets date from March 2018 to March 2020 and cover 1.5 million usages per day contributed by 11 million users which account for one half of the total population of Beijing.
+Records contain the positioning and timing information of locking \& unlocking bikes, excluding that of rebalancing.
+Certain districts (Chaoyang, Fengtai and Shijingshan) are not comprised in the datasets due to different policies of local governments.
 
 POIs come from Gaode Map API, are classified into hundreds of categories  
 
