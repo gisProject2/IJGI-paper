@@ -89,10 +89,12 @@ Timeline of the outbreak of coronavirus \cite{li2020early}, huge impact on publi
 
 Studies have been mostly conducted on epidemiology, e.g. transmission dynamics,  \cite{li2020early,chinazzi2020effect}, 
 
-The 3rd generation of Bike Sharing System (BSS) emerges in China in 2015 thanks to rapid development of GIS-based and IT-based system. 
-The 3rd BSS is no longer constrained by docking stations, thus covers more residents. 
-As for city of Beijing, the number of sharebike reaches its peak in 2017 and people begins removing excess supply afterwards. 
-The demand and the supply meet a balance in 2019, which reflects stable usage patterns of residents.
+The 3rd generation of Bike Sharing System (BSS) emerges in China in 2015 thanks to rapid development of GIS-based and IoT-based system. 
+In this BSS, bikes are no longer constrained by docking stations, they often spread along the roads, congest around shopping/residential areas, which cover the most urban residents. 
+As for city of Beijing, the amount of sharebike reaches its peak in 2017 and governors begin removing excess supply afterwards. 
+The demand and the supply of share bikes meet a balance in 2019, which could be a stable data source.
+According to Daxue Consulting \cite{bssmodel}, in Beijing, 93\% of travels less than 5km are quicker done by bike and public transport than with the car, which suggests share bikes has a potential reflection on the local mobility of residents.
+
 Xu et al. characterizes the BSS spatiotemporal flow and in Singapore \cite{xu2019unravel}.
 Kaggle competition of predicting share bike demands \cite{kaggle}.
 
@@ -106,7 +108,7 @@ The infected residential areas...
 
 \subsection{Data Sets}
 \textbf{BSS spatiotemporal data} Temporal positioning datasets come from 900 thousand share bikes belonging to 3 main BSS operators (Mobike, DiDi Bike, Hellobike and ofo) in Beijing.
-The datasets date from March 2018 to March 2020 and cover 1.5 million usages per day contributed by 11 million users which account for one half of the total population of Beijing.
+The datasets date from March 2018 to March 2020 (111.7 GB) and cover 1.5 million usages per day contributed by 11 million users which account for one half of the total population of Beijing.
 Records contain the positioning and timing information of locking \& unlocking bikes, excluding that of rebalancing.
 Certain districts (Chaoyang, Fengtai and Shijingshan) are not comprised in the datasets due to different policies of local governments.
 
@@ -114,9 +116,13 @@ POIs come from Gaode Map API, are classified into hundreds of categories
 
 Roads ...
 
-From the timeline \cite{li2020early} of the outbreak, we select the following important dates: 1.7 (Identification of 2019-nCoV) 1.24 (shut down of Wuhan and another 15 cities), 1.31 (End of national holiday of Chinese new year), 2.10 (end of extended holiday), restart of industries.
+From the timeline \cite{li2020early} of the outbreak, we select the following important dates: 1.7 (Identification of COVID-19) 1.24 (shut down of Wuhan and another 15 cities), 1.31 (End of national holiday of Chinese new year), 2.10 (end of extended holiday), restart of industries.
 
 \subsection{Methods}
+
+We proceeded the spatiotemporal data with  GeoSpark SQL \cite{huang2017geospark}, which performs spatial queries via parallel computing.
+spatial join 
+Histogram
 
 Basic statistics on the evolution over time in different zones of Beijing. 
 
