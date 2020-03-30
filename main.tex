@@ -82,21 +82,28 @@ Method and conclusion ...
 %\dataset{DOI number or link to the deposited data set in cases where the data set is published or set to be published separately. If the data set is submitted and will be published as a supplement to this paper in the journal Data, this field will be filled by the editors of the journal. In this case, please make sure to submit the data set as a supplement when entering your manuscript into our manuscript editorial system.}
 
 %\datasetlicense{license under which the data set is made available (CC0, CC-BY, CC-BY-SA, CC-BY-NC, etc.)}
-
+\Urlmuskip=0mu plus 10mu
 \begin{document}
 \section{Introduction}
-Timeline of the outbreak of coronavirus \cite{li2020early}, huge impact on public health and all the domains of economy, from spring festival till today (March 2020).
+In December 2019, a local outbreak of pneumonia was detected in Wuhan, China, identified as COVID-19 and the virus as SARS-CoV-2\footnote{\url{https://www.who.int/emergencies/diseases/novel-coronavirus-2019/technical-guidance/naming-the-coronavirus-disease-(covid-2019)-and-the-virus-that-causes-it}}.
+COVID-19 was quickly spread to the whole country and the whole world.
+According to a situation report of WHO\footnote{\url{https://www.who.int/docs/default-source/coronaviruse/situation-reports/20200329-sitrep-69-covid-19.pdf}}, the total confirmed cases have reached 634,835 as of 29 March, 2020.
 
-Studies have been mostly conducted on epidemiology, e.g. transmission dynamics,  \cite{li2020early,chinazzi2020effect}, 
+COVID-19-related studies have been mostly conducted on epidemiology based on the timeline of outbreak, e.g. transmission dynamics \cite{li2020early} and preventive measures \cite{chinazzi2020effect}.
+
+It is well-accepted that COVID-19 inflict huge impact on public health and all the domains of economy, from spring festival till today (March 2020).
+However, few studies have been conducted to analyze quantitatively the behavior pattern of people before and during the epidemics.
 
 The 3rd generation of Bike Sharing System (BSS) emerges in China in 2015 thanks to rapid development of GIS-based and IoT-based system. 
-In this BSS, bikes are no longer constrained by docking stations, they often spread along the roads, congest around shopping/residential areas, which cover the most urban residents. 
+In this BSS, bikes are no longer constrained by docking stations (so-called free floating), they often spread along the roads, congest around shopping/residential areas, which cover the most urban residents. 
 As for city of Beijing, the amount of sharebike reaches its peak in 2017 and governors begin removing excess supply afterwards. 
 The demand and the supply of share bikes meet a balance in 2019, which could be a stable data source.
 According to Daxue Consulting \cite{bssmodel}, in Beijing, 93\% of travels less than 5km are quicker done by bike and public transport than with the car, which suggests share bikes has a potential reflection on the local mobility of residents.
 
+
 Xu et al. characterizes the BSS spatiotemporal flow and in Singapore \cite{xu2019unravel}.
 Kaggle competition of predicting share bike demands \cite{kaggle}.
+There are also studies of 3rd generation BSS focusing on rebalancing strategies \cite{pal2017free, ai2019deep}.
 
 
 Our work aims at analyzing the differences between the patterns of epidemics and that of ordinary days in order to estimate the impact of the epidemics.
@@ -107,12 +114,12 @@ Our work aims at analyzing the differences between the patterns of epidemics and
 The infected residential areas...
 
 \subsection{Data Sets}
-\textbf{BSS spatiotemporal data} Temporal positioning datasets come from 900 thousand share bikes belonging to 3 main BSS operators (Mobike, DiDi Bike, Hellobike and ofo) in Beijing.
+\textbf{BSS spatiotemporal data} Temporal positioning datasets come from 900 thousand share bikes belonging to 3 main BSS operators (Mobike, DiDi Bike, Hellobike and Ofo) in Beijing.
 The datasets date from March 2018 to March 2020 (111.7 GB) and cover 1.5 million usages per day contributed by 11 million users which account for one half of the total population of Beijing.
-Records contain the positioning and timing information of locking \& unlocking bikes, excluding that of rebalancing.
+Records contain the positioning and timing information of locking \& unlocking bikes, excluding that of rebalancing operations.
 Certain districts (Chaoyang, Fengtai and Shijingshan) are not comprised in the datasets due to different policies of local governments.
 
-POIs come from Gaode Map API, are classified into hundreds of categories  
+POIs come from AutoNavi API\footnote{\url{https://geocoder.readthedocs.io/providers/Gaode.html}}, are classified into hundreds of categories  
 
 Roads ...
 
