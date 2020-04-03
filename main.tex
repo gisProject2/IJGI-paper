@@ -70,10 +70,11 @@ $^{2}$ \quad China Location-Based Service, 100191 Beijing, China; xw.chai@chinal
 
 \corres{Correspondence:  guoxian@bucea.edu.cn; Tel.: +86-010-6120 9335}
 
-\abstract{During the epidemics of COVID-19, the whole world is experiencing a huge crisis on public health and economy.
-As estimating the overall loss is troublesome, we try to reveal the aspect of behavior changes of Beijing citizens in order to infer the impact on people's daily life and economics.
-Big data of BSS (Bike Sharing System) ...
-Method and conclusion ...
+\abstract{During the epidemics of COVID-19, not only China but the whole world is experiencing a huge crisis on public health and economy.
+As estimating the overall loss in China is a huge and systematic task, we try to reveal the behavior change of people over time \& space in order to infer the impact on daily life of and overall economy.
+Behavior patterns can be reflected by share bike usage because great majority of Chinese citizens use share bikes to connect public transports and destinations.
+Taking spatiotemporal data of BSS (Bike Sharing System) in Beijing, this paper discovers  ...
+conclusion ...
 }
 
 \keyword{Bike sharing system; coronavirus; spatiotemporal analysis}
@@ -175,20 +176,35 @@ To characterize the behavior patterns, we select the following important referen
 \end{table}
 
 
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=\textwidth]{Compare_temporal.eps}
+%     \caption{Comparison between share bike daily usages of year 2019 and 2020.}
+%     \label{fig:temporal_comparison}
+% \end{figure}
+
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth]{Compare_temporal.eps}
-    \caption{Comparison between share bike daily usages of year 2019 and 2020.}
-    \label{fig:temporal_comparison}
+    \includegraphics[width=\textwidth]{hour_8.eps}
+    \caption{Comparison of share bike usages during 08:00-09:00 of year 2019 and 2020.}
+    \label{fig:hour_comparison_8}
 \end{figure}
 
-We compared share bike daily usage of year 2019 and 2020 from Jan 01 to early March after removing the data of Feb 29, 2020 (leap year).
-As can be seen in Figure \ref{fig:temporal_comparison}, in 2019, the usage drops down to $5\times 10^5$ because of spring festival; 
-while in 2020, the usage decreases even two thirds of that in 2019 due to the outbreak of COVID-19 and the following epidemics.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{hour_18.eps}
+    \caption{Comparison of share bike usages during 18:00-19:00 of year 2019 and 2020.}
+    \label{fig:hour_comparison_18}
+\end{figure}
 
-Time-series analysis: whole series and statistics of series by weekdays.
-Figures and analysis for (a)The hourly number of trips across 2019-2020.
-(b)The hourly number of different periods (before Chinese New Year, during the quarantine period, epidemics mitigated). 
+We compared the share bike usage on rush hours (8:00-09:00 and 18:00-19:00) during a period of 64 days from 01 Jan to 05 March 2019 and 01 Jan to 04 March 2020 respectively (data later than 29 Feb 2020 were delayed by one day due to the leap year).
+% As can be seen in Figure \ref{fig:temporal_comparison}, in 2019, the usage drops down to $5\times 10^5$ because of spring festival; 
+% while in 2020, the usage decreases even two thirds of that in 2019 due to the outbreak of COVID-19 and the following epidemics.
+
+% We also plotted the graph of share bike usage during rush hour (8:00-10:00 and 18:00-20:00) which reflects the industrial activities.
+Share bike usage on rush hours in 2019 exhibits the periodicity of social activities: high on weekdays and low on weekends, which fits our general knowledge.
+However, this pattern does not appear from 10 Feb 2020 when the government declared the partial restart of certain social activities.
+We suggest that the social activities were not resumed until Feb 24, which correspond the impact of epidemics still lasted till the end of the study period.
 
 \subsection{Spatiotemporal patterns of cycling activities\textbf{[Guo]}}
 
