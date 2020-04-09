@@ -3,13 +3,13 @@
 
 %=================================================================
 % \documentclass[ijgi,submit,moreauthors,pdftex]{Definitions/mdpi} 
-\documentclass[preprints,ijgi,submit,moreauthors,draft]{Definitions/mdpi} 
+\documentclass[preprints,ijgi,submit,moreauthors]{Definitions/mdpi} 
 % If you would like to post an early version of this manuscript as a preprint, you may use preprint as the ojurnal and change 'submit' to 'accept'. The document class line would be, e.g., \documentclass[preprints,article,accept,moreauthors,pdftex]{mdpi}. This is especially recommended for submission to arXiv, where line numbers should be removed before posting. For preprints.org, the editorial staff will make this change immediately prior to posting.
 \usepackage{textcomp}
 \usepackage{gensymb}
 \usepackage{caption}
 \usepackage{subcaption}
-
+\usepackage{multirow}
 %---------
 % article
 %---------
@@ -143,15 +143,14 @@ Under this circumstance, the activities of residents have been influenced and sh
 
 \subsection{Data Sets}
 \textbf{BSS spatiotemporal data} Temporal positioning datasets come from 900 thousand share bikes belonging to 3 main BSS operators (Mobike, DiDi Bike, Hellobike and Ofo) in Beijing.
-The datasets date from March 2018 to March 2020 (111.7 GB) and cover 1.5 million usages per day contributed by 11 million users which account for one half of the total population of Beijing.
+The datasets date from March 2018 to March 2020 (66.8 GB) and cover 1.5 million usages per day contributed by 11 million users which account for one half of the total population of Beijing.
 Records of the datasets contain the positioning and timing information of locking \& unlocking bikes, excluding that of rebalancing operations.
 This feature suggests that the movement of bikes are done by users.
 Certain districts (Chaoyang, Fengtai and Shijingshan) are not comprised in the datasets due to different policies of local governments.
 
-\textbf{The infected residential areas} was collected from the daily update on the novel coronavirus pneumonia outbreak dashboard\footnote{\url{http://wjw.beijing.gov.cn/xwzx_20031/wnxw/202003/t20200305_1679143.html} (accessed March 05, 2020, in Chinese)} provided by National Health Commission of the People’s Republic of China. 
+\textbf{The infected residential areas} was collected from the daily update on the novel coronavirus pneumonia outbreak dashboard\footnote{\url{http://wjw.beijing.gov.cn/xwzx_20031/wnxw/202003/t20200305_1679143.html} (as of March 05, 2020, in Chinese)} provided by National Health Commission of the People's Republic of China. 
 This data records the confirmed cases of each district from Jan 20 to Mar 5, 2020. 
-\label{fig:number }
-
+According to the timeline \cite{li2020early} of the outbreak, we pick several important dates shown in Figure \ref{fig:number_of_confirmed_cases}, visualizing the evolution of the overall situation of Beijing.
 
 \begin{figure}[H]
     \centering
@@ -175,29 +174,52 @@ This data records the confirmed cases of each district from Jan 20 to Mar 5, 202
         \includegraphics[width=\textwidth]{Figures/Fig2legend.eps}
     \end{subfigure}
     \caption{Number of confirmed cases in Beijing}
-    \label{fig:number of confirmed cases}
+    \label{fig:number_of_confirmed_cases}
 \end{figure}
 
+\textbf{Points of interests (POIs) data} was collected from AutoNavi API\footnote{\url{https://lbs.amap.com/api/webservice/guide/api/georegeo} (in Chinese)}.
+As shown in table \ref{tab:bike_usage} they are classified into seven categories to assess the overall behavior pattern changes.
+\textcolor{red}{Explanation to be added when the data are available}
 
-
-\textbf{Points of interests (POIs) data} was collected from AutoNavi API\footnote{\url{https://lbs.amap.com/api/webservice/guide/api/georegeo} (in Chinese)} and classified into seven categories as shown in table x. 
-To demonstrate the impact of 
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|l|l|l|}
+        \hline
+        \multirow{2}{*}{Category} & \multicolumn{2}{c|}{Bike usage}\\
+        \cline{2-3}
+        & Before the epidemics & During the epidemics\\
+        \hline
+        Infected communities&&\\
+        \hline
+        Normal communities&&\\
+        \hline
+        IT companies&&\\
+        \hline
+        Other companies&&\\
+        \hline
+        Metros&&\\
+        \hline
+        Malls&&\\
+        \hline
+        Supermarkets&&\\
+        \hline
+    \end{tabular}
+    \caption{Behavior changes before and during the pandemics}
+    \label{tab:bike_usage}
+\end{table}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=.5\textwidth]{Figures/Plot_location_confirmed_cases.png}
     \caption{Locations of confirmed cases in Beijing}
-    \label{fig:locations of confirmed cases}
-\end{figure}
-
-From the timeline \cite{li2020early} of the outbreak, 
+    \label{fig:locations_of_confirmed_cases}
+\end{figure} 
 
 \subsection{Methods}
-To obtain the co-location patterns of huge amount of spatiotemporal data, we proceed with GeoSpark SQL \cite{huang2017geospark}, which performs spatial queries via parallel computing on Spark\footnote{\url{https://spark.apache.org/}}, the famous cluster computing framework.
-spatial join 
-heat map
+To obtain the co-location patterns of huge amount of spatiotemporal data (66.8GB) with numerous POIs, we proceed with GeoSpark SQL \cite{huang2017geospark}, which performs spatial queries via parallel computing on cluster computing framework Spark\footnote{\url{https://spark.apache.org/}}.
+Among the spatial queries, we apply \texttt{spatial\_join(geom1, geom2)}, querying if \texttt{geom1} is inside \texttt{geom2} and \texttt{distance\_join(geom1, geom2, dist)} querying if the distance of \texttt{geom1} and \texttt{geom2} is less than \texttt{dist}.
 
-Basic statistics on the evolution over time in different zones of Beijing. 
+Basic statistics on the evolution over time in different zones of Beijing.\textcolor{red}{explanation GUO} 
 
 \section{Result and Discussion}
 \subsection{Temporal patterns of cycling activities}
@@ -229,14 +251,14 @@ To characterize the behavior patterns, we select the following important referen
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.9\textwidth]{Figures/hour_8.eps}
-    \caption{Comparison of share bike usages during 08:00-09:00 of year 2019 and 2020.}
+    \caption{Share bike usages during 08:00-09:00 of year 2019 and 2020.}
     \label{fig:hour_comparison_8}
 \end{figure}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.9\textwidth]{Figures/hour_18.eps}
-    \caption{Comparison of share bike usages during 18:00-19:00 of year 2019 and 2020.}
+    \caption{Share bike usages during 18:00-19:00 of year 2019 and 2020.}
     \label{fig:hour_comparison_18}
 \end{figure}
 
@@ -256,59 +278,59 @@ We suggest that the social activities were not resumed until Feb 24, which corre
 \begin{figure}[H]
     \centering
     \begin{subfigure}{.23\textwidth}
-        \includegraphics[width=\textwidth]{Figures/Figure5/FN5_D2020_01_21.eps}
+        \includegraphics[width=\textwidth]{Figures/Overall_spatial_patterns/FN5_D2020_01_21.eps}
         \caption{21 Jan}
     \end{subfigure}
     \begin{subfigure}{.23\textwidth}
-        \includegraphics[width=\textwidth]{Figures/Figure5/FN5_D2020_01_25.eps}
+        \includegraphics[width=\textwidth]{Figures/Overall_spatial_patterns/FN5_D2020_01_25.eps}
         \caption{25 Jan}
     \end{subfigure}
     \begin{subfigure}{.23\textwidth}
-        \includegraphics[width=\textwidth]{Figures/Figure5/FN5_D2020_01_29.eps}
+        \includegraphics[width=\textwidth]{Figures/Overall_spatial_patterns/FN5_D2020_01_29.eps}
         \caption{29 Jan}
     \end{subfigure}
         \begin{subfigure}{.23\textwidth}
-        \includegraphics[width=\textwidth]{Figures/Figure5/FN5_D2020_02_02.eps}
+        \includegraphics[width=\textwidth]{Figures/Overall_spatial_patterns/FN5_D2020_02_02.eps}
         \caption{02 Feb}
     \end{subfigure}
     
     \vspace{6pt}
     \begin{subfigure}{.23\textwidth}
-        \includegraphics[width=\textwidth]{Figures/Figure5/FN5_D2020_02_06.eps}
+        \includegraphics[width=\textwidth]{Figures/Overall_spatial_patterns/FN5_D2020_02_06.eps}
         \caption{06 Feb}
     \end{subfigure}
     \begin{subfigure}{.23\textwidth}
-        \includegraphics[width=\textwidth]{Figures/Figure5/FN5_D2020_02_10.eps}
+        \includegraphics[width=\textwidth]{Figures/Overall_spatial_patterns/FN5_D2020_02_10.eps}
         \caption{10 Feb}
     \end{subfigure}
     \begin{subfigure}{.23\textwidth}
-        \includegraphics[width=\textwidth]{Figures/Figure5/FN5_D2020_02_14.eps}
+        \includegraphics[width=\textwidth]{Figures/Overall_spatial_patterns/FN5_D2020_02_14.eps}
         \caption{14 Feb}
     \end{subfigure}
         \begin{subfigure}{.23\textwidth}
-        \includegraphics[width=\textwidth]{Figures/Figure5/FN5_D2020_02_18.eps}
+        \includegraphics[width=\textwidth]{Figures/Overall_spatial_patterns/FN5_D2020_02_18.eps}
         \caption{18 Feb}
     \end{subfigure}
     
     \vspace{6pt}
     \begin{subfigure}{.23\textwidth}
-        \includegraphics[width=\textwidth]{Figures/Figure5/FN5_D2020_02_22.eps}
-        \caption{22 Feb}
+        \includegraphics[width=\textwidth]{Figures/Overall_spatial_patterns/FN5_D2020_02_22.eps}
+        \caption{24 Feb}
     \end{subfigure}
     \begin{subfigure}{.23\textwidth}
-        \includegraphics[width=\textwidth]{Figures/Figure5/FN5_D2020_02_26.eps}
+        \includegraphics[width=\textwidth]{Figures/Overall_spatial_patterns/FN5_D2020_02_26.eps}
         \caption{26 Feb}
     \end{subfigure}
     \begin{subfigure}{.23\textwidth}
-        \includegraphics[width=\textwidth]{Figures/Figure5/FN5_D2020_03_01.eps}
+        \includegraphics[width=\textwidth]{Figures/Overall_spatial_patterns/FN5_D2020_03_01.eps}
         \caption{01 Mar}
     \end{subfigure}
-        \begin{subfigure}{.23\textwidth}
-        \includegraphics[width=\textwidth]{Figures/Figure5/legend5.eps}
+    \begin{subfigure}{.2\textwidth}
+        \includegraphics[width=\textwidth]{Figures/Overall_spatial_patterns/legend5.eps}
         \caption{Legend}
     \end{subfigure}
     
-    \caption{Spatial patterns of cycling activities from 21 Jan to 02 March 2020}
+    \caption{Spatial patterns of cycling activities from 21 Jan to 01 March 2020}
     \label{fig:full_spatial_pattern_2020}
 \end{figure}
 
@@ -358,7 +380,7 @@ Part 1. Comparison with data from the same period in 2019.
         \caption{Differential image of Phase 3}
     \end{subfigure}
     \caption{Caption}
-    \label{fig:compare2019and2020}
+    \label{fig:compare_2019_and_2020}
 \end{figure}
 
 Overall visualization of different periods (before Chinese New Year, during the quarantine period, epidemics mitigated)
@@ -369,62 +391,61 @@ Part 2. Relationships between cycling activities and confirmed cases with respec
 \begin{figure}[H]
     \centering
     \begin{subfigure}{.3\textwidth}
-        \includegraphics[width=\textwidth]{Figures/Figure7/NewDistrictSSBD2020_01_21.eps}
+        \includegraphics[width=\textwidth]{Figures/Relation_with_confrimed_cases/NewDistrictSSBD2020_01_21.eps}
         \caption{21 Jan}
     \end{subfigure}
     \begin{subfigure}{.3\textwidth}
-        \includegraphics[width=\textwidth]{Figures/Figure7/NewDistrictSSBD2020_01_25.eps}
+        \includegraphics[width=\textwidth]{Figures/Relation_with_confrimed_cases/NewDistrictSSBD2020_01_25.eps}
         \caption{25 Jan}
     \end{subfigure}
     \begin{subfigure}{.3\textwidth}
-        \includegraphics[width=\textwidth]{Figures/Figure7/NewDistrictSSBD2020_01_30.eps}
+        \includegraphics[width=\textwidth]{Figures/Relation_with_confrimed_cases/NewDistrictSSBD2020_01_30.eps}
         \caption{30 Jan}
     \end{subfigure}
 
-\textcolor{red}{After the epidemic is effectively controlled, cycling activities increased due to the rework requirements, which can be inferred from visual interpretation. The difference is obvious comparing workday and weekend.}    
-    \vspace{6pt}
+    \vspace{6pt}    
     \begin{subfigure}{.3\textwidth}
-        \includegraphics[width=\textwidth]{Figures/Figure7/NewDistrictSSBD2020_02_04.eps}
+        \includegraphics[width=\textwidth]{Figures/Relation_with_confrimed_cases/NewDistrictSSBD2020_02_04.eps}
         \caption{04 Feb}
     \end{subfigure}
     \begin{subfigure}{.3\textwidth}
-        \includegraphics[width=\textwidth]{Figures/Figure7/NewDistrictSSBD2020_02_08.eps}
+        \includegraphics[width=\textwidth]{Figures/Relation_with_confrimed_cases/NewDistrictSSBD2020_02_08.eps}
         \caption{08 Feb}
     \end{subfigure}
     \begin{subfigure}{.3\textwidth}
-        \includegraphics[width=\textwidth]{Figures/Figure7/Fig7legend.eps}
+        \includegraphics[width=\textwidth]{Figures/Relation_with_confrimed_cases/Fig7legend.eps}
         \caption{legend}
     \end{subfigure}
     \caption{Relationships between cycling activities and confirmed cases during the quarantine period.}
     \label{fig:BSS_phase1_2}
 \end{figure}
-
+\textcolor{red}{After the epidemic is effectively controlled, cycling activities increased due to the rework requirements, which can be inferred from visual interpretation. The difference is obvious comparing workday and weekend.}
 \begin{figure}[H]
     \centering
     \begin{subfigure}{.3\textwidth}
-        \includegraphics[width=\textwidth]{Figures/Figure7/NewDistrictSSBD2020_02_12.eps}
+        \includegraphics[width=\textwidth]{Figures/Relation_with_confrimed_cases/NewDistrictSSBD2020_02_12.eps}
         \caption{12 Feb}
     \end{subfigure}
     \begin{subfigure}{.3\textwidth}
-        \includegraphics[width=\textwidth]{Figures/Figure7/NewDistrictSSBD2020_02_16.eps}
+        \includegraphics[width=\textwidth]{Figures/Relation_with_confrimed_cases/NewDistrictSSBD2020_02_16.eps}
         \caption{16 Feb}
     \end{subfigure}
     \begin{subfigure}{.3\textwidth}
-        \includegraphics[width=\textwidth]{Figures/Figure7/NewDistrictSSBD2020_02_20.eps}
+        \includegraphics[width=\textwidth]{Figures/Relation_with_confrimed_cases/NewDistrictSSBD2020_02_20.eps}
         \caption{20 Feb}
     \end{subfigure}
     
     \vspace{6pt}
     \begin{subfigure}{.3\textwidth}
-        \includegraphics[width=\textwidth]{Figures/Figure7/NewDistrictSSBD2020_02_24.eps}
+        \includegraphics[width=\textwidth]{Figures/Relation_with_confrimed_cases/NewDistrictSSBD2020_02_24.eps}
         \caption{24 Feb}
     \end{subfigure}
     \begin{subfigure}{.3\textwidth}
-        \includegraphics[width=\textwidth]{Figures/Figure7/NewDistrictSSBD2020_02_28.eps}
+        \includegraphics[width=\textwidth]{Figures/Relation_with_confrimed_cases/NewDistrictSSBD2020_02_28.eps}
         \caption{28 Feb}
     \end{subfigure}
     \begin{subfigure}{.3\textwidth}
-        \includegraphics[width=\textwidth]{Figures/Figure7/legend7.eps}
+        \includegraphics[width=\textwidth]{Figures/Relation_with_confrimed_cases/legend7.eps}
         \caption{legend}
     \end{subfigure}
     \caption{Relationships between cycling activities and confirmed cases when the epidemic is mitigated.}
@@ -439,19 +460,19 @@ Part 3. Relationships between cycling activities and POIs
 \begin{figure}[H]
     \centering
     \begin{subfigure}{.23\textwidth}
-        \includegraphics[width=\textwidth]{Figures/Figure10/POI_resD2020_01_25.eps}
+        \includegraphics[width=\textwidth]{Figures/Relation_with_POIs/POI_resD2020_01_25.eps}
         \caption{25 Jan}
     \end{subfigure}
     \begin{subfigure}{.23\textwidth}
-        \includegraphics[width=\textwidth]{Figures/Figure10/POI_resD2020_02_09.eps}
+        \includegraphics[width=\textwidth]{Figures/Relation_with_POIs/POI_resD2020_02_09.eps}
         \caption{09 Feb}
     \end{subfigure}
     \begin{subfigure}{.23\textwidth}
-        \includegraphics[width=\textwidth]{Figures/Figure10/POI_resD2020_02_18.eps}
+        \includegraphics[width=\textwidth]{Figures/Relation_with_POIs/POI_resD2020_02_18.eps}
         \caption{18 Feb}
     \end{subfigure}
         \begin{subfigure}{.23\textwidth}
-        \includegraphics[width=\textwidth]{Figures/Figure10/POI_resD2020_03_02.eps}
+        \includegraphics[width=\textwidth]{Figures/Relation_with_POIs/POI_resD2020_03_02.eps}
         \caption{02 Mar}
     \end{subfigure}
     \caption{BSS and communities.}
@@ -462,19 +483,19 @@ Part 3. Relationships between cycling activities and POIs
 \begin{figure}[H]
     \centering
     \begin{subfigure}{.23\textwidth}
-        \includegraphics[width=\textwidth]{Figures/Figure10/POI_metroD2020_01_25.eps}
+        \includegraphics[width=\textwidth]{Figures/Relation_with_POIs/POI_metroD2020_01_25.eps}
         \caption{25 Jan}
     \end{subfigure}
     \begin{subfigure}{.23\textwidth}
-        \includegraphics[width=\textwidth]{Figures/Figure10/POI_metroD2020_02_09.eps}
+        \includegraphics[width=\textwidth]{Figures/Relation_with_POIs/POI_metroD2020_02_09.eps}
         \caption{09 Feb}
     \end{subfigure}
     \begin{subfigure}{.23\textwidth}
-        \includegraphics[width=\textwidth]{Figures/Figure10/POI_metroD2020_02_18.eps}
+        \includegraphics[width=\textwidth]{Figures/Relation_with_POIs/POI_metroD2020_02_18.eps}
         \caption{18 Feb}
     \end{subfigure}
         \begin{subfigure}{.23\textwidth}
-        \includegraphics[width=\textwidth]{Figures/Figure10/POI_metroD2020_03_02.eps}
+        \includegraphics[width=\textwidth]{Figures/Relation_with_POIs/POI_metroD2020_03_02.eps}
         \caption{02 Mar}
     \end{subfigure}
     \caption{BSS and metro.}
@@ -485,19 +506,19 @@ Part 3. Relationships between cycling activities and POIs
 \begin{figure}[H]
     \centering
     \begin{subfigure}{.23\textwidth}
-        \includegraphics[width=\textwidth]{Figures/Figure10/POI_mallsD2020_01_25.eps}
+        \includegraphics[width=\textwidth]{Figures/Relation_with_POIs/POI_mallsD2020_01_25.eps}
         \caption{25 Jan}
     \end{subfigure}
     \begin{subfigure}{.23\textwidth}
-        \includegraphics[width=\textwidth]{Figures/Figure10/POI_mallsD2020_02_09.eps}
+        \includegraphics[width=\textwidth]{Figures/Relation_with_POIs/POI_mallsD2020_02_09.eps}
         \caption{09 Feb}
     \end{subfigure}
     \begin{subfigure}{.23\textwidth}
-        \includegraphics[width=\textwidth]{Figures/Figure10/POI_mallsD2020_02_18.eps}
+        \includegraphics[width=\textwidth]{Figures/Relation_with_POIs/POI_mallsD2020_02_18.eps}
         \caption{18 Feb}
     \end{subfigure}
         \begin{subfigure}{.23\textwidth}
-        \includegraphics[width=\textwidth]{Figures/Figure10/POI_mallsD2020_03_02.eps}
+        \includegraphics[width=\textwidth]{Figures/Relation_with_POIs/POI_mallsD2020_03_02.eps}
         \caption{02 Mar}
     \end{subfigure}
     \caption{BSS and malls.}
@@ -508,19 +529,19 @@ Part 3. Relationships between cycling activities and POIs
 \begin{figure}[H]
     \centering
     \begin{subfigure}{.23\textwidth}
-        \includegraphics[width=\textwidth]{Figures/Figure10/POI_compD2020_01_25.eps}
+        \includegraphics[width=\textwidth]{Figures/Relation_with_POIs/POI_compD2020_01_25.eps}
         \caption{25 Jan}
     \end{subfigure}
     \begin{subfigure}{.23\textwidth}
-        \includegraphics[width=\textwidth]{Figures/Figure10/POI_compD2020_02_09.eps}
+        \includegraphics[width=\textwidth]{Figures/Relation_with_POIs/POI_compD2020_02_09.eps}
         \caption{09 Feb}
     \end{subfigure}
     \begin{subfigure}{.23\textwidth}
-        \includegraphics[width=\textwidth]{Figures/Figure10/POI_compD2020_02_18.eps}
+        \includegraphics[width=\textwidth]{Figures/Relation_with_POIs/POI_compD2020_02_18.eps}
         \caption{18 Feb}
     \end{subfigure}
         \begin{subfigure}{.23\textwidth}
-        \includegraphics[width=\textwidth]{Figures/Figure10/POI_compD2020_03_02.eps}
+        \includegraphics[width=\textwidth]{Figures/Relation_with_POIs/POI_compD2020_03_02.eps}
         \caption{02 Mar}
     \end{subfigure}
     \caption{BSS and companies.}
