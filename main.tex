@@ -10,6 +10,8 @@
 \usepackage{caption}
 \usepackage{subcaption}
 \usepackage{multirow}
+\usepackage{makecell}
+\usepackage{spreadtab}
 %---------
 % article
 %---------
@@ -71,7 +73,7 @@ $^{2}$ \quad China Location-Based Service, 100191 Beijing, China; xw.chai@chinal
 
 \corres{Correspondence:  guoxian@bucea.edu.cn; Tel.: +86-010-6120 9335}
 
-\abstract{During the epidemics of COVID-19, not only China but the whole world is experiencing a serious crisis on public health and economy, and the epidemics have become pandemics.
+\abstract{During the epidemics of COVID-19, not only China but the whole world is experiencing a serious crisis on public health and economy, and the epidemics have become pandemic.
 As estimating the overall loss in China is a complex task, we try to reveal the behavior change of people over time \& space in order to infer the impact on daily life of and overall economy.
 Spatiotemporal behavior patterns can be reflected by share bike usage because great majority of Chinese urban residents use share bikes to connect public transports and both ends of travel.
 Taking records of BSS (Bike Sharing System) in Beijing, this paper characterizes not only temporal behavior patterns of share bike users: during ordinary days, holidays and the pandemic, but also spatial behavior patterns: around malls, metros, normal communities and infected communities, etc.
@@ -113,16 +115,15 @@ Xu et al. \cite{xu2019unravel} characterizes the BSS temporal flow and spatial d
 Kaggle \cite{kaggle} competition of predicting share bike demands based on limited entries.
 There are also studies of BSS focusing on rebalancing strategies \cite{pal2017free, ai2019deep}.
 
-
 \textcolor{red}{reference in earth science GUO}
 
 As far as we know, there are no studies on the period-wise spatiotemporal patterns and co-location patterns extracted from the big data of BSS (usage records).
 
-\section*{Contribution} We assess the impact of the COVID-19 pandemic via three aspects:
+\section*{Contribution} As the pandemic of COVID-19 and the Chinese New Year meet by coincidence, we tried first to remove the influence of this national holiday, then assess the impact of the COVID-19 pandemic via three aspects:
 \begin{enumerate}
-    \item global view of infection in the districts of Beijing
-    \item analyzing the evolution of bike usages from ordinary days to the emergence of SARS-CoV-2, then to the pandemic days
-    \item analyzing the co-location patterns of BSS with different types of POIs to reveal the impact on the corresponding businesses.
+    \item Global view of infection in the districts of Beijing
+    \item Analyzing the evolution of bike usages in different phases: ordinary days, the emergence of SARS-CoV-2 and the days of pandemic 
+    \item Analyzing the co-location patterns of BSS with different types of POIs to reveal the impact on the corresponding businesses
 \end{enumerate}
 
 \section{Materials and Methods}
@@ -136,7 +137,7 @@ As far as we know, there are no studies on the period-wise spatiotemporal patter
 
 \subsection{Study area}
 This study is conducted in the city of Beijing, the capital of China. 
-As shown in Figure \ref{fig:study_area}, Beijing locates at the North China Plain, occupying an area of 16,411km$^2$ ( 39.4{\degree}-41.6{\degree}N, 115.7{\degree}-117.4{\degree}E). 
+As shown in Figure \ref{fig:study_area}, Beijing locates at the North China Plain, occupying an area of 16,411km$^2$ (39.4{\degree}-41.6{\degree}N, 115.7{\degree}-117.4{\degree}E). 
 In 2019, the municipal population of Beijing have reached 21.53 million. According to Beijing Health Commission, 352 confirmed cases\footnote{\url{http://wjw.beijing.gov.cn/xwzx_20031/wnxw/202002/t20200212_1628835.html} (in Chinese)} were found in Beijing by February 10, 2020. 
 As a population-importing metropolis, Beijing has taken measures in response to the outbreak. 
 Under this circumstance, the activities of residents have been influenced and showing special spatiotemporal patterns different from ordinary days.
@@ -148,28 +149,26 @@ Records of the datasets contain the positioning and timing information of lockin
 This feature suggests that the movement of bikes are done by users.
 Certain districts (Chaoyang, Fengtai and Shijingshan) are not comprised in the datasets due to different policies of local governments.
 
-\textbf{The infected residential areas} was collected from the daily update on the novel coronavirus pneumonia outbreak dashboard\footnote{\url{http://wjw.beijing.gov.cn/xwzx_20031/wnxw/202003/t20200305_1679143.html} (as of March 05, 2020, in Chinese)} provided by National Health Commission of the People's Republic of China. 
-This data records the confirmed cases of each district from Jan 20 to Mar 5, 2020. 
-According to the timeline \cite{li2020early} of the outbreak, we pick several important dates shown in Figure \ref{fig:number_of_confirmed_cases}, visualizing the evolution of the overall situation of Beijing.
-
 \begin{figure}[H]
     \centering
     \begin{subfigure}{.23\textwidth}
         \includegraphics[width=\textwidth]{Figures/ConfirmedDistrictD2020_01_25.eps}
-        \caption{25 Jan}
+        \caption{25 Jan, 2020}
     \end{subfigure}
     \begin{subfigure}{.23\textwidth}
         \includegraphics[width=\textwidth]{Figures/ConfirmedDistrictD2020_01_30.eps}
-        \caption{30 Jan}
+        \caption{30 Jan, 2020}
     \end{subfigure}
     \begin{subfigure}{.23\textwidth}
         \includegraphics[width=\textwidth]{Figures/ConfirmedDistrictD2020_02_05.eps}
-        \caption{05 Feb}
+        \caption{05 Feb, 2020}
     \end{subfigure}
     \begin{subfigure}{.23\textwidth}
         \includegraphics[width=\textwidth]{Figures/ConfirmedDistrictD2020_02_10.eps}
-        \caption{10 Feb}
+        \caption{10 Feb, 2020}
     \end{subfigure}
+
+    \vspace{6pt}
     \begin{subfigure}{0.7\textwidth}
         \includegraphics[width=\textwidth]{Figures/Fig2legend.eps}
     \end{subfigure}
@@ -177,37 +176,15 @@ According to the timeline \cite{li2020early} of the outbreak, we pick several im
     \label{fig:number_of_confirmed_cases}
 \end{figure}
 
-\textbf{Points of interests (POIs) data} was collected from AutoNavi API\footnote{\url{https://lbs.amap.com/api/webservice/guide/api/georegeo} (in Chinese)}.
-As shown in table \ref{tab:bike_usage} they are classified into seven categories to assess the overall behavior pattern changes.
-\textcolor{red}{Explanation to be added when the data are available}
+\textbf{Points of interests (POIs)} POIs of Beijing are collected from AutoNavi API\footnote{\url{https://lbs.amap.com/api/webservice/guide/api/georegeo} (in Chinese)}.
+Each entry is identified by \texttt{object\_id}, recording the address including longitude/latitude information, and categorized by \texttt{large\_category}, \texttt{mid\_category} and \texttt{sub\_category}.
+Among hundreds of categories, we chose six mid ones: residential area, high-tech company, other company, subway station, shopping plaza and supermarkets.
+To assess the overall behavior pattern changes, we picked out the infected residential areas (see Figure \ref{fig:locations_of_confirmed_cases})
+% \textbf{Infected residential areas}
+which are collected from the daily update on the novel coronavirus pneumonia outbreak dashboard\footnote{\url{http://wjw.beijing.gov.cn/xwzx_20031/wnxw/202003/t20200305_1679143.html} (as of March 05, 2020, in Chinese)} provided by National Health Commission of the People's Republic of China. 
+This data records the confirmed cases of each district from Jan 20 to Mar 5, 2020. 
+According to the timeline \cite{li2020early} of the outbreak, we pick several important dates shown in Figure \ref{fig:number_of_confirmed_cases}, visualizing the evolution of the overall situation of Beijing.
 
-\begin{table}[H]
-    \centering
-    \begin{tabular}{|l|l|l|}
-        \hline
-        \multirow{2}{*}{Category} & \multicolumn{2}{c|}{Bike usage}\\
-        \cline{2-3}
-        & Before the epidemics & During the epidemics\\
-        \hline
-        Infected communities&&\\
-        \hline
-        Normal communities&&\\
-        \hline
-        IT companies&&\\
-        \hline
-        Other companies&&\\
-        \hline
-        Metros&&\\
-        \hline
-        Malls&&\\
-        \hline
-        Supermarkets&&\\
-        \hline
-    \end{tabular}
-    \caption{Behavior changes before and during the pandemics}
-    \label{tab:bike_usage}
-\end{table}
-By combining the
 \begin{figure}[H]
     \centering
     \includegraphics[width=.5\textwidth]{Figures/Plot_location_confirmed_cases.eps}
@@ -216,8 +193,8 @@ By combining the
 \end{figure} 
 
 \subsection{Methods}
-To obtain the co-location patterns of huge amount of spatiotemporal data (66.8GB) with numerous POIs, we proceed with GeoSpark SQL \cite{huang2017geospark}, which performs spatial queries via parallel computing on cluster computing framework Spark\footnote{\url{https://spark.apache.org/}}.
-Among the spatial queries, we apply \texttt{spatial\_join(geom1, geom2)}, querying if \texttt{geom1} is inside \texttt{geom2} and \texttt{distance\_join(geom1, geom2, dist)} querying if the distance of \texttt{geom1} and \texttt{geom2} is less than \texttt{dist}.
+To obtain the co-location patterns of huge amount of spatiotemporal data (66.8GB) with numerous POIs, we proceeded with GeoSpark SQL \cite{huang2017geospark}, which performs spatial queries via parallel computing on cluster computing framework Spark\footnote{\url{https://spark.apache.org/}}.
+Among the spatial queries, we utilized \texttt{spatial\_join(geom1, geom2)}, querying if \texttt{geom1} is inside \texttt{geom2} and \texttt{distance\_join(geom1, geom2, dist)} querying if the distance of \texttt{geom1} and \texttt{geom2} is less than \texttt{dist}.
 
 Basic statistics on the evolution over time in different zones of Beijing.\textcolor{red}{explanation GUO} 
 
@@ -269,7 +246,40 @@ We compared the share bike usage on rush hours (8:00-09:00 and 18:00-19:00) duri
 % We also plotted the graph of share bike usage during rush hour (8:00-10:00 and 18:00-20:00) which reflects the industrial activities.
 Share bike usage on rush hours in 2019 exhibits the periodicity of social activities: high on weekdays and low on weekends, which fits our general knowledge.
 However, this pattern does not appear from 10 Feb 2020 when the government declared the partial restart of certain social activities.
-We suggest that the social activities were not resumed until Feb 24, which correspond the impact of epidemics still lasted till the end of the study period.
+We suggest that the social activities were not resumed until Feb 24, which correspond the impact of the pandemic still lasted till the end of the study period.
+
+\subsection{Co-location Analysis with POIs}
+After removing the spring festival holiday, we studied respectively the phases of 01 Jan to 21 Jan (before the pandemics), 10 Feb to 04 Mar (during the pandemics) and 22 Jan to 09 Feb (during the pandemics \& spring festival) as a comparison of before the pandemic, during the pandemic and during spring festival 2020.
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|l|l|l|l|l|l|}
+        \hline
+        \multirow{2}{*}{Category}&\multirow{2}{*}{\makecell[c]{POI\\amount}}& \multicolumn{4}{c|}{Daily average bike usage within 200m radius of POIs per POI}\\
+        \cline{3-6}
+        && 01 Jan-21 Jan ($b$) &10 Feb-01 Mar ($a$)&22 Jan-09 Feb ($m$)& $c$\\
+        \hline
+        Infected residential area & 23 & 207.6 & 60.4 & 57.1 & 2.35\\
+        \hline
+        Normal residential area & 5657 & 158.3 & 39.9 & 36.6 & 2.71\\
+        \hline
+        High-tech company & 3858 & 200.4 & 41.1 & 36.3 & 3.33\\
+        \hline
+        Other company & 32301 & 162.5 & 39.4 & 35.8 & 2.82\\
+        \hline
+        Subway station & 137 & 113.8 & 31.7 & 29.0 & 2.51\\
+        \hline
+        Shopping plaza & 217 & 168.9 & 41.0 & 38.4 & 2.73\\
+        \hline
+        Supermarket & 1076 & 137.6 & 37.7 & 34.3 & 2.56\\
+        \hline
+    \end{tabular}
+    \caption{Bike usage in different phases, where $c=(b+a)/2m$ is used to quantify the convexity of the evolution curve.}
+    \label{tab:bike_usage}
+\end{table}
+
+In Table \ref{tab:bike_usage}, we use $c$ to characterize the evolution curve: the curve becomes more convex if $c$ is larger. 
+According to this standard, residential areas..., companies..., subway stations..., shopping plazas..., supermarkets.
 
 \subsection{Spatiotemporal patterns of cycling activities\textbf{[Guo]}}
 
