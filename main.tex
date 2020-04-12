@@ -89,7 +89,7 @@ This paper illustrates a huge decrease of share bike use during the pandemic and
 
 %\datasetlicense{license under which the data set is made available (CC0, CC-BY, CC-BY-SA, CC-BY-NC, etc.)}
 \Urlmuskip=0mu plus 10mu
-\pdfminorversion=7
+%\pdfminorversion=7
 \begin{document}
 \section{Introduction}
 In December 2019, a local outbreak of pneumonia was detected in Wuhan, China, identified afterwards as COVID-19 and the virus as SARS-CoV-2\footnote{\url{https://www.who.int/emergencies/diseases/novel-coronavirus-2019/technical-guidance/naming-the-coronavirus-disease-(covid-2019)-and-the-virus-that-causes-it}}.
@@ -110,12 +110,19 @@ After two years of development and regulation of BSS, the demand and the supply 
 According to Daxue Consulting \cite{bssmodel}, in Beijing, 93\% of travels less than 5km are quicker done by bike and public transport than with the car, which suggests share bikes has a potential reflection on the local mobility of residents.
 
 \section*{Related Work}
+The emergences of geospatial big data have great potential to benefit applications in disease surveillance, disaster response. %TODO reference
+Horanont et al./textcolor{blue}{reference} made use of mobile phone data collected after the 2011 Great Japan Earthquake and provided useful information on how humans react in disaster scenarios and how the evacuation process can be monitored.
+After the 2015 Nepal Earthquake, Wilson et al./textcolor{blue}{reference} used call detail records pertaining to phone metadata tracking numbers and times of calls to estimate population distribution and socioeconomic status for risk assessment.
+Donovan and Work./textcolor{blue}{reference}conducted quantitative research in measuring transportation resilience by observing about 700 million taxi trips in New York City, which they used to analyze and assess the resilience of the transportation infrastructure to Hurricane Sandy.
+With geotagged social media data, Chae et al./textcolor{blue}{reference} conducted comprehensive research in spatiotemporal analysis and created a spatial decision support environment that assists in evacuation planning and disaster management.
+%TODO one more reference on malaria and a short conclusion 
+
+Understanding and modeling residents flow significantly contribute to citywide emergency management and post-disaster recovery.
+The daily activities of residents in various regions can be easily captured with BSS data. %Todo and used to indicate the impact of
 Du et al. \cite{du2018better} studies the travel patterns of BSS in Nanjing via questionnaires.
 Xu et al. \cite{xu2019unravel} characterizes the BSS temporal flow and spatial distribution in Singapore.
 Kaggle \cite{kaggle} competition of predicting share bike demands based on limited entries.
 There are also studies of BSS focusing on rebalancing strategies \cite{pal2017free, ai2019deep}.
-
-\textcolor{red}{reference in earth science GUO}
 
 As far as we know, there are no studies on the period-wise spatiotemporal patterns and co-location patterns extracted from the big data of BSS (usage records).
 
@@ -243,6 +250,9 @@ We compared the share bike usage on rush hours (8:00-09:00 and 18:00-19:00) duri
 % As can be seen in Figure \ref{fig:temporal_comparison}, in 2019, the usage drops down to $5\times 10^5$ because of spring festival; 
 % while in 2020, the usage decreases even two thirds of that in 2019 due to the outbreak of COVID-19 and the following epidemics.
 
+As can be seen in Figure \ref{fig:hour_comparison_8} and Figure \ref{fig:hour_comparison_18}, the share bike usages drop in mid-January, 2020 and early February, 2019.
+During these period, schools and workplaces closed as part of the Lunar New Year holidays.
+These closures were then extended to prevent SARS-CoV-2 spread in 2020.
 % We also plotted the graph of share bike usage during rush hour (8:00-10:00 and 18:00-20:00) which reflects the industrial activities.
 Share bike usage on rush hours in 2019 exhibits the periodicity of social activities: high on weekdays and low on weekends, which fits our general knowledge.
 However, this pattern does not appear from 10 Feb 2020 when the government declared the partial restart of certain social activities.
