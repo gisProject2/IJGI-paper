@@ -124,7 +124,10 @@ Xu et al. \cite{xu2019unravel} characterizes the BSS temporal flow and spatial d
 Kaggle \cite{kaggle} competition of predicting share bike demands based on limited entries.
 There are also studies of BSS focusing on rebalancing strategies \cite{pal2017free, ai2019deep}.
 
-As far as we know, there are no studies on the period-wise spatiotemporal patterns and co-location patterns extracted from the big data of BSS (usage records).
+However, due to the limited emerging understanding of the new virus and its transmission mechanisms, it remains challenging to reveal its impacts in /textcolor{red}{residents' daily lives}.
+To address this issue, We use big data of BSS (usage records) to measure period-wise spatiotemporal patterns and co-location patterns. 
+Results indicate that large mobility reductions have been detected associated with the onset of the COVID-19 threat and administrative restrictions.
+Correlation analysis between the temporal usage patterns and facilities locations reveals /textcolor{red}{the influence of pandemic in different phases.} 
 
 \section*{Contribution} As the pandemic of COVID-19 and the Chinese New Year meet by coincidence, we tried first to remove the influence of this national holiday, then assess the impact of the COVID-19 pandemic via three aspects:
 \begin{enumerate}
@@ -156,6 +159,10 @@ Records of the datasets contain the positioning and timing information of lockin
 This feature suggests that the movement of bikes are done by users.
 Certain districts (Chaoyang, Fengtai and Shijingshan) are not comprised in the datasets due to different policies of local governments.
 
+\textbf{Points Of Interest (POIs)} POIs of Beijing are collected from AutoNavi API\footnote{\url{https://lbs.amap.com/api/webservice/guide/api/georegeo} (in Chinese)}.
+Each entry is identified by \texttt{object\_id}, recording the address including longitude/latitude information, and categorized by \texttt{large\_category}, \texttt{mid\_category} and \texttt{sub\_category}.
+Among hundreds of categories, we chose six mid ones: RA, tech company, other company, subway station, shopping plaza and supermarkets which correspond to productive and social activities.
+
 \begin{figure}[H]
     \centering
     \begin{subfigure}{.23\textwidth}
@@ -179,13 +186,14 @@ Certain districts (Chaoyang, Fengtai and Shijingshan) are not comprised in the d
     \begin{subfigure}{0.7\textwidth}
         \includegraphics[width=\textwidth]{Figures/Fig2legend.eps}
     \end{subfigure}
-    \caption{Number of confirmed cases in Beijing}
+    \caption{Daily counts of confirmed cases in Beijing}
     \label{fig:number_of_confirmed_cases}
 \end{figure}
 
-\textbf{Points Of Interest (POIs)} POIs of Beijing are collected from AutoNavi API\footnote{\url{https://lbs.amap.com/api/webservice/guide/api/georegeo} (in Chinese)}.
-Each entry is identified by \texttt{object\_id}, recording the address including longitude/latitude information, and categorized by \texttt{large\_category}, \texttt{mid\_category} and \texttt{sub\_category}.
-Among hundreds of categories, we chose six mid ones: RA, tech company, other company, subway station, shopping plaza and supermarkets which correspond to productive and social activities.
+\textbf{Locations of Confirmed Cases}
+The daily counts of confirmed 2019-nCoV cases subjected to each district from Jan 20 to Mar 5, 2020 were collected from the daily update on the novel coronavirus pneumonia outbreak dashboard provided by National Health Commission of the People's Republic of China\footnote{\url{http://www.nhc.gov.cn/xcs/yqtb/list_gzbd.shtml} (in Chinese)} .
+According to the timeline \cite{li2020early} of the outbreak, we pick several important dates shown in Figure \ref{fig:number_of_confirmed_cases}, visualizing the evolution of the overall pandemic situation of Beijing.
+To assess the overall behavior pattern changes, we picked out the locations of infected RAs (see Figure \ref{fig:locations_of_confirmed_cases}), which were retrieved from Beijing Municipal Health Commission\footnote{\url{http://wjw.beijing.gov.cn/xwzx_20031/wnxw/202003/t20200305_1679143.html} (as of March 05, 2020, in Chinese)} .  
 
 \begin{figure}[H]
     \centering
@@ -193,11 +201,6 @@ Among hundreds of categories, we chose six mid ones: RA, tech company, other com
     \caption{Locations of confirmed cases in Beijing}
     \label{fig:locations_of_confirmed_cases}
 \end{figure} 
-
-\textbf{Locations of Confirmed Cases}
-According to the timeline \cite{li2020early} of the outbreak, we pick several important dates shown in Figure \ref{fig:number_of_confirmed_cases}, visualizing the evolution of the overall situation of Beijing.
-This data records the confirmed cases of each district from Jan 20 to Mar 5, 2020.
-To assess the overall behavior pattern changes, we picked out the infected RAs (see Figure \ref{fig:locations_of_confirmed_cases}) which are collected from the daily update on the novel coronavirus pneumonia outbreak dashboard\footnote{\url{http://wjw.beijing.gov.cn/xwzx_20031/wnxw/202003/t20200305_1679143.html} (as of March 05, 2020, in Chinese)} provided by National Health Commission of the People's Republic of China.  
 
 \subsection{Methods}
 To obtain the co-location patterns of huge amount of spatiotemporal data (66.8GB) with numerous POIs, we proceeded with GeoSpark SQL \cite{huang2017geospark}, which performs spatial queries via parallel computing on cluster computing framework Spark\footnote{\url{https://spark.apache.org/}}.
