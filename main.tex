@@ -58,7 +58,7 @@
 %% For proofs, please use the proof environment (the amsthm package is loaded by the MDPI class).
 
 %=================================================================
-\Title{Spatiotemporal Analysis of Share Bike Usages during the COVID-19 Pandemic: a Case Study of Beijing}
+\Title{Spatiotemporal Analysis of Share Bike Usage during the COVID-19 Pandemic: a Case Study of Beijing}
 
 \newcommand{\orcidauthorA}{0000-0001-7546-7068} % Add \orcidA{} behind the author's name
 \newcommand{\orcidauthorB}{0000-0003-0084-381X} % Add \orcidB{} behind the author's name
@@ -77,7 +77,7 @@ $^{2}$ \quad China Location-Based Service, 100191 Beijing, China; xw.chai@chinal
 As estimating the overall loss in China is a complex task, we try to reveal the behavior change of people over time \& space in order to infer the impact on daily life of and overall economy.
 Spatiotemporal behavior patterns can be reflected by share bike usage because great majority of Chinese urban residents use share bikes to connect public transports and both ends of travel.
 Taking records of BSS (Bike Sharing System) in Beijing, this paper characterizes not only temporal behavior patterns of share bike users: during ordinary days, holidays and the pandemic, but also spatial behavior patterns: around malls, metros, normal communities and infected communities, etc.
-This paper illustrates a huge decrease of share bike use during the pandemic and discover the critical time \& places showing the significant impact on the industries and social activities.
+This paper illustrates a huge decrease of share bike use during the pandemic and discover the critical time \& places showing the significant impact on the productive and social activities.
 }
 
 \keyword{Bike sharing system; coronavirus; spatiotemporal analysis; co-location analysis}
@@ -89,7 +89,7 @@ This paper illustrates a huge decrease of share bike use during the pandemic and
 
 %\datasetlicense{license under which the data set is made available (CC0, CC-BY, CC-BY-SA, CC-BY-NC, etc.)}
 \Urlmuskip=0mu plus 10mu
-%\pdfminorversion=7
+\pdfminorversion=7
 \begin{document}
 \section{Introduction}
 In December 2019, a local outbreak of pneumonia was detected in Wuhan, China, identified afterwards as COVID-19 and the virus as SARS-CoV-2\footnote{\url{https://www.who.int/emergencies/diseases/novel-coronavirus-2019/technical-guidance/naming-the-coronavirus-disease-(covid-2019)-and-the-virus-that-causes-it}}.
@@ -104,7 +104,7 @@ Data of online surveys and mobile phone positioning could be references, but the
 
 Wide-spread Bike Sharing System (BSS) in China provides with a possibility for analyzing such patterns of residents.
 The 3rd generation BSS emerges in China in 2015 thanks to rapid development of GIS-based and IoT-based system. 
-Compared to its predecessors, bikes of the 3rd generation BSS (hereinafter referred to as BSS) are no longer constrained by docking stations (so-called free floating bikes), they are often spread along the roads, congest around shopping/residential areas and cover the most urban residents. 
+Compared to its predecessors, bikes of the 3rd generation BSS (hereinafter referred to as BSS) are no longer constrained by docking stations (so-called free floating bikes), they are often spread along the roads, congest around shopping/residential areas (RAs) and cover the most urban residents. 
 As for city of Beijing, the amount of share bike reached its peak in 2017 and governors began removing excess supply afterwards. 
 After two years of development and regulation of BSS, the demand and the supply of share bikes meet a balance in 2019, which could be regarded as a stable data source.
 According to Daxue Consulting \cite{bssmodel}, in Beijing, 93\% of travels less than 5km are quicker done by bike and public transport than with the car, which suggests share bikes has a potential reflection on the local mobility of residents.
@@ -129,7 +129,7 @@ As far as we know, there are no studies on the period-wise spatiotemporal patter
 \section*{Contribution} As the pandemic of COVID-19 and the Chinese New Year meet by coincidence, we tried first to remove the influence of this national holiday, then assess the impact of the COVID-19 pandemic via three aspects:
 \begin{enumerate}
     \item Global view of infection in the districts of Beijing
-    \item Analyzing the evolution of bike usages in different phases: ordinary days, the emergence of SARS-CoV-2 and the days of pandemic 
+    \item Analyzing the evolution of bike usage in different phases: ordinary days, the emergence of SARS-CoV-2 and the days of pandemic 
     \item Analyzing the co-location patterns of BSS with different types of POIs to reveal the impact on the corresponding businesses
 \end{enumerate}
 
@@ -151,7 +151,7 @@ Under this circumstance, the activities of residents have been influenced and sh
 
 \subsection{Data Sets}
 \textbf{BSS spatiotemporal data} Temporal positioning datasets come from 900 thousand share bikes belonging to 3 main BSS operators (Mobike, DiDi Bike, Hellobike and Ofo) in Beijing.
-The datasets date from March 2018 to March 2020 (66.8 GB) and cover 1.5 million usages per day contributed by 11 million users which account for one half of the total population of Beijing.
+The datasets date from March 2018 to March 2020 (66.8 GB) and cover 1.5 million usage per day contributed by 11 million users which account for one half of the total population of Beijing.
 Records of the datasets contain the positioning and timing information of locking \& unlocking bikes, excluding that of rebalancing operations.
 This feature suggests that the movement of bikes are done by users.
 Certain districts (Chaoyang, Fengtai and Shijingshan) are not comprised in the datasets due to different policies of local governments.
@@ -183,14 +183,9 @@ Certain districts (Chaoyang, Fengtai and Shijingshan) are not comprised in the d
     \label{fig:number_of_confirmed_cases}
 \end{figure}
 
-\textbf{Points of interests (POIs)} POIs of Beijing are collected from AutoNavi API\footnote{\url{https://lbs.amap.com/api/webservice/guide/api/georegeo} (in Chinese)}.
+\textbf{Points Of Interest (POIs)} POIs of Beijing are collected from AutoNavi API\footnote{\url{https://lbs.amap.com/api/webservice/guide/api/georegeo} (in Chinese)}.
 Each entry is identified by \texttt{object\_id}, recording the address including longitude/latitude information, and categorized by \texttt{large\_category}, \texttt{mid\_category} and \texttt{sub\_category}.
-Among hundreds of categories, we chose six mid ones: residential area, high-tech company, other company, subway station, shopping plaza and supermarkets.
-To assess the overall behavior pattern changes, we picked out the infected residential areas (see Figure \ref{fig:locations_of_confirmed_cases})
-% \textbf{Infected residential areas}
-which are collected from the daily update on the novel coronavirus pneumonia outbreak dashboard\footnote{\url{http://wjw.beijing.gov.cn/xwzx_20031/wnxw/202003/t20200305_1679143.html} (as of March 05, 2020, in Chinese)} provided by National Health Commission of the People's Republic of China. 
-This data records the confirmed cases of each district from Jan 20 to Mar 5, 2020. 
-According to the timeline \cite{li2020early} of the outbreak, we pick several important dates shown in Figure \ref{fig:number_of_confirmed_cases}, visualizing the evolution of the overall situation of Beijing.
+Among hundreds of categories, we chose six mid ones: RA, high-tech company, other company, subway station, shopping plaza and supermarkets which correspond to productive and social activities.
 
 \begin{figure}[H]
     \centering
@@ -199,97 +194,134 @@ According to the timeline \cite{li2020early} of the outbreak, we pick several im
     \label{fig:locations_of_confirmed_cases}
 \end{figure} 
 
+\textbf{Locations of Confirmed Cases}
+According to the timeline \cite{li2020early} of the outbreak, we pick several important dates shown in Figure \ref{fig:number_of_confirmed_cases}, visualizing the evolution of the overall situation of Beijing.
+This data records the confirmed cases of each district from Jan 20 to Mar 5, 2020.
+To assess the overall behavior pattern changes, we picked out the infected RAs (see Figure \ref{fig:locations_of_confirmed_cases}) which are collected from the daily update on the novel coronavirus pneumonia outbreak dashboard\footnote{\url{http://wjw.beijing.gov.cn/xwzx_20031/wnxw/202003/t20200305_1679143.html} (as of March 05, 2020, in Chinese)} provided by National Health Commission of the People's Republic of China.  
+
 \subsection{Methods}
 To obtain the co-location patterns of huge amount of spatiotemporal data (66.8GB) with numerous POIs, we proceeded with GeoSpark SQL \cite{huang2017geospark}, which performs spatial queries via parallel computing on cluster computing framework Spark\footnote{\url{https://spark.apache.org/}}.
 Among the spatial queries, we utilized \texttt{spatial\_join(geom1, geom2)}, querying if \texttt{geom1} is inside \texttt{geom2} and \texttt{distance\_join(geom1, geom2, dist)} querying if the distance of \texttt{geom1} and \texttt{geom2} is less than \texttt{dist}.
+These queries are nearly partition independent, recomputing is needed only on the borders of partition, thus our parallel efficiency is high given proper configuration and partitioning.
 
 Basic statistics on the evolution over time in different zones of Beijing.\textcolor{red}{explanation GUO} 
 
 \section{Result and Discussion}
-\subsection{Temporal patterns of cycling activities}
-To characterize the behavior patterns, we select the following important referential dates: 
 
+\subsection{Temporal patterns of cycling activities}
+To characterize the behavior patterns, we first selected the following important referential dates: 
 \begin{table}[H]
     \centering
     \begin{tabular}{ll}
-    04 Feb 2019 & Start of Chinese Lunar New Year holiday 2019 \\
+    04 Feb 2019 & Start of Chinese Lunar New Year holiday 2019 (spring festival 2019) \\
     10 Feb 2019 & End of new year holiday 2019\\
     07 Jan 2020 & Identification of COVID-19\\
     22 Jan 2020 & Shut down of Wuhan and other 15 cities\\
-    24 Jan 2020 & Start of Chinese Lunar New Year holiday 2020\\
-    02 Feb 2020 & End of extended New Year holiday 2020\\
-    10 Feb 2020 & Partial restart of social activities
+    24 Jan 2020 & Start of Chinese Lunar New Year holiday 2020 (spring festival 2020)\\
+    02 Feb 2020 & End of \textit{extended} New Year holiday 2020\\
+    10 Feb 2020 & Partial restart of productive and social activities
     \end{tabular}
-    \caption{Referential dates}
+    \caption{Important dates}
     \label{tab:my_label}
 \end{table}
 
+As the outbreak of COVID-19 coincides with spring festival 2020, we use Chinese Lunar New Year holiday of 2019 as comparison to assess the influence of this period on share bike usage.
+It is worth noticing that Chinese Lunar New Year holidays are not equi-length, especially that of 2020, which is extended by executive order.
 
 % \begin{figure}[H]
 %     \centering
 %     \includegraphics[width=\textwidth]{Compare_temporal.eps}
-%     \caption{Comparison between share bike daily usages of year 2019 and 2020.}
+%     \caption{Comparison between share bike daily usage of year 2019 and 2020.}
 %     \label{fig:temporal_comparison}
 % \end{figure}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.9\textwidth]{Figures/hour_8.eps}
-    \caption{Share bike usages during 08:00-09:00 of year 2019 and 2020.}
+    \caption{Share bike usage during 08:00-09:00 of year 2019 and 2020.}
     \label{fig:hour_comparison_8}
 \end{figure}
-
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.9\textwidth]{Figures/hour_18.eps}
-    \caption{Share bike usages during 18:00-19:00 of year 2019 and 2020.}
+    \caption{Share bike usage during 18:00-19:00 of year 2019 and 2020.}
     \label{fig:hour_comparison_18}
 \end{figure}
 
-We compared the share bike usage on rush hours (8:00-09:00 and 18:00-19:00) during a period of 64 days from 01 Jan to 05 March 2019 and 01 Jan to 04 March 2020 respectively (data later than 29 Feb 2020 were delayed by one day due to the leap year).
+We compared the share bike usage on rush hours (8:00-09:00 and 18:00-19:00) during a period of 64 days from 01 Jan to 02 March 2019 and 01 Jan to 01 March 2020 respectively (data of 29 Feb and 1 March 2020 were brought backward by one day due to the leap year).
 % As can be seen in Figure \ref{fig:temporal_comparison}, in 2019, the usage drops down to $5\times 10^5$ because of spring festival; 
 % while in 2020, the usage decreases even two thirds of that in 2019 due to the outbreak of COVID-19 and the following epidemics.
 
-As can be seen in Figure \ref{fig:hour_comparison_8} and Figure \ref{fig:hour_comparison_18}, the share bike usages drop in mid-January, 2020 and early February, 2019.
-During these period, schools and workplaces closed as part of the Lunar New Year holidays.
-These closures were then extended to prevent SARS-CoV-2 spread in 2020.
-% We also plotted the graph of share bike usage during rush hour (8:00-10:00 and 18:00-20:00) which reflects the industrial activities.
-Share bike usage on rush hours in 2019 exhibits the periodicity of social activities: high on weekdays and low on weekends, which fits our general knowledge.
-However, this pattern does not appear from 10 Feb 2020 when the government declared the partial restart of certain social activities.
-We suggest that the social activities were not resumed until Feb 24, which correspond the impact of the pandemic still lasted till the end of the study period.
+As can be seen in Figure \ref{fig:hour_comparison_8} and Figure \ref{fig:hour_comparison_18}, the share bike usage drop in mid-January of 2020 and early February of 2019.
+During these periods, schools and workplaces were closed as part of the Chinese Lunar New Year holiday 2020.
+The overall closure was then forced to be extended to mitigate the pandemic.
+% We also plotted the graph of share bike usage during rush hour (8:00-10:00 and 18:00-20:00) which reflects the productive activities.
+Share bike usage on rush hours exhibits the periodicity of productive activities: high on weekdays and low on weekends, which fits our general knowledge.
+However, this pattern does not appear on 10 Feb 2020 when the government declared the partial restart of certain productive and social activities.
+This anomaly suggests that the activities were not resumed until Feb 24, which corresponds to the fact that the impact of the pandemic was lasting till the end of this study period.
 
-\subsection{Co-location Analysis with POIs}
-After removing the spring festival holiday, we studied respectively the phases of 01 Jan to 21 Jan (before the pandemics), 10 Feb to 04 Mar (during the pandemics) and 22 Jan to 09 Feb (during the pandemics \& spring festival) as a comparison of before the pandemic, during the pandemic and during spring festival 2020.
+\subsection{Co-location Analysis with POIs}\label{sec:colo-poi}
+We studied the co-location patterns in three phases: 01 Jan to 21 Jan (before the pandemics), 10 Feb to 01 Mar (during the pandemics \& after spring festival) and 22 Jan to 09 Feb (during the pandemics \& during spring festival) as a set of comparisons of before the pandemic, during the pandemic and during spring festival 2020.
 
 \begin{table}[H]
     \centering
-    \begin{tabular}{|l|l|l|l|l|l|}
+    \begin{tabular}{|l|l|l|l|l|l|l|}
         \hline
-        \multirow{2}{*}{Category}&\multirow{2}{*}{\makecell[c]{POI\\amount}}& \multicolumn{4}{c|}{Daily average bike usage within 200m radius of POIs per POI}\\
-        \cline{3-6}
-        && 01 Jan-21 Jan ($b$) &10 Feb-01 Mar ($a$)&22 Jan-09 Feb ($m$)& $c$\\
+        \multirow{2}{*}{Category} & \multirow{2}{*}{\makecell[c]{POI\\amount}} & \multicolumn{5}{c|}{Daily average bike usage within 200m radius of POIs per POI}\\
+        \cline{3-7}
+        & & 01 Jan-21 Jan ($b$) & 22 Jan-09 Feb ($m$) & 10 Feb-01 Mar ($a$) & $m/b$ & $a/m$\\
+        % \hline
+        % Infected RA & 23 & 207.6 & 60.4 & 57.1 & 2.35\\
+        % Infected RA & 20 & 35.8 & 15.6 & 15.5 & 1.66\\
         \hline
-        Infected residential area & 23 & 207.6 & 60.4 & 57.1 & 2.35\\
+        RA & 5657 & 158.3 & 36.6 & 39.9 & 23.1\% & 109.0\%\\
         \hline
-        Normal residential area & 5657 & 158.3 & 39.9 & 36.6 & 2.71\\
+        High-tech company & 3858 & 200.4 & 36.3 & 41.1 & 18.1\% & 113.2\%\\
         \hline
-        High-tech company & 3858 & 200.4 & 41.1 & 36.3 & 3.33\\
+        Other company & 32301 & 162.5 & 35.8 & 39.4 & 22.0\% & 110.1\%\\
         \hline
-        Other company & 32301 & 162.5 & 39.4 & 35.8 & 2.82\\
+        Subway station & 137 & 113.8 & 29 & 31.7 & 25.5\% & 109.3\%\\
         \hline
-        Subway station & 137 & 113.8 & 31.7 & 29.0 & 2.51\\
+        Shopping plaza & 217 & 168.9 & 38.4 & 41 & 22.7\% & 106.8\%\\
         \hline
-        Shopping plaza & 217 & 168.9 & 41.0 & 38.4 & 2.73\\
+        Supermarket & 1076 & 137.6 & 34.3 & 37.7 & 24.9\% & 109.9\%\\
         \hline
-        Supermarket & 1076 & 137.6 & 37.7 & 34.3 & 2.56\\
-        \hline
+
     \end{tabular}
-    \caption{Bike usage in different phases, where $c=(b+a)/2m$ is used to quantify the convexity of the evolution curve.}
-    \label{tab:bike_usage}
+    \caption{Bike usage in different phases around the chosen POIs.
+    %, where $c=(b+a)/2m$ is used to measure the bending of the evolution curve
+    }
+    \label{tab:bike_usage_poi}
 \end{table}
 
-In Table \ref{tab:bike_usage}, we use $c$ to characterize the evolution curve: the curve becomes more convex if $c$ is larger. 
-According to this standard, residential areas..., companies..., subway stations..., shopping plazas..., supermarkets.
+Table \ref{tab:bike_usage_poi} depicts the bike usage of the six chosen categories.
+Phase $b$ (before) and $a$ (after) have the same duration, 21 days.     
+% In abuse of definition ``convexity'', we use the comparison between the mean of $a$ and $b$ and phase $m$ (mid) to describe the curve: the curve is more bending, \textit{i.e.} impacted if ratio $c=(b+a)/2m$ is larger.
+Ratio $m/b$ shows that the bike usage of all categories decreased to one quarter, and high-tech companies dropped the most in both value and proportion, one possible explanation is they suit best ``work from home''. 
+Ratio $a/m$ shows the bike usage of all categories have recovered to some extent after the partial restart of activities but far from the situation of usual time.
+
+\subsection{Co-location Analysis with Infected RAs}
+
+Like in Section \ref{sec:colo-poi}, we analyzed the share bike usage around infected RAs and that of surrounding RAs.
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|l|l|l|l|l|l|l|}
+        \hline
+        \multirow{2}{*}{Category} & \multirow{2}{*}{\makecell[c]{POI\\amount}} & \multicolumn{5}{c|}{Daily average bike usage within 200m radius of POIs per POI}\\
+        \cline{3-7}
+        & & 01 Jan-21 Jan ($b$) & 22 Jan-09 Feb ($m$) & 10 Feb-01 Mar ($a$) & $m/b$ & $a/m$\\
+        \hline
+        Infected RA & 5657 & 158.3 & 36.6 & 39.9 & 23.1\% & 109.0\%\\
+        \hline
+        Surrounding RA & 3858 & 200.4 & 36.3 & 41.1 & 18.1\% & 113.2\%\\
+        \hline
+    \end{tabular}
+    \caption{Bike usage in different phases infected RAs and that of surrounding RAs.
+    %, where $c=(b+a)/2m$ is used to measure the bending of the evolution curve
+    }
+    \label{tab:bike_usage_infected}
+\end{table}
 
 \subsection{Spatiotemporal patterns of cycling activities\textbf{[Guo]}}
 
@@ -591,7 +623,8 @@ Residential: ...
 \begin{tabular}{@{}ll}
 GIS & Geographic Information System \\
 BSS & Bike Sharing System\\
-POI & Point Of Interest
+POI & Point Of Interest \\
+RA & Residential Area
 
 \end{tabular}}
 
