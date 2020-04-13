@@ -71,7 +71,7 @@
 $^{1}$ \quad Beijing University of Civil Engineering and Architecture, 102616 Beijing, China; guoxian@bucea.edu.cn (X.G.); jiangjie@bucea.edu.cn (J.J.)\\
 $^{2}$ \quad China Location-Based Service, 100191 Beijing, China; xw.chai@chinalbs.org}
 
-\corres{Correspondence:  guoxian@bucea.edu.cn; Tel.: +86-010-6120 9335}
+\corres{Correspondence:  guoxian@bucea.edu.cn; Tel.: +86 (010) 6120 9335}
 
 \abstract{During the epidemics of COVID-19, not only China but the whole world is experiencing a serious crisis on public health and economy, and the epidemics have become pandemic.
 As estimating the overall loss in China is a complex task, we try to reveal the behavior change of people over time \& space in order to infer the impact on daily life of and overall economy.
@@ -185,7 +185,7 @@ Certain districts (Chaoyang, Fengtai and Shijingshan) are not comprised in the d
 
 \textbf{Points Of Interest (POIs)} POIs of Beijing are collected from AutoNavi API\footnote{\url{https://lbs.amap.com/api/webservice/guide/api/georegeo} (in Chinese)}.
 Each entry is identified by \texttt{object\_id}, recording the address including longitude/latitude information, and categorized by \texttt{large\_category}, \texttt{mid\_category} and \texttt{sub\_category}.
-Among hundreds of categories, we chose six mid ones: RA, high-tech company, other company, subway station, shopping plaza and supermarkets which correspond to productive and social activities.
+Among hundreds of categories, we chose six mid ones: RA, tech company, other company, subway station, shopping plaza and supermarkets which correspond to productive and social activities.
 
 \begin{figure}[H]
     \centering
@@ -276,7 +276,7 @@ We studied the co-location patterns in three phases: 01 Jan to 21 Jan (before th
         \hline
         RA & 5657 & 158.3 & 36.6 & 39.9 & 23.1\% & 109.0\%\\
         \hline
-        High-tech company & 3858 & 200.4 & 36.3 & 41.1 & 18.1\% & 113.2\%\\
+        Tech company & 3858 & 200.4 & 36.3 & 41.1 & 18.1\% & 113.2\%\\
         \hline
         Other company & 32301 & 162.5 & 35.8 & 39.4 & 22.0\% & 110.1\%\\
         \hline
@@ -286,7 +286,6 @@ We studied the co-location patterns in three phases: 01 Jan to 21 Jan (before th
         \hline
         Supermarket & 1076 & 137.6 & 34.3 & 37.7 & 24.9\% & 109.9\%\\
         \hline
-
     \end{tabular}
     \caption{Bike usage in different phases around the chosen POIs.
     %, where $c=(b+a)/2m$ is used to measure the bending of the evolution curve
@@ -297,7 +296,7 @@ We studied the co-location patterns in three phases: 01 Jan to 21 Jan (before th
 Table \ref{tab:bike_usage_poi} depicts the bike usage of the six chosen categories.
 Phase $b$ (before) and $a$ (after) have the same duration, 21 days.     
 % In abuse of definition ``convexity'', we use the comparison between the mean of $a$ and $b$ and phase $m$ (mid) to describe the curve: the curve is more bending, \textit{i.e.} impacted if ratio $c=(b+a)/2m$ is larger.
-Ratio $m/b$ shows that the bike usage of all categories decreased to one quarter, and high-tech companies dropped the most in both value and proportion, one possible explanation is they suit best ``work from home''. 
+Ratio $m/b$ shows that the bike usage of all categories decreased to one quarter, and tech companies dropped the most in both value and proportion, one possible explanation is they suit best ``work from home''. 
 Ratio $a/m$ shows the bike usage of all categories have recovered to some extent after the partial restart of activities but far from the situation of usual time.
 
 \subsection{Co-location Analysis with Infected RAs}
@@ -308,18 +307,16 @@ Like in Section \ref{sec:colo-poi}, we analyzed the share bike usage around infe
     \centering
     \begin{tabular}{|l|l|l|l|l|l|l|}
         \hline
-        \multirow{2}{*}{Category} & \multirow{2}{*}{\makecell[c]{POI\\amount}} & \multicolumn{5}{c|}{Daily average bike usage within 200m radius of POIs per POI}\\
+        \multirow{2}{*}{Category} & \multirow{2}{*}{\makecell[c]{RA\\amount}} & \multicolumn{5}{c|}{Daily average bike usage within 200m radius of RAs per RA}\\
         \cline{3-7}
         & & 01 Jan-21 Jan ($b$) & 22 Jan-09 Feb ($m$) & 10 Feb-01 Mar ($a$) & $m/b$ & $a/m$\\
         \hline
-        Infected RA & 5657 & 158.3 & 36.6 & 39.9 & 23.1\% & 109.0\%\\
+        Infected RA &  &  &  &  &  & \\
         \hline
-        Surrounding RA & 3858 & 200.4 & 36.3 & 41.1 & 18.1\% & 113.2\%\\
+        Surrounding RA &  &  &  &  &  & \\
         \hline
     \end{tabular}
-    \caption{Bike usage in different phases infected RAs and that of surrounding RAs.
-    %, where $c=(b+a)/2m$ is used to measure the bending of the evolution curve
-    }
+    \caption{Bike usage in different phases infected RAs and that of surrounding RAs.}
     \label{tab:bike_usage_infected}
 \end{table}
 
@@ -388,7 +385,7 @@ Like in Section \ref{sec:colo-poi}, we analyzed the share bike usage around infe
 
 \subsection{Discussions}
 Part 1. Comparison with data from the same period in 2019.
-\textcolor{red}{In order to remove the influence of Lunar New Year holiday, comparison is conducted with data from the same period in 2019. Before...Holiday...Return-to-work...}
+\textcolor{red}{In order to avoid the influence of Lunar New Year holiday, comparison is conducted with data from the same period in 2019. Before...Holiday...Return-to-work...}
 \begin{figure}[H]
     \centering
     \begin{subfigure}{.3\textwidth}
