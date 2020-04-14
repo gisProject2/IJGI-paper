@@ -78,8 +78,8 @@ As estimating the overall loss in China is a complex task, we try to reveal the 
 Spatiotemporal behavior patterns can be reflected by share bike usage because great majority of Chinese urban residents use share bikes to connect public transports and both ends of travel.
 Taking records of BSS (Bike Sharing System) in Beijing, this paper characterizes not only temporal behavior patterns of share bike users: during ordinary days, holidays and the pandemic, but also spatial behavior patterns: around malls, metros, normal communities and infected communities, etc.
 This paper illustrates a huge decrease of share bike use during the pandemic and discover the critical time \& places showing the significant impact on the productive and social activities.
-The association of public health interventions with improved control of the COVID-19 outbreak was identified by conducting co-location analysis temporally. 
-These findings may provide critical information on how to respond to pandemic events.
+The association of public health interventions with improved control of the COVID-19 outbreak was extrapolated by conducting co-location analysis temporally. 
+These findings may provide critical information on how to respond to other epidemic events.
 }
 
 \keyword{Bike sharing system; coronavirus; spatiotemporal analysis; co-location analysis}
@@ -95,12 +95,12 @@ These findings may provide critical information on how to respond to pandemic ev
 \begin{document}
 \section{Introduction}
 In December 2019, a local outbreak of pneumonia was detected in Wuhan, China, identified afterwards as COVID-19 and the virus as SARS-CoV-2\footnote{\url{https://www.who.int/emergencies/diseases/novel-coronavirus-2019/technical-guidance/naming-the-coronavirus-disease-(covid-2019)-and-the-virus-that-causes-it}}.
-COVID-19 was quickly spread to the whole country and the whole world.
+COVID-19 quickly spread to the whole country and majority of countries worldwide.
 According to a situation report of WHO\footnote{\url{https://www.who.int/docs/default-source/coronaviruse/situation-reports/20200329-sitrep-69-covid-19.pdf}}, the total confirmed cases have reached 634,835 as of 29 March, 2020.
 
 It is well-accepted that COVID-19 pandemic inflicts huge impact on public health and most of the domains of economy, from spring festival till today (April 2020).
 COVID-19-related epidemiological studies have been mostly conducted in transmission dynamics \cite{li2020early,pitzer2009demographic} and preventive measures \cite{chinazzi2020effect,van2006today} based on the timeline of outbreak.
-However, few studies have been conducted to analyze quantitatively the spatiotemporal behavior patterns of people which is essential to assess the impact on economy and society.
+However, few studies have been conducted to analyze quantitatively the spatiotemporal behavior patterns of people during pandemic situations,which is essential to assess the impact on economy and society.
 
 Data of online surveys and mobile phone positioning could be references, but they do not cover all the population especially those who care about their privacy and are not willing to offer their precise position.
 
@@ -110,6 +110,10 @@ Compared to its predecessors, bikes of the 3rd generation BSS (hereinafter refer
 As for city of Beijing, the amount of share bike reached its peak in 2017 and governors began removing excess supply afterwards. 
 After two years of development and regulation of BSS, the demand and the supply of share bikes meet a balance in 2019, which could be regarded as a stable data source.
 According to Daxue Consulting \cite{bssmodel}, in Beijing, 93\% of travels less than 5km are quicker done by bike and public transport than with the car, which suggests share bikes has a potential reflection on the local mobility of residents.
+
+In this study, %We use big data of BSS (usage records) to measure period-wise spatiotemporal patterns and co-location patterns. 
+%Results indicate that large mobility reductions have been detected associated with the onset of the COVID-19 threat and administrative restrictions.
+%Correlation analysis between the temporal usage patterns and facilities locations reveals /textcolor{red}{the influence of pandemic in different phases.} 
 
 \section*{Related Work}
 The emergences of geospatial big data have great potential to benefit applications in disease surveillance, disaster response. %TODO reference
@@ -215,7 +219,8 @@ Basic statistics on the evolution over time in different zones of Beijing.\textc
 \section{Result and Discussion}
 
 \subsection{Temporal patterns of cycling activities}
-To characterize the behavior patterns, we first selected the following important referential dates: 
+To better characterize the behavior patterns with respect to the COVID-19 epidemic dynamics, we first selected the following important referential dates that could affect the virus transmission in Beijing: 
+
 \begin{table}[H]
     \centering
     \begin{tabular}{ll}
@@ -328,7 +333,8 @@ Like in Section \ref{sec:colo-poi}, we analyzed the share bike usage around infe
 
 \subsection{Spatiotemporal patterns of cycling activities\textbf{[Guo]}}
 
-\textcolor{red}{Overall spatial patterns of cycling activities from 21 Jan to 02 Mar.}
+Figure \ref{fig:full_spatial_pattern_2020} shows the spatial patterns of BSS activities from 21 Jan to 02 Mar by 4-day intervals.
+%TODO Cell size; Intensities and colors; spatial patterns: findings and underlying causes;
 
 \begin{figure}[H]
     \centering
@@ -388,6 +394,11 @@ Like in Section \ref{sec:colo-poi}, we analyzed the share bike usage around infe
     \caption{Spatial patterns of cycling activities from 21 Jan to 01 March 2020}
     \label{fig:full_spatial_pattern_2020}
 \end{figure}
+
+Inferred from the spatiotemporal characteristics above, the outbreak was divided into 3 phases to better reflect the dynamics of the COVID-19 epidemic.
+\textbf{Phase a}: dates before 21 Jan, 2020, are considered as the first period, when no strong COVID-19–specific interventions were imposed.
+\textbf{Phase b}: dates between 22 Jan and 09 Feb, include Chinese Lunar New Year holiday 2020. During this period, traffic suspension and home quarantine were implemented for pandemics prevention purposes.
+\textbf{Phase c}: is after 10 Feb, when productive and social activities restared partially since the pandemics was migitated and under effective control.
 
 \subsection{Discussions}
 Part 1. Comparison with data from the same period in 2019.
