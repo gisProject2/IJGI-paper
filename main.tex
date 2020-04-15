@@ -100,9 +100,12 @@ According to a situation report of WHO\footnote{\url{https://www.who.int/docs/de
 
 It is well-accepted that COVID-19 pandemic inflicts huge impact on public health and most of the domains of economy, from spring festival till today (April 2020).
 COVID-19-related epidemiological studies have been mostly conducted in transmission dynamics \cite{li2020early,pitzer2009demographic} and preventive measures \cite{chinazzi2020effect,van2006today} based on the timeline of outbreak.
-However, few studies have been conducted to analyze quantitatively the spatiotemporal behavior patterns of people during pandemic situations,which is essential to assess the impact on economy and society.
+However, few studies have been conducted to analyze quantitatively the spatiotemporal behavior patterns of people during pandemic situations, which is essential to assess the impact on economy and society.
+Ferguson et al. \cite{ferguson2020report} have studied two main strategies in the prevention of infectious diseases: \textit{suppression}, case of China and South Korea, with enormous social and economic costs which may cause secondary disasters on health and well-being in the short and longer-term;
+\textit{mitigation}, case of Great Britain and the United States, may not able to deal with all those with severe disease and resulting in high mortality.
+In this paper, we focus on the impact in various aspects of suppression strategy in Beijing, China.
 
-Data of online surveys and mobile phone positioning could be references, but they do not cover all the population especially those who care about their privacy and are not willing to offer their precise position.
+To achieve this goal, data of online surveys and mobile phone positioning could be references, but they do not cover all the population especially those who care about their privacy and are not willing to offer their precise position.
 
 Wide-spread Bike Sharing System (BSS) in China provides with a possibility for analyzing such patterns of residents.
 The 3rd generation BSS emerges in China in 2015 thanks to rapid development of GIS-based and IoT-based system. 
@@ -111,7 +114,7 @@ As for city of Beijing, the amount of share bike reached its peak in 2017 and go
 After two years of development and regulation of BSS, the demand and the supply of share bikes meet a balance in 2019, which could be regarded as a stable data source.
 According to Daxue Consulting \cite{bssmodel}, in Beijing, 93\% of travels less than 5km are quicker done by bike and public transport than with the car, which suggests share bikes has a potential reflection on the local mobility of residents.
 
-In this study, %We use big data of BSS (usage records) to measure period-wise spatiotemporal patterns and co-location patterns. 
+In this study, we use big data of BSS (usage records) to measure period-wise spatiotemporal patterns and co-location patterns. 
 %Results indicate that large mobility reductions have been detected associated with the onset of the COVID-19 threat and administrative restrictions.
 %Correlation analysis between the temporal usage patterns and facilities locations reveals /textcolor{red}{the influence of pandemic in different phases.} 
 
@@ -136,12 +139,14 @@ To address this issue, We use big data of BSS (usage records) to measure period-
 Results indicate that large mobility reductions have been detected associated with the onset of the COVID-19 threat and administrative restrictions.
 Correlation analysis between the temporal usage patterns and facilities locations reveals /textcolor{red}{the influence of pandemic in different phases.} 
 
-\section*{Contribution} As the pandemic of COVID-19 and the Chinese New Year meet by coincidence, we tried first to remove the influence of this national holiday, then assess the impact of the COVID-19 pandemic via three aspects:
+\section*{Contribution} As the pandemic of COVID-19 and the Chinese New Year meet by coincidence, we tried to avoid the influence of this national holiday, then assess the impact of the COVID-19 pandemic and that of suppression strategy via three aspects:
 \begin{enumerate}
     \item Global view of infection in the districts of Beijing
     \item Analyzing the evolution of bike usage in different phases: ordinary days, the emergence of SARS-CoV-2 and the days of pandemic 
     \item Analyzing the co-location patterns of BSS with different types of POIs to reveal the impact on the corresponding businesses
 \end{enumerate}
+
+
 
 \section{Materials and Methods}
 
@@ -308,11 +313,12 @@ Table \ref{tab:bike_usage_poi} depicts the bike usage of the six chosen categori
 Phase $b$ (before) and $a$ (after) have the same duration, 21 days.     
 % In abuse of definition ``convexity'', we use the comparison between the mean of $a$ and $b$ and phase $m$ (mid) to describe the curve: the curve is more bending, \textit{i.e.} impacted if ratio $c=(b+a)/2m$ is larger.
 Ratio $m/b$ shows that the bike usage of all categories decreased to one quarter, and tech companies dropped the most in both value and proportion, one possible explanation is they suit best ``work from home''. 
-Ratio $a/m$ shows the bike usage of all categories have recovered to some extent after the partial restart of activities but far from the situation of usual time.
+Ratio $a/m$ shows the bike usage of all categories have recovered to some extent but far from the situation of usual time after the partial restart of activities.
 
 \subsection{Co-location Analysis with Infected RAs}
 
-Like in Section \ref{sec:colo-poi}, we analyzed the share bike usage around infected RAs and that of surrounding RAs.
+From Figure \ref{fig:locations_of_confirmed_cases}, we noticed that, being the center of Beijing, Dongcheng and Xicheng district contain most of the infected RAs, and the confirmed time lie between 05 and 12 February.
+Like in Section \ref{sec:colo-poi}, we adjusted the time intervals to match the confirmed time and carried the same snalysis on the share bike usage around infected RAs and that of surrounding RAs (within the range of 1500m of infected RAs).
 
 \begin{table}[H]
     \centering
@@ -320,16 +326,25 @@ Like in Section \ref{sec:colo-poi}, we analyzed the share bike usage around infe
         \hline
         \multirow{2}{*}{Category} & \multirow{2}{*}{\makecell[c]{RA\\amount}} & \multicolumn{5}{c|}{Daily average bike usage within 200m radius of RAs per RA}\\
         \cline{3-7}
-        & & 01 Jan-21 Jan ($b$) & 22 Jan-09 Feb ($m$) & 10 Feb-01 Mar ($a$) & $m/b$ & $a/m$\\
+        & & 01 Jan-21 Jan ($b$) & 05 Feb-12 Feb ($m$) & 13 Feb-04 Mar ($a$) & $m/b$ & $a/b$\\
         \hline
-        Infected RA &  &  &  &  &  & \\
+        Infected RA & 19 & 160.8 & 27.3 & 43.2 & 17.0\% & 26.9\%\\%158.2\% \\
+        % Infected RA & 19 & 181.3 & 41.1 & 26.5 &  & \\
         \hline
-        Surrounding RA &  &  &  &  &  & \\
+        Surrounding RA & 1591 & 139.2 & 26.8 & 38.7 & 19.3\% & 27.8\%\\% 144.4\%\\
+        \hline
+        All RA & 5657 & 158.3 & 33.6 & 40.0 & 21.2\% & 25.3\% \\% 119.0\%\\
         \hline
     \end{tabular}
-    \caption{Bike usage in different phases infected RAs and that of surrounding RAs.}
+    \caption{Bike usage in different phases of infected RAs and that of surrounding RAs.}
     \label{tab:bike_usage_infected}
 \end{table}
+
+From Table \ref{tab:bike_usage_infected}, it can be inferred that the infected RAs suffered the most among the listed categories according to ratio $m/b$.
+Strict quarantine was practised here to mitigate the pandemic.
+Surrounding RAs were also strongly impacted because of the residents got into panic and keep themselves at home.
+According to ratio $a/n$, the share bike usage of infected RAs and their surrounding RAs have recovered roughly to the same level like other RAs from the pandemic.
+We can conclude the residents in Beijing followed exactly the suppression strategy whether the RAs were infected or not: quarantine, blocked RAs and reduction of social activities.
 
 \subsection{Spatiotemporal patterns of cycling activities\textbf{[Guo]}}
 
