@@ -75,8 +75,8 @@ $^{2}$ \quad China Location-Based Service, 100191 Beijing, China; xw.chai@chinal
 
 \abstract{During the epidemics of COVID-19, not only China but the whole world is experiencing a serious crisis on public health and economy, and the epidemics have become pandemic.
 As estimating the overall loss in China is a complex task, we try to reveal the behavior change of people over time \& space in order to infer the impact on daily life of and overall economy.
-Spatiotemporal behavior patterns can be reflected by share bike usage because great majority of Chinese urban residents use share bikes to connect public transports and both ends of travel.
-Taking records of BSS (Bike Sharing System) in Beijing, this paper characterizes not only temporal behavior patterns of share bike users: during ordinary days, holidays and the pandemic, but also spatial behavior patterns: around malls, metros, normal communities and infected communities, etc.
+Spatiotemporal behavior patterns can be reflected by share bike (SB) usage because great majority of Chinese urban residents use share bikes to connect public transports and both ends of travel.
+Taking records of Bike Sharing Systems (BSSs) in Beijing, this paper characterizes not only temporal behavior patterns of share bike users: during ordinary days, holidays and the pandemic, but also spatial behavior patterns: around malls, metros, normal communities and infected communities, etc.
 This paper illustrates a huge decrease of share bike use during the pandemic and discover the critical time \& places showing the significant impact on the productive and social activities.
 The association of public health interventions with improved control of the COVID-19 outbreak was extrapolated by conducting co-location analysis temporally. 
 These findings may provide critical information on how to respond to other epidemic events.
@@ -244,6 +244,33 @@ To better characterize the behavior patterns with respect to the COVID-19 epidem
 As the outbreak of COVID-19 coincides with spring festival 2020, we use Chinese Lunar New Year holiday of 2019 as comparison to assess the influence of this period on share bike usage.
 It is worth noticing that Chinese Lunar New Year holidays are not equi-length, especially that of 2020, which is extended by executive order.
 
+We compared the share bike usage on rush hours (8:00-09:00 and 18:00-19:00) during a period of 64 days from 01 Jan to 02 March 2019 and 01 Jan to 01 March 2020 respectively (data of 29 Feb and 1 March 2020 were brought backward by one day due to the leap year).
+% As can be seen in Figure \ref{fig:temporal_comparison}, in 2019, the usage drops down to $5\times 10^5$ because of spring festival; 
+% while in 2020, the usage decreases even two thirds of that in 2019 due to the outbreak of COVID-19 and the following epidemics.
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|l|l|l|l|}
+        \hline
+        \multirow{2}{*}{Phase} &\multicolumn{3}{c|}{Daily average SB usage}\\
+        \cline{2-4}
+        & 08:00-09:00 & 18:00-19:00 & All-day\\
+        \hline
+        01 Jan-20 Jan 2019 & 201042.5 & 118379.8 & 1507239.1\\
+        \hline
+        01 Jan-20 Jan 2020 & 196522.8 & 113267.9 & 1268093.9\\
+        \hline
+        \hline
+        04 Feb-10 Feb 2019 & 29728.0 & 24455.6 & 489522.1\\
+        \hline
+        24 Jan-02 Feb 2020 & 10041.6 & 11691.0 & 171908.3\\
+        \hline
+    \end{tabular}
+    \caption{Overall comparison of year 2019 and 2020}\label{tab:overall_comparison}
+\end{table}
+
+Table \ref{tab:overall_comparison} shows in usual days, SB usage in 2020 takes more than 80\% of that of 2019, while this percentage becomes less than 40\% during spring festival which gives a rough view over the impact of the pandemic.
+
 % \begin{figure}[H]
 %     \centering
 %     \includegraphics[width=\textwidth]{Compare_temporal.eps}
@@ -264,13 +291,12 @@ It is worth noticing that Chinese Lunar New Year holidays are not equi-length, e
     \label{fig:hour_comparison_18}
 \end{figure}
 
-We compared the share bike usage on rush hours (8:00-09:00 and 18:00-19:00) during a period of 64 days from 01 Jan to 02 March 2019 and 01 Jan to 01 March 2020 respectively (data of 29 Feb and 1 March 2020 were brought backward by one day due to the leap year).
-% As can be seen in Figure \ref{fig:temporal_comparison}, in 2019, the usage drops down to $5\times 10^5$ because of spring festival; 
-% while in 2020, the usage decreases even two thirds of that in 2019 due to the outbreak of COVID-19 and the following epidemics.
-
 As can be seen in Figure \ref{fig:hour_comparison_8} and Figure \ref{fig:hour_comparison_18}, the share bike usage drop in mid-January of 2020 and early February of 2019.
 During these periods, schools and workplaces were closed as part of the Chinese Lunar New Year holiday 2020.
 The overall closure was then forced to be extended to mitigate the pandemic.
+
+
+
 % We also plotted the graph of share bike usage during rush hour (8:00-10:00 and 18:00-20:00) which reflects the productive activities.
 Share bike usage on rush hours exhibits the periodicity of productive activities: high on weekdays and low on weekends, which fits our general knowledge.
 However, this pattern does not appear on 10 Feb 2020 when the government declared the partial restart of certain productive and social activities.
@@ -413,7 +439,7 @@ Figure \ref{fig:full_spatial_pattern_2020} shows the spatial patterns of BSS act
 Inferred from the spatiotemporal characteristics above, the outbreak was divided into 3 phases to better reflect the dynamics of the COVID-19 epidemic.
 \textbf{Phase a}: dates before 21 Jan, 2020, are considered as the first period, when no strong COVID-19–specific interventions were imposed.
 \textbf{Phase b}: dates between 22 Jan and 09 Feb, include Chinese Lunar New Year holiday 2020. During this period, traffic suspension and home quarantine were implemented for pandemics prevention purposes.
-\textbf{Phase c}: is after 10 Feb, when productive and social activities restared partially since the pandemics was migitated and under effective control.
+\textbf{Phase c}: is after 10 Feb, when productive and social activities restarted partially since the pandemics was migitated and under effective control.
 
 \subsection{Discussions}
 Part 1. Comparison with data from the same period in 2019.
@@ -641,7 +667,7 @@ Residential: ...
 
 \section{Conclusion}
 
-
+This paper 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \vspace{6pt} 
 
