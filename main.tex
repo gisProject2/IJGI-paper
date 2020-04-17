@@ -105,7 +105,8 @@ Ferguson et al. \cite{ferguson2020report} have studied two main strategies in th
 \textit{mitigation}, case of Great Britain and the United States, may not able to deal with all those with severe disease and resulting in high mortality.
 In this paper, we focus on the impact in various aspects of suppression strategy in Beijing, China.
 
-To achieve this goal, data of online surveys and mobile phone positioning could be references, but they do not cover all the population especially those who care about their privacy and are not willing to offer their precise position.
+To achieve this goal, VGI (Volunteered Geographical Information) ...
+ data of online surveys and mobile phone positioning could be references, but they do not cover all the population especially those who care about their privacy and are not willing to offer their precise position.
 
 Wide-spread Bike Sharing System (BSS) in China provides with a possibility for analyzing such patterns of residents.
 The 3rd generation BSS emerges in China in 2015 thanks to rapid development of GIS-based and IoT-based system. 
@@ -142,8 +143,8 @@ Correlation analysis between the temporal usage patterns and facilities location
 \section*{Contribution} As the pandemic of COVID-19 and the Chinese New Year meet by coincidence, we tried to avoid the influence of this national holiday, then assess the impact of the COVID-19 pandemic and that of suppression strategy via three aspects:
 \begin{enumerate}
     \item Global view of infection in the districts of Beijing
-    \item Analyzing the evolution of bike usage in different phases: ordinary days, the emergence of SARS-CoV-2 and the days of pandemic 
-    \item Analyzing the co-location patterns of BSS with different types of POIs to reveal the impact on the corresponding businesses
+    \item Analysis of the evolution of bike usage in different phases: ordinary days, the emergence of SARS-CoV-2 and the days of pandemic 
+    \item Analysis of co-location patterns of BSS with different types of POIs to reveal the impact on the corresponding businesses
 \end{enumerate}
 
 
@@ -248,29 +249,32 @@ We compared the share bike usage on rush hours (8:00-09:00 and 18:00-19:00) duri
 % As can be seen in Figure \ref{fig:temporal_comparison}, in 2019, the usage drops down to $5\times 10^5$ because of spring festival; 
 % while in 2020, the usage decreases even two thirds of that in 2019 due to the outbreak of COVID-19 and the following epidemics.
 
+\textbf{Note:} In this paper, we consider SB usage follows normal distribution, of which $95\%$ confidence interval is $[\bar{x}-2\sigma,\bar{x}+2\sigma]$.
+SB usage data are presented in form $\bar{x}\pm2\sigma$.
+
 \begin{table}[H]
     \centering
     \begin{tabular}{|l|l|l|l|}
         \hline
-        \multirow{2}{*}{Phase} &\multicolumn{3}{c|}{Daily average SB usage}\\
+        \multirow{2}{*}{Phase} &\multicolumn{3}{c|}{Daily average SB usage ($10^{5}$)}\\
         \cline{2-4}
-        & 08:00-09:00 & 18:00-19:00 & All-day\\
+        & 08:00-09:00 (weekday) & 18:00-19:00 (weekday) & All-day\\
         \hline
-        01 Jan-20 Jan 2019 & 201042.5 & 118379.8 & 1507239.1\\
+        02 Jan-20 Jan 2019 & $2.46\pm0.59$ & $1.30\pm0.39$ & $15.0\pm4.5$\\
         \hline
-        01 Jan-20 Jan 2020 & 196522.8 & 113267.9 & 1268093.9\\
+        02 Jan-20 Jan 2020 & $2.58\pm1.10$ & $1.37\pm0.74$ & $12.7\pm6.3$\\
         \hline
         \hline
-        04 Feb-10 Feb 2019 & 29728.0 & 24455.6 & 489522.1\\
+        04 Feb-10 Feb 2019 & $0.30\pm0.05$ & $0.24\pm0.08$ & $4.90\pm1.56$\\
         \hline
-        24 Jan-02 Feb 2020 & 10041.6 & 11691.0 & 171908.3\\
+        24 Jan-02 Feb 2020 & $0.10\pm0.02$ & $0.12\pm0.03$ & $1.72\pm0.35$\\
         \hline
     \end{tabular}
     \caption{Overall comparison of year 2019 and 2020}\label{tab:overall_comparison}
 \end{table}
 
-In Table \ref{tab:overall_comparison}, the upper part shows in usual days, SB usage in 2020 takes more than 80\% of that of 2019, suggesting SB demand is evolving in a smooth way;
-while in the lower part, this percentage drops to less than 40\% during spring festival which gives a rough view over the impact of the pandemic.
+In Table \ref{tab:overall_comparison}, the upper part shows in usual days, SB usage in 2020 in on the same level of that of 2019, suggesting SB demand is evolving in a smooth way.
+However, the lower part shows the case of spring festival, SB usage drops to less than 40\% compared with the same period in 2019 which gives a rough view over the impact of the pandemic.
 
 % \begin{figure}[H]
 %     \centering
@@ -299,7 +303,8 @@ The overall closure was then forced to be extended to mitigate the pandemic.
 % We also plotted the graph of share bike usage during rush hour (8:00-10:00 and 18:00-20:00) which reflects the productive activities.
 Share bike usage on rush hours exhibits the periodicity of productive activities: high on weekdays and low on weekends, which fits our general knowledge.
 However, this pattern does not appear on 10 Feb 2020 when the government declared the partial restart of certain productive and social activities.
-This anomaly suggests that the activities were not resumed until Feb 24, which corresponds to the fact that the impact of the pandemic was lasting till the end of this study period.
+This anomaly suggests that the activities were not resumed at all until Feb 17, one week after the partial start.
+which corresponds to the fact that the impact of the pandemic was lasting till the end of this study period.
 
 \subsection{Co-location Analysis with POIs}\label{sec:colo-poi}
 We studied the co-location patterns in three phases: 01 Jan to 21 Jan (before the pandemics), 10 Feb to 01 Mar (during the pandemics \& after spring festival) and 22 Jan to 09 Feb (during the pandemics \& during spring festival) as a set of comparisons of before the pandemic, during the pandemic and during spring festival 2020.
@@ -310,22 +315,19 @@ We studied the co-location patterns in three phases: 01 Jan to 21 Jan (before th
         \hline
         \multirow{2}{*}{Category} & \multirow{2}{*}{\makecell[c]{POI\\amount}} & \multicolumn{5}{c|}{Daily average bike usage within 200m radius of POIs per POI}\\
         \cline{3-7}
-        & & 01 Jan-21 Jan ($b$) & 22 Jan-09 Feb ($m$) & 10 Feb-01 Mar ($a$) & $m/b$ & $a/m$\\
-        % \hline
-        % Infected RA & 23 & 207.6 & 60.4 & 57.1 & 2.35\\
-        % Infected RA & 20 & 35.8 & 15.6 & 15.5 & 1.66\\
+        & & 01 Jan-21 Jan ($b$) & 22 Jan-16 Feb ($m$) & 17 Feb-01 Mar ($a$) & $m/b$ & $a/m$\\
         \hline
-        RA & 5657 & 158.3 & 36.6 & 39.9 & 23.1\% & 109.0\%\\
+        RA & $5657$ & $158.3\pm86.9$ & $36.6\pm14.4$ & $39.9\pm13.9$ & $23.1\%$ & $109.0\%$\\
         \hline
-        Tech company & 3858 & 200.4 & 36.3 & 41.1 & 18.1\% & 113.2\%\\
+        Tech company & $3858$ & $200.4\pm112.9$ & $36.3\pm14.4$ & $41.1\pm18.0$ & $18.1\%$ & $113.2\%$\\
         \hline
-        Other company & 32301 & 162.5 & 35.8 & 39.4 & 22.0\% & 110.1\%\\
+        Other company & $32301$ & $162.5\pm90.3$ & $35.8\pm14.5$ & $39.4\pm14.5$ & $22.0\%$ & $110.1\%$\\
         \hline
-        Subway station & 137 & 113.8 & 29.0 & 31.7 & 25.5\% & 109.3\%\\
+        Subway station & $137$ & $113.8\pm66.6$ & $29.0\pm11.8$ & $31.7\pm10.6$ & $25.5\%$ & $109.3\%$\\
         \hline
-        Shopping plaza & 217 & 168.9 & 38.4 & 41.0 & 22.7\% & 106.8\%\\
+        Shopping plaza & $217$ & $168.9\pm91.7$ & $38.4\pm14.6$ & $41.0\pm15.0$ & $22.7\%$ & $106.8\%$\\
         \hline
-        Supermarket & 1076 & 137.6 & 34.3 & 37.7 & 24.9\% & 109.9\%\\
+        Supermarket & $1076$ & $137.6\pm76.0$ & $34.3\pm13.4$ & $37.7\pm13.6$ & $24.9\%$ & $109.9\%$\\
         \hline
     \end{tabular}
     \caption{Bike usage in different phases around the chosen POIs.
@@ -353,12 +355,12 @@ Like in Section \ref{sec:colo-poi}, we adjusted the time intervals to match the 
         \cline{3-7}
         & & 01 Jan-21 Jan ($b$) & 05 Feb-12 Feb ($m$) & 13 Feb-04 Mar ($a$) & $m/b$ & $a/b$\\
         \hline
-        Infected RA & 19 & 160.8 & 27.3 & 43.2 & 17.0\% & 26.9\%\\%158.2\% \\
+        Infected RA & $19$ & $160.8\pm99.4$ & $27.3\pm22.7$ & $43.2\pm32.6$ & 17.0\% & 26.9\%\\%158.2\% \\
         % Infected RA & 19 & 181.3 & 41.1 & 26.5 &  & \\
         \hline
-        Surrounding RA & 1591 & 139.2 & 26.8 & 38.7 & 19.3\% & 27.8\%\\% 144.4\%\\
+        Surrounding RA & $1591$ & $139.2\pm84.4$ & $26.8\pm20.1$ & $38.7\pm26.1$ & 19.3\% & 27.8\%\\% 144.4\%\\
         \hline
-        All RA & 5657 & 158.3 & 33.6 & 40.0 & 21.2\% & 25.3\% \\% 119.0\%\\
+        All RA & $5657$ & $158.3\pm86.9$ & $36.6\pm14.4$ & $39.9\pm13.9$ & $23.1\%$ & $109.0\%$\\% 119.0\%\\
         \hline
     \end{tabular}
     \caption{Bike usage in different phases of infected RAs and that of surrounding RAs.}
