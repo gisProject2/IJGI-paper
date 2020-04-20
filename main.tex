@@ -224,14 +224,14 @@ These queries are nearly partition independent, recomputing is needed only on th
 \subsection{Phase Classification}\label{sec:phase_classification}
 In machine learning, it is often demanded to minimize the predefined loss function to perform the best classification such that elements within the same cluster are similar and elements across clusters are different.
 
-Here we try to divide the study period into phases which have resembling SB usage.
+Likewise, we try to divide the study period into phases which have resembling SB usage.
 \begin{Definition}[k-division]
 Let $X=\{x_1,x_2,\ldots,x_N\}$ be a time serie of length $N$.
-Given positive integer $k<N$ and an index set $\{n_0,\ldots,n_k\}$ with $n_0=0$ and $n_k=N$, a k-division of $X$ is the set of time series $X_i=\{x_{n_i+1},\ldots,x_{n_{i+1}}\}$ where $1\leq i\leq k$ and $\forall n_i$, $n_i<n_{i+1}$.
+Given positive integer $k<N$ and index set $\mathbf{T}=\{n_0,\ldots,n_k\}$ with $n_0=0$, $n_k=N$ and $\forall i$, $n_i<n_{i+1}$, a k-division of $X$ is the set of time series $X_i=\{x_{n_i+1},\ldots,x_{n_{i+1}}\}$ where $0\leq i\leq k-1$.
 \end{Definition}
 
-To evaluate the quality of k-division, we use the sum of standard deviation $\sigma=\sum_{i=1}^{k}{\sigma_i}$ where $\sigma_i$ is the standard deviation of division $X_i$. %$\sqrt{\frac{1}{n}\sum_{i=1}^{n}{(x-\bar{x})^2}}$ 
-The optimal solution can be found via enumeration if $k$ and $N$ are small.
+To evaluate the quality of k-division, we use $\sigma=\sum_{i=1}^{k}{\sigma_i}$ as loss function where $\sigma_i$ is the standard deviation of division $X_i$. %$\sqrt{\frac{1}{n}\sum_{i=1}^{n}{(x-\bar{x})^2}}$ 
+The optimal solution is formulated as $\arg\min_{\mathbf{T}}\sigma(\mathbf{T})$ and can be found via enumeration if $k$ and $N$ are small.
 
 \subsection{Basic statistics}
  on the evolution over time in different zones of Beijing.\textcolor{red}{explanation GUO} 
@@ -340,19 +340,19 @@ We computed then the BS usage in these phases.
         \hline
         \multirow{2}{*}{Category} & \multirow{2}{*}{\makecell[c]{POI\\amount}} & \multicolumn{5}{c|}{Daily average bike usage within 200m radius of POIs per POI}\\
         \cline{3-7}
-        & & 01 Jan-21 Jan ($b$) & 22 Jan-16 Feb ($m$) & 17 Feb-01 Mar ($a$) & $m/b$ & $a/m$\\
+        & & 01 Jan-21 Jan ($b$) & 22 Jan-16 Feb ($m$) & 17 Feb-01 Mar ($a$) & $m/b$ & $a/b$\\ %$a/m$\\
         \hline
-        RA & $5657$ & $158.3\pm86.9$ & $36.6\pm14.4$ & $39.9\pm13.9$ & $23.1\%$ & $109.0\%$\\
+        RA & $5657$ & $158.3\pm86.9$ & $36.6\pm14.4$ & $39.9\pm13.9$ & $23.1\%$ & $25.2\%$\\ %$109.0\%$\\
         \hline
-        Tech company & $3858$ & $200.4\pm112.9$ & $36.3\pm14.4$ & $41.1\pm18.0$ & $18.1\%$ & $113.2\%$\\
+        Tech company & $3858$ & $200.4\pm112.9$ & $36.3\pm14.4$ & $41.1\pm18.0$ & $18.1\%$ & $20.5\%$\\ %$113.2\%$\\
         \hline
-        Other company & $32301$ & $162.5\pm90.3$ & $35.8\pm14.5$ & $39.4\pm14.5$ & $22.0\%$ & $110.1\%$\\
+        Other company & $32301$ & $162.5\pm90.3$ & $35.8\pm14.5$ & $39.4\pm14.5$ & $22.0\%$ & $24.2\%$\\ %$110.1\%$\\
         \hline
-        Subway station & $137$ & $113.8\pm66.6$ & $29.0\pm11.8$ & $31.7\pm10.6$ & $25.5\%$ & $109.3\%$\\
+        Subway station & $137$ & $113.8\pm66.6$ & $29.0\pm11.8$ & $31.7\pm10.6$ & $25.5\%$ & $27.9\%$\\ %$109.3\%$\\
         \hline
-        Shopping plaza & $217$ & $168.9\pm91.7$ & $38.4\pm14.6$ & $41.0\pm15.0$ & $22.7\%$ & $106.8\%$\\
+        Shopping plaza & $217$ & $168.9\pm91.7$ & $38.4\pm14.6$ & $41.0\pm15.0$ & $22.7\%$ & $24.3\%$\\ %$106.8\%$\\
         \hline
-        Supermarket & $1076$ & $137.6\pm76.0$ & $34.3\pm13.4$ & $37.7\pm13.6$ & $24.9\%$ & $109.9\%$\\
+        Supermarket & $1076$ & $137.6\pm76.0$ & $34.3\pm13.4$ & $37.7\pm13.6$ & $24.9\%$ & $27.4\%$\\ %$109.9\%$\\
         \hline
     \end{tabular}
     \caption{Bike usage in different phases around the chosen POIs.
@@ -365,7 +365,7 @@ Table \ref{tab:bike_usage_poi} depicts the bike usage of the six chosen categori
 Phase $b$ (before) and $a$ (after) have the same duration, 21 days.     
 % In abuse of definition ``convexity'', we use the comparison between the mean of $a$ and $b$ and phase $m$ (mid) to describe the curve: the curve is more bending, \textit{i.e.} impacted if ratio $c=(b+a)/2m$ is larger.
 Ratio $m/b$ shows that the bike usage of all categories decreased to one quarter, and tech companies dropped the most in both value and proportion, one possible explanation is they suit best ``work from home''. 
-Ratio $a/m$ shows the bike usage of all categories have recovered to some extent but far from the situation of usual time after the partial restart of activities.
+Ratio $a/b$ shows the bike usage of all categories have recovered to some extent but far from the situation of usual time after the partial restart of activities.
 
 \subsection{Co-location Analysis with Infected RAs}
 
@@ -396,11 +396,11 @@ From Table \ref{tab:bike_usage_infected}, it can be inferred that the infected R
 Strict quarantine was practised here to mitigate the pandemic.
 Surrounding RAs were also strongly impacted because of the residents got into panic and keep themselves at home.
 According to ratio $a/m$, the SB usage of infected RAs and their surrounding RAs have recovered roughly to the same level like other RAs from the pandemic.
-We can conclude the residents in Beijing followed exactly the suppression strategy whether the RAs were infected or not: quarantine, cordon sanitaire and social distancing.
+We can conclude the residents in Beijing followed exactly the suppression strategy whether the RAs were infected or not: quarantine, \textit{cordon sanitaire} and social distancing.
 
 \subsection{Spatiotemporal patterns of cycling activities}
 
-Figure \ref{fig:full_spatial_pattern_2020} shows the spatial patterns of BSS activities from 21 Jan to 02 Mar by 4-day intervals, which is consistent with the changes detected in Figure \ref{fig:hour_comparison_8}.% and \ref{fig:hour_comparison_18}.
+Figure \ref{fig:full_spatial_pattern_2020} shows the spatial patterns of BSS activities from 21 Jan to 02 Mar by 4-day intervals, which is consistent with the changes detected in Figure \ref{fig:hour_comparison_8}. % and \ref{fig:hour_comparison_18}.
 The daily share-bike records are aggregated within 500-meter grids, and randered with a color ramp from grey to green to red(as is in Legend).
 
 Before 21 Jan, 2020, share-bike activities were widely distributed throughout the city limits, but there is significant concentration in the downtown area, which is orange or even red in color, corresponding to high-intensity activities (up to 500-1000 records/hour).
