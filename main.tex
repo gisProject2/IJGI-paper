@@ -7,9 +7,11 @@
 % If you would like to post an early version of this manuscript as a preprint, you may use preprint as the ojurnal and change 'submit' to 'accept'. The document class line would be, e.g., \documentclass[preprints,article,accept,moreauthors,pdftex]{mdpi}. This is especially recommended for submission to arXiv, where line numbers should be removed before posting. For preprints.org, the editorial staff will make this change immediately prior to posting.
 \usepackage{textcomp}
 \usepackage{gensymb}
+\usepackage{caption}
 \usepackage{subcaption}
 \usepackage{multirow}
 \usepackage{makecell}
+\usepackage{spreadtab}
 %---------
 % article
 %---------
@@ -223,21 +225,18 @@ These queries are nearly partition independent, recomputing is needed only on th
 In machine learning, it is often demanded to minimize the predefined loss function to perform the best classification such that elements within the same cluster are similar and elements across clusters are different.
 
 Likewise, we try to divide the study period into phases which have resembling SB usage.
-
-\begin{Definition}[k-segmentation]
+\begin{Definition}[k-division]
 Let $X=\{x_1,x_2,\ldots,x_N\}$ be a time serie of length $N$.
-Given positive integer $k<N$ and index set $\mathbf{T}=\{n_0,\ldots,n_k\}$ with $n_0=0$, $n_k=N$ and $\forall i$, $n_i<n_{i+1}$, a k-segmentation of $X$ is the set of time series $X_i=\{x_{n_i+1},\ldots,x_{n_{i+1}}\}$ where $0\leq i\leq k-1$.
+Given positive integer $k<N$ and index set $\mathbf{T}=\{n_0,\ldots,n_k\}$ with $n_0=0$, $n_k=N$ and $\forall i$, $n_i<n_{i+1}$, a k-division of $X$ is the set of time series $X_i=\{x_{n_i+1},\ldots,x_{n_{i+1}}\}$ where $0\leq i\leq k-1$.
 \end{Definition}
 
-To evaluate the quality of k-segmentation, we use $\sigma=\sum_{i=1}^{k}{\sigma_i}$ as loss function where $\sigma_i$ is the standard deviation of division $X_i$. %$\sqrt{\frac{1}{n}\sum_{i=1}^{n}{(x-\bar{x})^2}}$ 
-The goal is to find the best $T$ to minimize $\sigma$, \textit{i.e.} $\arg\min_{\mathbf{T}}\sigma(\mathbf{T})$.
-This problem is solved in time $O(N^2k)$ \cite{terzi2006efficient}.
-In case $k$ and $N$ are small, the optimum can be found via exhaustive search.
+To evaluate the quality of k-division, we use $\sigma=\sum_{i=1}^{k}{\sigma_i}$ as loss function where $\sigma_i$ is the standard deviation of division $X_i$. %$\sqrt{\frac{1}{n}\sum_{i=1}^{n}{(x-\bar{x})^2}}$ 
+The optimal solution is formulated as $\arg\min_{\mathbf{T}}\sigma(\mathbf{T})$ and can be found via enumeration if $k$ and $N$ are small.
 
 \subsection{Basic statistics}
- on the evolution over time in different zones of Beijing.\textcolor{red}{explanation GUO} 
+Spatial analyst and statistics concerning the evolution of SB usage over time in different zones of Beijing, are implemented with the ArcGIS 10.7 and Python programming language. 
 
-\section{Result}
+\section{Result and Discussion}
 
 \subsection{Temporal patterns of cycling activities}
 To better characterize the behavior patterns with respect to the COVID-19 epidemic dynamics, we first selected the following important referential dates in Table \ref{tab:important_dates} that could affect the virus transmission in Beijing: 
@@ -331,7 +330,7 @@ However, the lower part shows the case of spring festival, overall SB usage drop
 
 From the previous section, it is implied the dates in Table \ref{tab:important_dates} may not be the optimal boundaries of different phases, for example Feb 17 does not appear.
 We computed the best phase classificationm using definition in Section \ref{sec:phase_classification}.
-We classified the period into three phases: before pandemics, during pandemics, pandemics mitigated.
+We want to classify the period into three phases: before pandemics, during pandemics, pandemics mitigated.
 Here $k=3$ and $N=64$, we found the best classified phases using exhaustive search and assign them with reasonable explanations: 01 Jan-21 Jan (before the pandemic), 22 Jan-16 Feb (critical phase of the pandemic) and 17 Feb-01 Mar (epidemics mitigated).
 We computed then the BS usage in these phases.
 
@@ -341,7 +340,7 @@ We computed then the BS usage in these phases.
         \hline
         \multirow{2}{*}{Category} & \multirow{2}{*}{\makecell[c]{POI\\amount}} & \multicolumn{5}{c|}{Daily average bike usage within 200m radius of POIs per POI}\\
         \cline{3-7}
-        & & 01 Jan-21 Jan ($a$) & 22 Jan-16 Feb ($b$) & 17 Feb-01 Mar ($c$) & $b/a$ & $c/a$\\ %$a/m$\\
+        & & 01 Jan-21 Jan ($b$) & 22 Jan-16 Feb ($m$) & 17 Feb-01 Mar ($a$) & $m/b$ & $a/b$\\ %$a/m$\\
         \hline
         RA & $5657$ & $158.3\pm86.9$ & $36.6\pm14.4$ & $39.9\pm13.9$ & $23.1\%$ & $25.2\%$\\ %$109.0\%$\\
         \hline
@@ -363,10 +362,10 @@ We computed then the BS usage in these phases.
 \end{table}
 
 Table \ref{tab:bike_usage_poi} depicts the bike usage of the six chosen categories.
-Phase $a$ and $b$ have the same duration, 21 days.     
-% In abuse of definition ``convexity'', we use the comparison between the mean of $a$ and $b$ and phase $m$ (mid) to describe the curve: the curve is more bending, \textit{\textit{i.e.}} impacted if ratio $c=(b+a)/2m$ is larger.
-Ratio $b/a$ shows that the bike usage of all categories decreased to one quarter, and tech companies dropped the most in both value and proportion, one possible explanation is they suit best ``work from home''. 
-Ratio $c/a$ shows the bike usage of all categories have recovered to some extent but far from the situation of usual time after the partial restart of activities.
+Phase $b$ (before) and $a$ (after) have the same duration, 21 days.     
+% In abuse of definition ``convexity'', we use the comparison between the mean of $a$ and $b$ and phase $m$ (mid) to describe the curve: the curve is more bending, \textit{i.e.} impacted if ratio $c=(b+a)/2m$ is larger.
+Ratio $m/b$ shows that the bike usage of all categories decreased to one quarter, and tech companies dropped the most in both value and proportion, one possible explanation is they suit best ``work from home''. 
+Ratio $a/b$ shows the bike usage of all categories have recovered to some extent but far from the situation of usual time after the partial restart of activities.
 
 \subsection{Co-location Analysis with Infected RAs}
 
@@ -379,7 +378,7 @@ Like in Section \ref{sec:colo-poi}, we adjusted the time intervals to match the 
         \hline
         \multirow{2}{*}{Category} & \multirow{2}{*}{\makecell[c]{RA\\amount}} & \multicolumn{5}{c|}{Daily average bike usage within 200m radius of RAs per RA}\\
         \cline{3-7}
-        & & 01 Jan-21 Jan ($a$) & 05 Feb-12 Feb ($b$) & 13 Feb-04 Mar ($c$) & $b/a$ & $c/a$\\
+        & & 01 Jan-21 Jan ($b$) & 05 Feb-12 Feb ($m$) & 13 Feb-04 Mar ($a$) & $m/b$ & $a/b$\\
         \hline
         Infected RA & $19$ & $160.8\pm99.4$ & $27.3\pm22.7$ & $43.2\pm32.6$ & $17.0\%$ & $26.9\%$\\%158.2\% \\
         % Infected RA & 19 & 181.3 & 41.1 & 26.5 &  & \\
@@ -393,258 +392,256 @@ Like in Section \ref{sec:colo-poi}, we adjusted the time intervals to match the 
     \label{tab:bike_usage_infected}
 \end{table}
 
-From Table \ref{tab:bike_usage_infected}, it can be inferred that the infected RAs suffered the most among the listed categories according to ratio $b/a$.
+From Table \ref{tab:bike_usage_infected}, it can be inferred that the infected RAs suffered the most among the listed categories according to ratio $m/b$.
 Strict quarantine was practised here to mitigate the pandemic.
 Surrounding RAs were also strongly impacted because of the residents got into panic and keep themselves at home.
-According to ratio $c/a$, the SB usage of infected RAs and their surrounding RAs have recovered roughly to the same level like other RAs from the pandemic.
+According to ratio $a/m$, the SB usage of infected RAs and their surrounding RAs have recovered roughly to the same level like other RAs from the pandemic.
 We can conclude the residents in Beijing followed exactly the suppression strategy whether the RAs were infected or not: quarantine, \textit{cordon sanitaire} and social distancing.
 
 \subsection{Spatiotemporal patterns of cycling activities}
+
+Figure \ref{fig:full_spatial_pattern_2020} shows the spatial patterns of BSS activities from 21 Jan to 02 Mar by 4-day intervals, which is consistent with the changes detected in Figure \ref{fig:hour_comparison_8}. % and \ref{fig:hour_comparison_18}.
+The daily share-bike records are aggregated within 500-meter grids, and randered with a color ramp from grey to green to red(as is in Legend).
+
+Before 21 Jan, 2020, share-bike activities were widely distributed throughout the city limits, but there is significant concentration in the downtown area, which is orange or even red in color, corresponding to high-intensity activities (up to 500-1000 records/hour).
+These values could be regarded as a comprehensive reflection of the individuals' work lives in these regions, and used as a reference for comparison during COVID-19.
+After the COVID-19 outbreak, there is a dramatic drop in mobility since 25 Jan, which was also the begining of the Chinese New Year holidays.
+High-intensity activities could hardly be recognized in the subfigures between 25 Jan to 02 Feb. 
+These subfigures are dominated by green and light green corresponding to low-intensity activities (<100 records/hour), indicating that individuals have demands to go out during this period, but unnecessary going-out has been significantly reduced by the combined effects of holidays and the epidemic.
+Status continued until 09 Feb, when the spread of COVID-19 was halted and under control by imposing social distancing and home quarantining measures, and the productive and social activities were allowed to restart partially .
+Subfigures during 10 Feb to 01 Mar, 2020, show a gradual increase in the mobility of the share-bikes, but only restored \textcolor{red}{30\% of the pre-epidemic levels}.
+It should be highlighted that slight differences could be observed between weekdays and weekends.
+There is a higher demand for share-bikes on workdays in the downtown area as before.
+However, the high-intensity areas shrinked on weekends, implying that residents were more inclined to reduce the risk of increased exposure by going outside under the threat of COVID-19. 
 
 \begin{figure}[ht]
     \centering
     \begin{subfigure}{.23\textwidth}
         \includegraphics[width=\textwidth]{Figures/Overall_spatial_patterns/FN5_D2020_01_21.eps}
-        \caption{21 Jan}
+        \caption*{21 Jan}
     \end{subfigure}
     \begin{subfigure}{.23\textwidth}
         \includegraphics[width=\textwidth]{Figures/Overall_spatial_patterns/FN5_D2020_01_25.eps}
-        \caption{25 Jan}
+        \caption*{25 Jan}
     \end{subfigure}
     \begin{subfigure}{.23\textwidth}
         \includegraphics[width=\textwidth]{Figures/Overall_spatial_patterns/FN5_D2020_01_29.eps}
-        \caption{29 Jan}
+        \caption*{29 Jan}
     \end{subfigure}
         \begin{subfigure}{.23\textwidth}
         \includegraphics[width=\textwidth]{Figures/Overall_spatial_patterns/FN5_D2020_02_02.eps}
-        \caption{02 Feb}
+        \caption*{02 Feb}
     \end{subfigure}
     
     \vspace{6pt}
     \begin{subfigure}{.23\textwidth}
         \includegraphics[width=\textwidth]{Figures/Overall_spatial_patterns/FN5_D2020_02_06.eps}
-        \caption{06 Feb}
+        \caption*{06 Feb}
     \end{subfigure}
     \begin{subfigure}{.23\textwidth}
         \includegraphics[width=\textwidth]{Figures/Overall_spatial_patterns/FN5_D2020_02_10.eps}
-        \caption{10 Feb}
+        \caption*{10 Feb}
     \end{subfigure}
     \begin{subfigure}{.23\textwidth}
         \includegraphics[width=\textwidth]{Figures/Overall_spatial_patterns/FN5_D2020_02_14.eps}
-        \caption{14 Feb}
+        \caption*{14 Feb}
     \end{subfigure}
         \begin{subfigure}{.23\textwidth}
         \includegraphics[width=\textwidth]{Figures/Overall_spatial_patterns/FN5_D2020_02_18.eps}
-        \caption{18 Feb}
+        \caption*{18 Feb}
     \end{subfigure}
     
     \vspace{6pt}
     \begin{subfigure}{.23\textwidth}
         \includegraphics[width=\textwidth]{Figures/Overall_spatial_patterns/FN5_D2020_02_22.eps}
-        \caption{24 Feb}
+        \caption*{24 Feb}
     \end{subfigure}
     \begin{subfigure}{.23\textwidth}
         \includegraphics[width=\textwidth]{Figures/Overall_spatial_patterns/FN5_D2020_02_26.eps}
-        \caption{26 Feb}
+        \caption*{26 Feb}
     \end{subfigure}
     \begin{subfigure}{.23\textwidth}
         \includegraphics[width=\textwidth]{Figures/Overall_spatial_patterns/FN5_D2020_03_01.eps}
-        \caption{01 Mar}
+        \caption*{01 Mar}
     \end{subfigure}
     \begin{subfigure}{.13\textwidth}
         \includegraphics[width=\textwidth]{Figures/Overall_spatial_patterns/legend5.eps}
-        \caption{Legend}
+        \caption*{Legend}
     \end{subfigure}
+    
     \caption{Spatial patterns of cycling activities from 21 Jan to 01 March 2020}
     \label{fig:full_spatial_pattern_2020}
 \end{figure}
-
-Figure \ref{fig:full_spatial_pattern_2020} shows the spatial patterns of BSS activities from 21 Jan to 02 Mar by 4-day intervals, which is consistent with the changes detected in Figure \ref{fig:hour_comparison_8}. % and \ref{fig:hour_comparison_18}.
-The daily SB records are aggregated within 500-meter grids, and rendered with a color ramp from grey to green to red (as is in Legend).
-
-Before 21 Jan, 2020, SB activities were widely distributed throughout the city limits, with a significant concentration in downtown area, which is orange or even red in color, corresponding to high-intensity activities (up to 500-1000 records/hour).
-These patterns could be regarded as a comprehensive reflection of the activities of the individuals in these regions, and used as a reference to compare with that during COVID-19 pandemic.
-
-After the COVID-19 outbreak, there is a dramatic drop in mobility since 25 Jan, which was also the begining of the Chinese New Year holidays.
-High-intensity activities could hardly be recognized in the subfigures between 25 Jan to 02 Feb. 
-These subfigures are dominated by green and light green corresponding to low-intensity activities (<100 records/hour), indicating that individuals have demands to go out during this period, but unnecessary going-out has been significantly reduced by the combined effects of holidays and the epidemic.
-Status continued until 09 Feb, when the spread of COVID-19 was slowered down by imposing control measures including social distancing and home quarantine, and productive and social activities were allowed to restart partially.
-
-Subfigures during 10 Feb to 01 Mar, 2020, show a gradual increase in the mobility of the SBs, but only restored around \textcolor{red}{30\% of the pre-epidemic levels}.
-It is worth noticing that only slight differences could be observed between weekdays and weekends before 17 Feb and the weekday-weekend oscillation returned afterwards.
-
-There is a higher demand for SBs on workdays in the downtown area as before.
-However, the high-intensity areas shrinked on weekends, implying that residents were more inclined to reduce the risk of increased exposure by going outside under the threat of COVID-19. 
 
 Inferred from the spatiotemporal characteristics above, the outbreak was divided into 3 phases to better reflect the dynamics of the COVID-19 epidemic.
 
 \textbf{Phase a}: dates before 21 Jan, 2020, are considered as the first period, when no strong COVID-19–specific interventions were imposed.
 
-\textbf{Phase b}: dates between 22 Jan and 17 Feb, include Chinese New Year holiday 2020. During this period, traffic suspension and home quarantine were implemented for pandemics prevention purposes.
+\textbf{Phase b}: dates between 22 Jan and 09 Feb, include Chinese New Year holiday 2020. During this period, traffic suspension and home quarantine were implemented for pandemics prevention purposes.
 
 \textbf{Phase c}: is after 10 Feb, when productive and social activities restarted partially since the pandemics was migitated and under effective control.
 
-In the following sections, we will focus on …… and investigate ……
+In the next sections, we will focus on …… and investigate ……
 
-\section{Discussions}
-\subsection{Comparison between 2019 and 2020}% in the same period}
+\subsection{Discussions}
+\textbf{Part 1. Comparison with data from the same period in 2019.}
 
 Both Chinese New Year holiday shutdowns and pandemic resulted in the aforementioned mobility decrease.
 Therefore, comparison was conducted with data from the same period in 2019, thus removing the impact of the Chinese New Year holiday and evaluating the specific influence of the COVID-19.  
-The average values of aggregated daily SBs records from each pandemic phase were reported.
+The average values of aggregated daily share-bikes records from each pandemic phase were reported.
+\ref{fig:compare_2019_and_2020} delineates the results corresponding to 2020, 2019, and annual difference between them.
+Panel(a)-(c) were consistent with the daily patterns during different pandemic stages presented in the previous section.
+Panel(d) summarized the averaged share-bike intensity during the same time-interval as phase a in 2019, showing similar spatial patterns as 2020. 
+Comparable numbers of positive (Red colored) and negative(blue colored) area could be observed from annual difference presented in panel (g). These discrepancies have relatively low values which could be attributed to the fluctuation of regional bike usages requirements.  
 
 \begin{figure}[ht]
     \centering
     \begin{subfigure}{.3\textwidth}
         \includegraphics[width=\textwidth]{Figures/BSSPhase1_2020.eps}
-        \caption{Phase a of 2020}
+        \caption*{Phase a of 2020}
     \end{subfigure}
     \begin{subfigure}{.3\textwidth}
         \includegraphics[width=\textwidth]{Figures/BSSPhase2_2020.eps}
-        \caption{Phase b of 2020}
+        \caption*{Phase b of 2020}
     \end{subfigure}
     \begin{subfigure}{.3\textwidth}
         \includegraphics[width=\textwidth]{Figures/BSSPhase3_2020.eps}
-        \caption{Phase c of 2020}
+        \caption*{Phase c of 2020}
     \end{subfigure}
     
     \vspace{6pt}
     \begin{subfigure}{.3\textwidth}
         \includegraphics[width=\textwidth]{Figures/BSSPhase1_2019.eps}
-        \caption{Phase a of 2019}
+        \caption*{Phase a of 2019}
     \end{subfigure}
     \begin{subfigure}{.3\textwidth}
         \includegraphics[width=\textwidth]{Figures/BSSPhase2_2019.eps}
-        \caption{Phase b of 2019}
+        \caption*{Phase b of 2019}
     \end{subfigure}
     \begin{subfigure}{.3\textwidth}
         \includegraphics[width=\textwidth]{Figures/BSSPhase3_2019.eps}
-        \caption{Phase c of 2019}
+        \caption*{Phase c of 2019}
     \end{subfigure}
     
     \vspace{6pt}
     \begin{subfigure}{.3\textwidth}
         \includegraphics[width=\textwidth]{Figures/BSSMinusmp1.eps}
-        \caption{Differential image of Phase a}
+        \caption*{Differential image of Phase a}
     \end{subfigure}
         \begin{subfigure}{.3\textwidth}
         \includegraphics[width=\textwidth]{Figures/BSSMinusmp2.eps}
-        \caption{Differential image of Phase b}
+        \caption*{Differential image of Phase b}
     \end{subfigure}
         \begin{subfigure}{.3\textwidth}
         \includegraphics[width=\textwidth]{Figures/BSSMinusmp3.eps}
-        \caption{Differential image of Phase c}
+        \caption*{Differential image of Phase c}
     \end{subfigure}
     \caption{Caption}
     \label{fig:compare_2019_and_2020}
 \end{figure}
 
-Figure \ref{fig:compare_2019_and_2020} delineates the results corresponding to 2020, 2019, and annual difference in between.
-Panel (a) - (c) were consistent with the daily patterns during different pandemic stages presented in the previous section.
-Panel (d) - (f) summarized the averaged SB intensity during the same time-interval as \textbf{phase a} in 2019, showing similar spatial patterns as 2020. 
-In Panel (g) - (i), (Comparable numbers of positive (Red colored) and negative (blue colored) area could be observed from annual difference presented in panel (g). These discrepancies have relatively low values which could be attributed to the fluctuation of regional bike usages requirements.  
-
-The significant discrepancies in SB usage between year 2019 and 2020 during \textbf{phase b} and \textbf{phase c} is considered as the consequence of the pandemic of COVID-19. 
-Normally, most migrants ($34.6\%$ of the population of Beijing) go back to their hometown during Chinese New Year holiday; while permanent residents enjoy family gathering and the main outdoor activity is visiting relatives and friends.
-Therefore the holidays shutdowns reduced mobility in 2019, but high-intensity mobility could still be found in the urban districts from panel(e). 
+There existed significant discrepancies in bike usages between year 2019 and 2020 during PHASE B and C, because of the COVID-19. 
+The Spring Festival holidays provide a chance for citizens to visit friends and enjoy family gethering.
+Therefore the holidays shutdowns reduced mobility in 2019, but high-intensity activities could still be found in the urban districtss from panel(e). 
 Correspondingly, activities were in a state of complete suppression in 2020. 
-The difference map in panle(h) reveals the fact that under the impact of COVID-19, demands for outings were reduced for safe purposes.
+The difference map in panle(h) highlighted the fact that, under the impact of COVID-19, demands for outings were reduced for safe purposes.
 
 In previous years, panel(f) indicated that mobility would instantly return to pre-festival levels or more widespread as a result of the influx of migrant workers after holiday.
 According to panel(c), the rehabilitation was in progress, but much slower during epidemic mitigated period.  
-The remarkable difference referred from panel(i) verified this sustained impact on the daily lives of citizens.
+The remarkable difference referred from panel(i) verified this sustained impact on citizens' daily lives.
 
-\subsection{Relevance between cycling activities and confirmed cases during epidemic phase} 
 
-This part aims at characterizing the behavior patterns of disease-spreading individuals by evaluating SB usages with respect to different pandemic periods.%thus provide reference for authorities to gradually lift the most restrictive measures with more precision and confidence.
+\textbf{Part 2. Relationships between cycling activities and confirmed cases with respect to epidemic phases} 
 
-Figure \ref{fig:BSS_phase1_2} shows the SB usages in \textbf{phase b}, \textit{i.e.} the quanratine period.
-Same as previous sections, aggregated SB records were rendered with a color ramp from grey to green to red.
-Confirmed cases in each district are displayed by blue circles, where the cumulative number of cases is shown by the size of circles.
-When comparing the panels from left to right with date varying from 25 Jan to 08 Feb, we observe that the aggregated SB intensity gradually decreases with increasing number of confirmed cases and then remains at low level.
-The aggregated SB intensity in downtown area changed from red to green.
+This part aims to characterize disease-spreading individuals behavior patterns by evaluating share-bike usages with respect to different pandemic periods.%thus provide reference for authorities to gradually lift the most restrictive measures with more precision and confidence.
+
+Figure \ref{fig:BSS_phase1_2} shows the share-bike usages in phase b, i.e., the quanratine period.
+Same as previous sections, aggregated share-bike records were randered with a color ramp from grey to green to red.
+The cumulative number of confirmed COVID-19 cases in each district was represented by the size of blue circle.
+When comparing the panels from left to right with dates varying from 25 Jan to 08 Feb, respectively, we observe that the aggregated share-bike intensity gradually decreased with increasing number of confirmed cases and then remained at low values.
+The aggregated share-bike intensity in the downtown area changed from red to green.
 %The reason could be attributed to the individuals' response against the high infectious risk and government's measures.
-Starting on January 25, 2020, highly restrictive measures were implemented by local government: individuals were asked to follow a series of social distancing measures.
+Starting on January 25, 2020, highly restrictive measures were implemented by the local government.
+In addition, individuals were asked to follow a series of social distancing measures.
 As a result, the number of newly confirmed COVID-19 cases was effectively suppressed.
 
 \begin{figure}[ht]
     \centering
     \begin{subfigure}{.3\textwidth}
         \includegraphics[width=\textwidth]{Figures/Relation_with_confrimed_cases/NewDistrictSSBD2020_01_21.eps}
-        \caption{21 Jan}
+        \caption*{21 Jan}
     \end{subfigure}
     \begin{subfigure}{.3\textwidth}
         \includegraphics[width=\textwidth]{Figures/Relation_with_confrimed_cases/NewDistrictSSBD2020_01_25.eps}
-        \caption{25 Jan}
+        \caption*{25 Jan}
     \end{subfigure}
     \begin{subfigure}{.3\textwidth}
         \includegraphics[width=\textwidth]{Figures/Relation_with_confrimed_cases/NewDistrictSSBD2020_01_30.eps}
-        \caption{30 Jan}
+        \caption*{30 Jan}
     \end{subfigure}
 
     \vspace{6pt}    
     \begin{subfigure}{.3\textwidth}
         \includegraphics[width=\textwidth]{Figures/Relation_with_confrimed_cases/NewDistrictSSBD2020_02_04.eps}
-        \caption{04 Feb}
+        \caption*{04 Feb}
     \end{subfigure}
     \begin{subfigure}{.3\textwidth}
         \includegraphics[width=\textwidth]{Figures/Relation_with_confrimed_cases/NewDistrictSSBD2020_02_08.eps}
-        \caption{08 Feb}
+        \caption*{08 Feb}
     \end{subfigure}
     \begin{subfigure}{.3\textwidth}
         \includegraphics[width=\textwidth]{Figures/Relation_with_confrimed_cases/legend7.eps}
-        \caption{legend}
+        \caption*{legend}
     \end{subfigure}
     \caption{Relationships between cycling activities and confirmed cases during the quarantine period.}
     \label{fig:BSS_phase1_2}
 \end{figure}
 
-Figure \ref{fig:BSS_phase_3} depicts the SB usages in \textbf{phase c}, when productive and social activities were allowed to restart partially.
+Figure \ref{fig:BSS_phase_3} depicts the share-bike usages in phase c, when productive and social activities were allowed to restart partially.
 %aim to identify and characterize disease-spreading human interactions, thus allowing authorities to gradually lift the most restrictive measures with more precision and confidence.
-During the period of epidemic mitigation, aggregated SB usage gradually rebounded with stable accumulated confirmed cases, which can be inferred from panel (a) - (c).
+During this epidemic mitigated period, aggregated share-bike intensity gradually rebounded with stable accumulated confirmed cases, which can be inferred from panel(a)-(c).
 The recovery of city is unbalanced in the spatial domain.
-An increase is observed in the urban districts, wheras changes are not significant in other areas.
-A reduction in mobility on weekends could be inferred from comparison between panel(d) and (e), which was attributed to the awareness of the risk of infection of residents.
-It should be highlighted that the accumulated confirmed cases stay substantially stable across this period, suggesting control measures were effective and necessary in the containment of the spread of COVID-19 during the resilience of Beijing.  
-
-\textcolor{red}{After the epidemic is effectively mitigated, cycling activities increased due to the rework requirements, which can be inferred from visualization. The difference is obvious comparing weekday and weekend.}
+An increase could be observed in the urban districtss, wheras changes were not significant in other areas.
+A reduction in mobility on weekends could be inferred from comparison between panel(d) and (e), which was attributed to individuals' awareness to the risk of infection.
+It should be highlighted that counts of accumulated confirmed cases stayed stable substantially across this period, suggesting control measures were effective and necessary in containment of the spread of COVID-19 during city's resilience.  
+\textcolor{red}{After the epidemic is effectively controlled, cycling activities increased due to the rework requirements, which can be inferred from visual interpretation. The difference is obvious comparing workday and weekend.}
 
 \begin{figure}[ht]
     \centering
     \begin{subfigure}{.3\textwidth}
         \includegraphics[width=\textwidth]{Figures/Relation_with_confrimed_cases/NewDistrictSSBD2020_02_12.eps}
-        \caption{12 Feb}
+        \caption*{12 Feb}
     \end{subfigure}
     \begin{subfigure}{.3\textwidth}
         \includegraphics[width=\textwidth]{Figures/Relation_with_confrimed_cases/NewDistrictSSBD2020_02_16.eps}
-        \caption{16 Feb}
+        \caption*{16 Feb}
     \end{subfigure}
     \begin{subfigure}{.3\textwidth}
         \includegraphics[width=\textwidth]{Figures/Relation_with_confrimed_cases/NewDistrictSSBD2020_02_20.eps}
-        \caption{20 Feb}
+        \caption*{20 Feb}
     \end{subfigure}
     
     \vspace{6pt}
     \begin{subfigure}{.3\textwidth}
         \includegraphics[width=\textwidth]{Figures/Relation_with_confrimed_cases/NewDistrictSSBD2020_02_24.eps}
-        \caption{24 Feb}
+        \caption*{24 Feb}
     \end{subfigure}
     \begin{subfigure}{.3\textwidth}
         \includegraphics[width=\textwidth]{Figures/Relation_with_confrimed_cases/NewDistrictSSBD2020_02_28.eps}
-        \caption{28 Feb}
+        \caption*{28 Feb}
     \end{subfigure}
     \begin{subfigure}{.3\textwidth}
         \includegraphics[width=\textwidth]{Figures/Relation_with_confrimed_cases/legend7.eps}
-        \caption{legend}
+        \caption*{legend}
     \end{subfigure}
     \caption{Relationships between cycling activities and confirmed cases when the epidemic is mitigated.}
     \label{fig:BSS_phase_3}
 \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Relationships between cycling activities and POIs}
+\textbf{Part 3. Relationships between cycling activities and POIs}
 
-\textcolor{red}{Visualization and analysis on communities and BSS usage with respect to epidemic period.}
+\textcolor{red}{Visual interpretation and analysis on communities and BSS usage with respect to epidemic period.}
 
 \begin{figure}[ht]
     \centering
@@ -670,7 +667,7 @@ It should be highlighted that the accumulated confirmed cases stay substantially
     \label{fig:BSS_communities}
 \end{figure}
 
-\textcolor{red}{Visualization and analysis on traffic/metro and BSS usage with respect to epidemic period.}
+\textcolor{red}{Visual interpretation and analysis on traffic/metro and BSS usage with respect to epidemic period.}
 
 \begin{figure}[ht]
     \centering
@@ -696,7 +693,7 @@ It should be highlighted that the accumulated confirmed cases stay substantially
     \label{fig:BSS_metro}
 \end{figure}
 
-\textcolor{red}{Visualization and analysis on malls and BSS usage with respect to epidemic period.}
+\textcolor{red}{Visual interpretation and analysis on malls and BSS usage with respect to epidemic period.}
 
 \begin{figure}[ht]
     \centering
@@ -722,7 +719,7 @@ It should be highlighted that the accumulated confirmed cases stay substantially
     \label{fig:BSS_malls}
 \end{figure}
 
-\textcolor{red}{Visualization and analysis on companies and BSS usage with respect to epidemic period.}
+\textcolor{red}{Visual interpretation and analysis on companies and BSS usage with respect to epidemic period.}
 
 \begin{figure}[ht]
     \centering
@@ -755,7 +752,7 @@ temporally associated with improved control of the COVID-19 outbreak
 
 \section{Conclusion}
 
-Motivated by the current COVID-19 outbreak and rapid development in BSS, this paper represents the period-wise spatio-temporal patterns and co-location patternsof the SBs during the pandemic in Beijing, China.
+Motivated by the current COVID-19 outbreak and rapid development in Share-bike system, this paper represents the period-wise spatio-temporal patterns and co-location patternsof the Share-bikes during the pandemic in Beijing, China.
 The influences of pandemic on individuals' mobility and city's rehabilitation process have been investigated.
 Apart from the holiday shutdowns, residents' activities were affected by the COVID-19, which is xxx that of the same period in 2019. 
 Productive and social activities partially restarted when the epidemic was mitigated.
