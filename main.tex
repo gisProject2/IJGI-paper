@@ -98,32 +98,32 @@ According to a situation report of WHO\footnote{\url{https://www.who.int/docs/de
 
 It is well-accepted that COVID-19 pandemic inflicts huge impact on public health and most of the domains of economy, from spring festival till today (April 2020).
 COVID-19-related epidemiological studies have been mostly conducted in transmission dynamics \cite{li2020early,pitzer2009demographic} and preventive measures \cite{chinazzi2020effect,van2006today} based on the timeline of outbreak.
-However, few studies have been conducted to analyze quantitatively the spatiotemporal behavior patterns of people during pandemic situations, which is essential to assess the impact on economy and society.
+However, few studies have been conducted to analyze quantitatively the spatiotemporal patterns of public behavior during pandemic situations, which is essential for planning mitigation strategy and impact assessments on economy and society.
 Ferguson et al. \cite{ferguson2020report} have studied two main strategies in the prevention of infectious diseases: \textit{suppression}, case of China and South Korea, with enormous social and economic costs which may cause secondary disasters on health and well-being in the short and longer-term;
 \textit{mitigation}, case of Great Britain and the United States, may not able to deal with all those with severe disease and resulting in high mortality.
-In this paper, we focus on the impact in various aspects of suppression strategy in Beijing, China.
+In this paper, we focus on the spatiotemporal patterns of public behavior response to COVID-19 in Beijing, China.
 
-To achieve this goal, VGI (Volunteered Geographical Information) plays an important role, in which online surveys and mobile phone positioning data could be references, but they do not cover all the population especially those who care about their privacy and are not willing to offer their precise position.
+\textcolor{red}{!!!!need more references here) To achieve this goal, VGI (Volunteered Geographical Information) plays an important role, in which online surveys and mobile phone positioning data could be references, but they do not cover all the population especially those who care about their privacy and are not willing to offer their precise position.
 
 Wide-spread Bike Sharing System (BSS) in China provides with a possibility for analyzing such patterns of residents.
 The 3rd generation BSS emerges in China in 2015 thanks to rapid development of GIS-based and IoT-based system. 
 Compared to its predecessors, bikes of the 3rd generation BSS (hereinafter referred to as BSS) are no longer constrained by docking stations (so-called free floating bikes), they are often spread along the roads, congest around shopping/residential areas (RAs) and cover the most urban residents. 
 As for city of Beijing, the amount of share bikes (SBs) reached its peak in 2017 and governors began removing excess supply afterwards. 
 After two years of development and regulation of BSS, the demand and the supply of SBs meet a balance in 2019, which could be regarded as a stable data source.
+BSS Records detailing the time and locations of bike usages from anonymous users, therefore provide a valuable indicator of human presence, thus offering a promising alternative data source for increasing the spatial and temporal detail of residents' movements and activities during pandemic.
 According to Daxue Consulting \cite{bssmodel}, in Beijing, 93\% of travels less than 5km are quicker done by bike and public transport than with the car, which suggests SBs has a potential reflection on the local mobility of residents.
 
 In this study, we use big data of BSS (usage records) to measure period-wise spatiotemporal patterns and co-location patterns. 
-%Results indicate that large mobility reductions have been detected associated with the onset of the COVID-19 threat and administrative restrictions.
-%Correlation analysis between the temporal usage patterns and facilities locations reveals /textcolor{red}{the influence of pandemic in different phases.} 
+Comparison with patterns of 2019, as well as correlation analysis with the progress of confirmed cases, have been implemented to demonstrate the specific impact from the COVID-19 on individuals.
+The changes in citizens' behavior of different pandemic phase can be inferred from the co-location analysis between the BSS patterns and facilities locations, which provides insight into the evolving COVID-19 progress and the public response  
+These results on human mobiliy are potential to assist policy-making, and facilitate research on epidemiological forecasting.
 
 \section*{Related Work}
 The emergences of geospatial big data have great potential to benefit applications in disease surveillance, disaster response. %TODO reference
 Horanont et al. \cite{Horanont2013Auto} made use of mobile phone data collected after the 2011 Great Japan Earthquake and provided useful information on how humans react in disaster scenarios and how the evacuation process can be monitored.
 After the 2015 Nepal Earthquake, Wilson et al. \cite{Wilson2016Rapid} used call detail records pertaining to phone metadata tracking numbers and times of calls to estimate population distribution and socioeconomic status for risk assessment.
 With geotagged social media data, Chae et al. \cite{CHAE2013Public} conducted comprehensive research in spatiotemporal analysis and created a spatial decision support environment that assists in evacuation planning and disaster management.
-Wesolowski et al. \cite{Wesolowski2012Quantifying}  used spatially explicit mobile phone data and malaria prevalence information from Kenya to identify the dynamics of human carriers that drive parasite importation between regions.
-
-%TODO one more reference on malaria and a short conclusion 
+Wesolowski et al. \cite{Wesolowski2012Quantifying}  used spatially explicit mobile phone data and malaria prevalence information from Kenya to identify the dynamics of human carriers that drive parasite importation between regions. 
 
 Understanding and modeling residents flow significantly contribute to citywide emergency management and post-disaster recovery.
 The daily activities of residents in various regions can be easily captured with BSS data. %Todo and used to indicate the impact of
@@ -133,10 +133,10 @@ Kaggle \cite{kaggle} competition of predicting SB demands based on limited entri
 There are also studies of BSS focusing on rebalancing strategies \cite{pal2017free, ai2019deep}.
 
 While BSS data analytics has been successfully applied in many sectors, their application in pandemic response is still at its early stages.
-Moreover, due to the limited emerging understanding of the new virus and its transmission mechanisms, it remains challenging to reveal its impacts in /textcolor{red}{residents' daily lives}.
+Moreover, due to the limited emerging understanding of the new virus and its transmission mechanisms, it remains challenging to reveal its impacts in \textcolor{red}{residents' daily lives}.
 To address this issue, We use big data of BSS (usage records) to measure period-wise spatiotemporal patterns and co-location patterns. 
 Results indicate that large mobility reductions have been detected associated with the onset of the COVID-19 threat and administrative restrictions.
-Correlation analysis between the temporal usage patterns and facilities locations reveals /textcolor{red}{the influence of pandemic in different phases.} 
+Correlation analysis between the temporal usage patterns and facilities locations reveals \textcolor{red}{the influence of pandemic in different phases.} 
 
 \section*{Contribution} As the pandemic of COVID-19 and the Chinese New Year meet by coincidence, we tried to avoid the influence of this national holiday, then assess the impact of the COVID-19 pandemic and that of suppression strategy via three aspects:
 \begin{enumerate}
@@ -236,7 +236,8 @@ This problem is solved in time $O(N^2k)$ \cite{terzi2006efficient}.
 In case $k$ and $N$ are small, the optimum can be found via exhaustive search.
 
 \subsection{Basic statistics}
- on the evolution over time in different zones of Beijing.\textcolor{red}{explanation GUO} 
+The evolution of SB usage over time in different zones of Beijing, as well as their relationships with COVID-19 spreading status and facilities, are the focus of this research.
+To obtain these results, spatial analyzing and statistics are implemented with ESRI ArcGIS 10.7 and Python programming. 
 
 \section{Result}
 
@@ -756,11 +757,11 @@ temporally associated with improved control of the COVID-19 outbreak
 
 \section{Conclusion}
 
-Motivated by the current COVID-19 outbreak and rapid development in BSS, this paper represents the period-wise spatio-temporal patterns and co-location patternsof the SBs during the pandemic in Beijing, China.
+Motivated by the current COVID-19 outbreak and rapid development in Share-bike system, this paper represents the period-wise spatio-temporal patterns and co-location patternsof the Share-bikes during the pandemic in Beijing, China.
 The influences of pandemic on individuals' mobility and city's rehabilitation process have been investigated.
-%TODO 人群活动的时空变化与疫情管控时间timeline基本一致，并可归纳为三个阶段。
 Apart from the holiday shutdowns, residents' activities were affected by the COVID-19, which is xxx that of the same period in 2019. 
-%TODO migitated 阶段逐步开放返工，城市逐渐恢复，但截至xx，已经恢复往年同期1/3的活力，但趋势显示复原进程会加快。
+Productive and social activities partially restarted when the epidemic was mitigated.
+1/3 of the vitality of the same period in previous years had been restored, and the recovery process will accelerate according to the trends in spatiotemporal patterns.
 The cumulative confirmed cases stayed stable substantially after restarting of productive activities, indicating control measures were necessary and effective in containment of the spread of COVID-19 when opening-up.   
 %TODO co-location的结果显示几种POI在疫情阶段的访问情况。
 \textcolor{red}{These results could facilitate research and inform policy making in the context of the current COVID-19 outbreak, and help to prevent the emergence of pandemics.} 
