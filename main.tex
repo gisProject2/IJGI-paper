@@ -61,13 +61,13 @@
 \newcommand{\orcidauthorA}{0000-0001-7546-7068} % Add \orcidA{} behind the author's name
 \newcommand{\orcidauthorB}{0000-0003-0084-381X} % Add \orcidB{} behind the author's name
 
-\Author{Xinwei Chai $^{1,2,\ddagger}$\orcidA{}, Xian Guo $^{1,\dagger,\ddagger,*}$\orcidB{} and Jie Jiang $^{1}$}
+\Author{Xinwei Chai $^{1,2,\ddagger}$\orcidA{}, Xian Guo $^{1,\dagger,\ddagger,*}$\orcidB{}, Jihua Xiao $^{2}$ and Jie Jiang $^{1}$}
 
-\AuthorNames{Xian guo, Xinwei Chai and Jie Jiang}
+\AuthorNames{Xian guo, Xinwei Chai Jihua Xiao and Jie Jiang}
 
 \address{%
 $^{1}$ \quad Beijing University of Civil Engineering and Architecture, 102616 Beijing, China; guoxian@bucea.edu.cn (X.G.); jiangjie@bucea.edu.cn (J.J.)\\
-$^{2}$ \quad China Location-Based Service, 100191 Beijing, China; xw.chai@chinalbs.org}
+$^{2}$ \quad China Location-Based Service, 100191 Beijing, China; xw.chai@chinalbs.org (X.C.); jh.xiao@chinalbs.org (J.X.)}
 
 \corres{Correspondence:  guoxian@bucea.edu.cn; Tel.: +86 (010) 6120 9335}
 
@@ -81,7 +81,6 @@ These findings may provide critical information on how to respond to other epide
 }
 
 \keyword{Bike sharing system; coronavirus; spatiotemporal analysis; co-location analysis}
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Only for the journal Data:
@@ -144,8 +143,6 @@ Correlation analysis between the temporal usage patterns and facilities location
     \item Analysis of the evolution of bike usage in different phases: ordinary days, the emergence of SARS-CoV-2 and the days of pandemic 
     \item Analysis of co-location patterns of BSS with different types of POIs to reveal the impact on the corresponding businesses
 \end{enumerate}
-
-
 
 \section{Materials}
 
@@ -266,7 +263,6 @@ We compared the SB usage on rush hours (8:00-09:00) during a period of 64 days f
 % As can be seen in Figure \ref{fig:temporal_comparison}, in 2019, the usage drops down to $5\times 10^5$ because of spring festival; 
 % while in 2020, the usage decreases even two thirds of that in 2019 due to the outbreak of COVID-19 and the following epidemics.
 
-
 % \begin{figure}[ht]
 %     \centering
 %     \includegraphics[width=\textwidth]{Compare_temporal.eps}
@@ -325,7 +321,6 @@ SB usage data are presented in the form $\bar{x}\pm2\sigma$.
     \caption{Overall comparison of year 2019 and 2020}\label{tab:overall_comparison}
 \end{table}
 
-
 The upper part shows in ordinary days, SB usage in 2020 in on the same level of that of 2019, suggesting SB demand is evolving in a smooth way.
 However, the lower part shows the case of spring festival, overall SB usage drops to less than 40\% compared with the same period in 2019, suggesting companies stopped working due to spring festival like the case of 2019, and social activities also halted. 
 
@@ -343,7 +338,7 @@ We computed then the BS usage in these phases.
         \hline
         \multirow{2}{*}{Category} & \multirow{2}{*}{\makecell[c]{POI\\amount}} & \multicolumn{5}{c|}{Daily average bike usage within 200m radius of POIs per POI}\\
         \cline{3-7}
-        & & 01 Jan-21 Jan ($a$) & 22 Jan-16 Feb ($b$) & 17 Feb-01 Mar ($c$) & $b/a$ & $c/a$\\ %$a/m$\\
+        & & 01 Jan-21 Jan ($a$) & 22 Jan-16 Feb ($b$) & 17 Feb-02 Mar ($c$) & $b/a$ & $c/a$\\ %$a/m$\\
         \hline
         RA & $5657$ & $158.3\pm86.9$ & $36.6\pm14.4$ & $39.9\pm13.9$ & $23.1\%$ & $25.2\%$\\ %$109.0\%$\\
         \hline
@@ -369,6 +364,10 @@ Phase $a$ and $b$ have the same duration, 21 days.
 % In abuse of definition ``convexity'', we use the comparison between the mean of $a$ and $b$ and phase $m$ (mid) to describe the curve: the curve is more bending, \textit{\textit{i.e.}} impacted if ratio $c=(b+a)/2m$ is larger.
 Ratio $b/a$ shows that the bike usage of all categories decreased to one quarter, and tech companies dropped the most in both value and proportion, one possible explanation is they suit best ``work from home''. 
 Ratio $c/a$ shows the bike usage of all categories have recovered to some extent but far from the situation of usual time after the partial restart of activities.
+
+As can be inferred in Figure \ref{fig:BSS_metro} and Figure \ref{fig:BSS_malls}, metro stations and malls always position in the center of massive SB clusters.
+In Figure \ref{fig:BSS_companies}, tech companies are crowded in the northwest of Beijing which take the biggest BS usage.
+However, the mobility does not recover even after the pandemic was mitigated.
 
 \subsection{Co-location Analysis with Infected RAs}
 
@@ -398,7 +397,12 @@ Like in Section \ref{sec:colo-poi}, we adjusted the time intervals to match the 
 From Table \ref{tab:bike_usage_infected}, it can be inferred that the infected RAs suffered the most among the listed categories according to ratio $b/a$.
 Strict quarantine was practised here to mitigate the pandemic.
 Surrounding RAs were also strongly impacted because of the residents got into panic and keep themselves at home.
-According to ratio $c/a$, the SB usage of infected RAs and their surrounding RAs have recovered roughly to the same level like other RAs from the pandemic.
+According to ratio $c/a$, the SB usage of infected RAs and their surrounding RAs have recovered roughly to the same level compared to other RAs from the pandemic.
+
+As can be seen from the BS usage of 16 Jan in Figure \ref{fig:BSS_communities}, the infected RAs are actually situated in the city center, with huge pedestrian flow rate surrounded by massive SBs.
+On 15 Feb, there is nearly no SB usage around these infected RAs.
+On 2 Mar, nearly no massive SB usage can be observed around the infected RAs, unlike metro stations and shopping plazas.
+
 We can conclude the residents in Beijing followed exactly the suppression strategy whether the RAs were infected or not: quarantine, \textit{cordon sanitaire} and social distancing.
 
 \subsection{Spatiotemporal patterns of cycling activities}
@@ -553,7 +557,7 @@ Correspondingly, activities were in a state of complete suppression in 2020.
 The difference map in panle(h) reveals the fact that under the impact of COVID-19, demands for outings were reduced for safe purposes.
 
 In previous years, panel(f) indicated that mobility would instantly return to pre-festival levels or more widespread as a result of the influx of migrant workers after holiday.
-According to panel(c), the rehabilitation was in progress, but much slower during epidemic mitigated period.  
+According to panel(c), the rehabilitation was in progress, but much slower during epidemic mitigated period.
 The remarkable difference referred from panel(i) verified this sustained impact on the daily lives of citizens.
 
 \subsection{Relevance between cycling activities and confirmed cases during epidemic phase} 
@@ -584,7 +588,7 @@ As a result, the number of newly confirmed COVID-19 cases was effectively suppre
         \caption{30 Jan}
     \end{subfigure}
 
-    \vspace{6pt}    
+    \vspace{6pt}
     \begin{subfigure}{.3\textwidth}
         \includegraphics[width=\textwidth]{Figures/Relation_with_confrimed_cases/NewDistrictSSBD2020_02_04.eps}
         \caption{04 Feb}
@@ -607,7 +611,7 @@ During the period of epidemic mitigation, aggregated SB usage gradually rebounde
 The recovery of city is unbalanced in the spatial domain.
 An increase is observed in the urban districts, wheras changes are not significant in other areas.
 A reduction in mobility on weekends could be inferred from comparison between panel(d) and (e), which was attributed to the awareness of the risk of infection of residents.
-It should be highlighted that the accumulated confirmed cases stay substantially stable across this period, suggesting control measures were effective and necessary in the containment of the spread of COVID-19 during the resilience of Beijing.  
+It should be highlighted that the accumulated confirmed cases stay substantially stable across this period, suggesting control measures were effective and necessary in the containment of the spread of COVID-19 during the resilience of Beijing.
 
 \textcolor{red}{After the epidemic is effectively mitigated, cycling activities increased due to the rework requirements, which can be inferred from visualization. The difference is obvious comparing weekday and weekend.}
 
@@ -644,127 +648,19 @@ It should be highlighted that the accumulated confirmed cases stay substantially
 \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Relationships between cycling activities and POIs}
 
-\textcolor{red}{Visualization and analysis on communities and BSS usage with respect to epidemic period.}
-
-\begin{figure}[ht]
-    \centering
-    \begin{subfigure}{.45\textwidth}
-        \includegraphics[width=\textwidth]{Figures/Relation_with_POIs/POI_resD2020_01_25.eps}
-        \caption{25 Jan}
-    \end{subfigure}
-    \begin{subfigure}{.45\textwidth}
-        \includegraphics[width=\textwidth]{Figures/Relation_with_POIs/POI_resD2020_02_09.eps}
-        \caption{09 Feb}
-    \end{subfigure}
-
-    \vspace{6pt}
-    \begin{subfigure}{.45\textwidth}
-        \includegraphics[width=\textwidth]{Figures/Relation_with_POIs/POI_resD2020_02_18.eps}
-        \caption{18 Feb}
-    \end{subfigure}
-        \begin{subfigure}{.45\textwidth}
-        \includegraphics[width=\textwidth]{Figures/Relation_with_POIs/POI_resD2020_03_02.eps}
-        \caption{02 Mar}
-    \end{subfigure}
-    \caption{BSS and communities.}
-    \label{fig:BSS_communities}
-\end{figure}
-
-\textcolor{red}{Visualization and analysis on traffic/metro and BSS usage with respect to epidemic period.}
-
-\begin{figure}[ht]
-    \centering
-    \begin{subfigure}{.45\textwidth}
-        \includegraphics[width=\textwidth]{Figures/Relation_with_POIs/POI_metroD2020_01_25.eps}
-        \caption{25 Jan}
-    \end{subfigure}
-    \begin{subfigure}{.45\textwidth}
-        \includegraphics[width=\textwidth]{Figures/Relation_with_POIs/POI_metroD2020_02_09.eps}
-        \caption{09 Feb}
-    \end{subfigure}
-
-    \vspace{6pt}
-    \begin{subfigure}{.45\textwidth}
-        \includegraphics[width=\textwidth]{Figures/Relation_with_POIs/POI_metroD2020_02_18.eps}
-        \caption{18 Feb}
-    \end{subfigure}
-        \begin{subfigure}{.45\textwidth}
-        \includegraphics[width=\textwidth]{Figures/Relation_with_POIs/POI_metroD2020_03_02.eps}
-        \caption{02 Mar}
-    \end{subfigure}
-    \caption{BSS and metro.}
-    \label{fig:BSS_metro}
-\end{figure}
-
-\textcolor{red}{Visualization and analysis on malls and BSS usage with respect to epidemic period.}
-
-\begin{figure}[ht]
-    \centering
-    \begin{subfigure}{.45\textwidth}
-        \includegraphics[width=\textwidth]{Figures/Relation_with_POIs/POI_mallsD2020_01_25.eps}
-        \caption{25 Jan}
-    \end{subfigure}
-    \begin{subfigure}{.45\textwidth}
-        \includegraphics[width=\textwidth]{Figures/Relation_with_POIs/POI_mallsD2020_02_09.eps}
-        \caption{09 Feb}
-    \end{subfigure}
-
-    \vspace{6pt}
-    \begin{subfigure}{.45\textwidth}
-        \includegraphics[width=\textwidth]{Figures/Relation_with_POIs/POI_mallsD2020_02_18.eps}
-        \caption{18 Feb}
-    \end{subfigure}
-    \begin{subfigure}{.45\textwidth}
-        \includegraphics[width=\textwidth]{Figures/Relation_with_POIs/POI_mallsD2020_03_02.eps}
-        \caption{02 Mar}
-    \end{subfigure}
-    \caption{BSS and malls.}
-    \label{fig:BSS_malls}
-\end{figure}
-
-\textcolor{red}{Visualization and analysis on companies and BSS usage with respect to epidemic period.}
-
-\begin{figure}[ht]
-    \centering
-    \begin{subfigure}{.45\textwidth}
-        \includegraphics[width=\textwidth]{Figures/Relation_with_POIs/POI_compD2020_01_25.eps}
-        \caption{25 Jan}
-    \end{subfigure}
-    \begin{subfigure}{.45\textwidth}
-        \includegraphics[width=\textwidth]{Figures/Relation_with_POIs/POI_compD2020_02_09.eps}
-        \caption{09 Feb}
-    \end{subfigure}
-
-    \vspace{6pt}
-    \begin{subfigure}{.45\textwidth}
-        \includegraphics[width=\textwidth]{Figures/Relation_with_POIs/POI_compD2020_02_18.eps}
-        \caption{18 Feb}
-    \end{subfigure}
-        \begin{subfigure}{.45\textwidth}
-        \includegraphics[width=\textwidth]{Figures/Relation_with_POIs/POI_compD2020_03_02.eps}
-        \caption{02 Mar}
-    \end{subfigure}
-    \caption{BSS and companies.}
-    \label{fig:BSS_companies}
-\end{figure}
-
-By removing the factor of Chinese new year, we observe a steep fall of overall SB usage from 22 January to 29 Feb.
-Industrial: IT,...
-Residential: ...
-temporally associated with improved control of the COVID-19 outbreak
 
 \section{Conclusion}
 
-Motivated by the current COVID-19 outbreak and rapid development in Share-bike system, this paper represents the period-wise spatio-temporal patterns and co-location patternsof the Share-bikes during the pandemic in Beijing, China.
-The influences of pandemic on individuals' mobility and city's rehabilitation process have been investigated.
-Apart from the holiday shutdowns, residents' activities were affected by the COVID-19, which is xxx that of the same period in 2019. 
-Productive and social activities partially restarted when the epidemic was mitigated.
-1/3 of the vitality of the same period in previous years had been restored, and the recovery process will accelerate according to the trends in spatiotemporal patterns.
-The cumulative confirmed cases stayed stable substantially after restarting of productive activities, indicating control measures were necessary and effective in containment of the spread of COVID-19 when opening-up.   
+Motivated by the current COVID-19 outbreak and rapid development in BSS, this paper reveals the period-wise spatiotemporal patterns and co-location patterns of the SB usage before \& during the pandemic in Beijing, China.
+We investigated the impact of the pandemic on the mobility of individuals and the rehabilitation process of Beijing.
+
+%TODO 人群活动的时空变化与疫情管控时间timeline基本一致，并可归纳为三个阶段。
+By removing the factor of Chinese New Year holiday, social and productive activities of residents were hugely affected by the COVID-19, reflected in the drastic decrease of SB usage (down to less than $40\%$ of that of the same period in 2019). 
+%TODO migitated 阶段逐步开放返工，城市逐渐恢复，但截至xx，已经恢复往年同期1/3的活力，但趋势显示复原进程会加快。
+The cumulative confirmed cases stayed stable substantially after restarting of productive activities, indicating the control measures were necessary and effective in containment of the spread of COVID-19 when opening-up.
 %TODO co-location的结果显示几种POI在疫情阶段的访问情况。
-\textcolor{red}{These results could facilitate research and inform policy making in the context of the current COVID-19 outbreak, and help to prevent the emergence of pandemics.} 
+\textcolor{red}{These results could facilitate research and inform policy making in the context of the current COVID-19 outbreak, and help to prevent the emergence of pandemics in the future.} 
 However, the government implemented multiple interventions at the same time or in a short timeframe to control the outbreak, therefore individual strategies could not be evaluated.
 Correlation analysis was performed based on confirmed cases data extracted from the infectious disease reporting system. 
 With additional information concerning epidemiological characteristics, spatiotemporal epidemic model is planned to predict the spread of pandemic in the future.
@@ -792,13 +688,119 @@ RA & Residential Area
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% optional
+
+\newpage
 \appendixtitles{no} %Leave argument "no" if all appendix headings stay EMPTY (then no dot is printed after "Appendix A"). If the appendix sections contain a heading then change the argument to "yes".
 \appendix
-\section{}
-\unskip
-\subsection{}
+\section{Figures Illustrating Colocation Patterns with POIs}
+
+% \textcolor{red}{Visualization and analysis on RAs and BSS usage with respect to epidemic period.}
+
+\begin{figure}[ht]
+    \centering
+    \begin{subfigure}{.334\textwidth}
+        \includegraphics[width=\textwidth]{Figures/Relation_with_POIs/POI_resD2020_01_25.eps}
+        \caption{25 Jan}
+    \end{subfigure}
+    \begin{subfigure}{.334\textwidth}
+        \includegraphics[width=\textwidth]{Figures/Relation_with_POIs/POI_resD2020_02_09.eps}
+        \caption{09 Feb}
+    \end{subfigure}
+
+    \vspace{6pt}
+    \begin{subfigure}{.334\textwidth}
+        \includegraphics[width=\textwidth]{Figures/Relation_with_POIs/POI_resD2020_02_18.eps}
+        \caption{18 Feb}
+    \end{subfigure}
+        \begin{subfigure}{.334\textwidth}
+        \includegraphics[width=\textwidth]{Figures/Relation_with_POIs/POI_resD2020_03_02.eps}
+        \caption{02 Mar}
+    \end{subfigure}
+    \caption{BSS and communities.}
+    \label{fig:BSS_communities}
+\end{figure}
+
+% \textcolor{red}{Visualization and analysis on traffic/metro and BSS usage with respect to epidemic period.}
+
+\begin{figure}[ht]
+    \centering
+    \begin{subfigure}{.334\textwidth}
+        \includegraphics[width=\textwidth]{Figures/Relation_with_POIs/POI_metroD2020_01_25.eps}
+        \caption{25 Jan}
+    \end{subfigure}
+    \begin{subfigure}{.334\textwidth}
+        \includegraphics[width=\textwidth]{Figures/Relation_with_POIs/POI_metroD2020_02_09.eps}
+        \caption{09 Feb}
+    \end{subfigure}
+
+    \vspace{6pt}
+    \begin{subfigure}{.334\textwidth}
+        \includegraphics[width=\textwidth]{Figures/Relation_with_POIs/POI_metroD2020_02_18.eps}
+        \caption{18 Feb}
+    \end{subfigure}
+        \begin{subfigure}{.334\textwidth}
+        \includegraphics[width=\textwidth]{Figures/Relation_with_POIs/POI_metroD2020_03_02.eps}
+        \caption{02 Mar}
+    \end{subfigure}
+    \caption{BSS and metro.}
+    \label{fig:BSS_metro}
+\end{figure}
+
+% \textcolor{red}{Visualization and analysis on malls and BSS usage with respect to epidemic period.}
+\clearpage
+
+\begin{figure}[ht]
+    \centering
+    \begin{subfigure}{.334\textwidth}
+        \includegraphics[width=\textwidth]{Figures/Relation_with_POIs/POI_mallsD2020_01_25.eps}
+        \caption{25 Jan}
+    \end{subfigure}
+    \begin{subfigure}{.334\textwidth}
+        \includegraphics[width=\textwidth]{Figures/Relation_with_POIs/POI_mallsD2020_02_09.eps}
+        \caption{09 Feb}
+    \end{subfigure}
+
+    \vspace{6pt}
+    \begin{subfigure}{.334\textwidth}
+        \includegraphics[width=\textwidth]{Figures/Relation_with_POIs/POI_mallsD2020_02_18.eps}
+        \caption{18 Feb}
+    \end{subfigure}
+    \begin{subfigure}{.334\textwidth}
+        \includegraphics[width=\textwidth]{Figures/Relation_with_POIs/POI_mallsD2020_03_02.eps}
+        \caption{02 Mar}
+    \end{subfigure}
+    \caption{BSS and malls.}
+    \label{fig:BSS_malls}
+\end{figure}
+
+% \textcolor{red}{Visualization and analysis on companies and BSS usage with respect to epidemic period.}
+
+\begin{figure}[ht]
+    \centering
+    \begin{subfigure}{.334\textwidth}
+        \includegraphics[width=\textwidth]{Figures/Relation_with_POIs/POI_compD2020_01_25.eps}
+        \caption{25 Jan}
+    \end{subfigure}
+    \begin{subfigure}{.334\textwidth}
+        \includegraphics[width=\textwidth]{Figures/Relation_with_POIs/POI_compD2020_02_09.eps}
+        \caption{09 Feb}
+    \end{subfigure}
+
+    \vspace{6pt}
+    \begin{subfigure}{.334\textwidth}
+        \includegraphics[width=\textwidth]{Figures/Relation_with_POIs/POI_compD2020_02_18.eps}
+        \caption{18 Feb}
+    \end{subfigure}
+        \begin{subfigure}{.334\textwidth}
+        \includegraphics[width=\textwidth]{Figures/Relation_with_POIs/POI_compD2020_03_02.eps}
+        \caption{02 Mar}
+    \end{subfigure}
+    \caption{BSS and companies.}
+    \label{fig:BSS_companies}
+\end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 \reftitle{References}
 
