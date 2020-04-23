@@ -74,9 +74,9 @@ $^{2}$ \quad China Location-Based Service, 100191 Beijing, China; xw.chai@chinal
 
 \abstract{During the epidemics of COVID-19, not only China but the whole world is experiencing a serious crisis on public health and economy, and the epidemics have become pandemic.
 As estimating the overall loss in China is a complex task, we try to reveal the behavior change of people over time \& space in order to infer the impact on daily life of and overall economy.
-Spatiotemporal behavior patterns can be reflected by share bike usage because great majority of Chinese urban residents use SsB to connect public transports and both ends of travel.
-Taking records of Bike Sharing Systems (BSSs) in Beijing, this paper characterizes not only temporal behavior patterns of SBs users: during ordinary days, holidays and the pandemic, but also spatial behavior patterns: around malls, metros, normal communities and infected communities, etc.
-This paper illustrates the evolution of SBs usage during the pandemic and discover the critical time \& places showing the significant impact on the productive and social activities.
+Spatiotemporal behavior patterns can be reflected by share bike usage because great majority of Chinese urban residents use share bikes to connect public transports and both ends of travel.
+Taking records of Bike Sharing Systems (BSSs) in Beijing, this paper characterizes not only temporal behavior patterns of share bike users: during ordinary days, holidays and the pandemic, but also spatial behavior patterns: around malls, metros, normal communities and infected communities, etc.
+This paper illustrates the evolution of share bikes usage during the pandemic and discover the critical time \& places showing the significant impact on the productive and social activities.
 The association of public health interventions with improved control of the COVID-19 outbreak was extrapolated by conducting co-location analysis temporally. 
 These findings may provide critical information on how to respond to other epidemic events.
 }
@@ -109,10 +109,10 @@ Wide-spread Bike Sharing System (BSS) in China provides with a possibility for a
 The 3rd generation BSS emerges in China in 2015 thanks to rapid development of GIS-based and IoT-based system. 
 Compared to its predecessors, bikes of the 3rd generation BSS (hereinafter referred to as BSS) are no longer constrained by docking stations (so-called free floating bikes).
 They are often spread along the roads, congest around shopping/residential areas (RAs) and cover most of the urban residents. 
-As for city of Beijing, the amount of share bikes (SBs) reached its peak in 2017 and the governors began removing excess supply afterwards. 
-After two years of development and regulation of BSS, the demand and the supply of SBs meet a balance in 2019, which could be regarded as a stable data source.
+As for city of Beijing, the amount of share bikes reached its peak in 2017 and the governors began removing excess supply afterwards. 
+After two years of development and regulation of BSS, the demand and the supply of share bikes meet a balance in 2019, which could be regarded as a stable data source.
 BSS records contain time and location information of bike usages from anonymous users, providing a valuable indicator of human presence, thus offering a promising alternative data source for increasing the spatial and temporal detail of the mobility and the activities of residents during pandemic.
-According to Daxue Consulting \cite{bssmodel}, in Beijing, 93\% of travels less than 5km are quicker done by bike and public transport than with the car, which suggests SBs has a potential reflection on the local mobility of residents.
+According to Daxue Consulting \cite{bssmodel}, in Beijing, 93\% of travels less than 5km are quicker done by bike and public transport than with the car, which suggests share bikes has a potential reflection on the local mobility of residents.
 
 In this study, we use share bike usage records to measure period-wise spatiotemporal patterns and co-location patterns. 
 To demonstrate the specific impact of the COVID-19 on individuals, comparison between the patterns of 2019 and 2020 and correlation analysis with the progress of confirmed cases have been implemented.
@@ -165,7 +165,7 @@ As a population-importing metropolis, Beijing has taken measures in response to 
 Under this circumstance, the activities of residents have been influenced and showing special spatiotemporal patterns different from ordinary days.
 
 \subsection{Data Sets}
-\textbf{BSS spatiotemporal data} Temporal positioning datasets come from 900 thousand SBs belonging to 3 main BSS operators (Mobike, DiDi Bike, Hellobike and Ofo) in Beijing.
+\textbf{BSS spatiotemporal data} Temporal positioning datasets come from 900 thousand share bikes belonging to 3 main BSS operators (Mobike, DiDi Bike, Hellobike and Ofo) in Beijing.
 The datasets date from March 2018 to March 2020 (66.8 GB) and cover 1.5 million usage per day contributed by 11 million users which account for one half of the total population of Beijing.
 Records of the datasets contain the positioning and timing information of locking \& unlocking bikes, excluding that of rebalancing operations.
 This feature suggests that the movement of bikes are done by users.
@@ -404,7 +404,7 @@ Strict quarantine was practised here to mitigate the pandemic.
 Surrounding RAs were also strongly impacted because of the residents got into panic and keep themselves at home.
 According to ratio $c/a$, the share bike usage of infected RAs and their surrounding RAs have recovered roughly to the same level compared to other RAs from the pandemic.
 
-As can be seen from the BS usage of 16 Jan in Figure \ref{fig:BSS_communities}, the infected RAs are actually situated in the city center, with huge pedestrian flow rate surrounded by massive SBs.
+As can be seen from the BS usage of 16 Jan in Figure \ref{fig:BSS_communities}, the infected RAs are actually situated in the city center, with huge pedestrian flow rate surrounded by massive share bikes.
 On 15 Feb, there is nearly no share bike usage around these infected RAs.
 On 2 Mar, nearly no massive share bike usage can be observed around the infected RAs, unlike metro stations and shopping plazas.
 
@@ -480,10 +480,10 @@ High-intensity activities could hardly be recognized in the subfigures between 2
 These subfigures are dominated by green and light green corresponding to low-intensity activities (<100 records/hour), indicating that individuals have demands to go out during this period, but unnecessary going-out has been significantly reduced by the combined effects of holidays and the epidemic.
 Status continued until 09 Feb, when the spread of COVID-19 was slowered down by imposing control measures including social distancing and home quarantine, and productive and social activities were allowed to restart partially.
 
-Figure \ref{fig:pattern_02_10}-\ref{fig:pattern_03_01} during 10 Feb to 01 Mar, 2020, show a gradual increase in the mobility of the SBs, but only restored around $30\%$ of the pre-epidemic levels.
+Figure \ref{fig:pattern_02_10}-\ref{fig:pattern_03_01} during 10 Feb to 01 Mar, 2020, show a gradual increase in the mobility of the share bikes, but only restored around $30\%$ of the pre-epidemic levels.
 It is worth noticing that only slight differences could be observed between weekdays and weekends before 17 Feb and the weekday-weekend oscillation returned afterwards.
 
-There is a higher demand for SBs on workdays in the downtown area as before.
+There is a higher demand for share bikes on workdays in the downtown area as before.
 However, the high-intensity areas shrinked on weekends, implying that residents were more inclined to reduce the risk of increased exposure by going outside under the threat of COVID-19. 
 
 Inferred from the spatiotemporal characteristics above, the outbreak was divided into 3 phases to better reflect the dynamics of the COVID-19 epidemic.
@@ -501,7 +501,7 @@ Inferred from the spatiotemporal characteristics above, the outbreak was divided
 
 Both Chinese New Year holiday shutdowns and pandemic resulted in the aforementioned mobility decrease.
 Therefore, comparison was conducted with data from the same period in 2019, thus removing the impact of the Chinese New Year holiday and evaluating the specific influence of the pandemic.  
-The average values of aggregated daily SBs records from each pandemic phase were reported.
+The average values of aggregated daily share bikes records from each pandemic phase were reported.
 
 \begin{figure}[ht]
     \centering
@@ -554,7 +554,7 @@ The average values of aggregated daily SBs records from each pandemic phase were
     \begin{subfigure}{.14\textwidth}
         \includegraphics[width=\textwidth]{Figures/AnnualDifLegend.eps}
     \end{subfigure}
-    \caption{Comparison of averaged SBs records subjecting to different pandemic periods between 2019 and 2020.}
+    \caption{Comparison of averaged share bikes records subjecting to different pandemic periods between 2019 and 2020.}
     \label{fig:compare_2019_and_2020}
 \end{figure}
 
@@ -613,7 +613,7 @@ As a result, the number of newly confirmed COVID-19 cases was effectively suppre
     \begin{subfigure}{.3\textwidth}
         \includegraphics[width=\textwidth]{Figures/Relation_with_confrimed_cases/legend7.eps}
     \end{subfigure}
-    \caption{Relationships between aggregated SBs records and confirmed cases during the quarantine period.}
+    \caption{Relationships between aggregated share bikes records and confirmed cases during the quarantine period.}
     \label{fig:BSS_phase1_2}
 \end{figure}
 
@@ -630,7 +630,7 @@ It should be highlighted that the accumulated confirmed cases stay substantially
 \begin{figure}[ht]
     \centering
     \begin{subfigure}{.3\textwidth}
-        \includegraphics[width=\textwidth]{Figures/Relation_with_confrimed_cases/NewDistrictSSBD2020_02_12.eps}
+        \includegraphics[width=\textwidth]{Figures/Relation_with_confrimed_cases/NewDistrictSshare bikeD2020_02_12.eps}
         \caption{12 Feb}\label{fig:correlation_02_12}
     \end{subfigure}
     \begin{subfigure}{.3\textwidth}
@@ -654,7 +654,7 @@ It should be highlighted that the accumulated confirmed cases stay substantially
     \begin{subfigure}{.3\textwidth}
         \includegraphics[width=\textwidth]{Figures/Relation_with_confrimed_cases/legend7.eps}
     \end{subfigure}
-    \caption{Relationships between aggregated SBs records and confirmed cases during the mitigation period.}
+    \caption{Relationships between aggregated share bikes records and confirmed cases during the mitigation period.}
     \label{fig:BSS_phase_3}
 \end{figure}
 
