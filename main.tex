@@ -135,9 +135,9 @@ There are also studies of BSS focusing on rebalancing strategies \cite{pal2017fr
 As far as we know, there is no study on the impact of social events and/or emergencies based on the 3rd generation BSS.
 
 While BSS data analytics has been successfully applied in many sectors, their application in pandemic response is still at its early stages.
-Moreover, due to the limited emerging understanding of the new virus and its transmission mechanisms, it remains challenging to reveal its impacts on public behavior.
-To address this issue, We use BS usage records to measure period-wise spatiotemporal patterns and co-location patterns. 
-Results indicate that large mobility reductions have been detected associated with the onset of the COVID-19 threat and administrative restrictions.
+Moreover, due to limited emerging understanding of the new virus and its transmission mechanism, revealing its impacts on public behavior remains challenging.
+To address this issue, we use share bike usage records to measure period-wise spatiotemporal patterns and co-location patterns. 
+Results indicate that large mobility reductions appears due to the onset of the COVID-19 threat and administrative restrictions.
 Co-location analysis between the temporal usage patterns and facilities locations reveals the influence of pandemic in different phases.
 
 \section*{Contribution} As the pandemic of COVID-19 and the Chinese New Year meet by coincidence, we tried to avoid the influence of this national holiday, then assess the impact of the COVID-19 pandemic and the influence of suppression strategy via four aspects:
@@ -158,7 +158,7 @@ Co-location analysis between the temporal usage patterns and facilities location
 \end{figure}
 
 \subsection{Study area}
-This study is conducted in the city of Beijing, the capital of China.
+This study was conducted in the city of Beijing, the capital of China.
 As shown in Figure \ref{fig:study_area}, Beijing locates at the North China Plain, occupying an area of 16,411km$^2$ (39.4{\degree}-41.6{\degree}N, 115.7{\degree}-117.4{\degree}E).
 In 2019, the municipal population of Beijing have reached 21.53 million. According to Beijing Health Commission, 352 confirmed cases\footnote{\url{http://wjw.beijing.gov.cn/xwzx_20031/wnxw/202002/t20200212_1628835.html} (in Chinese)} were found in Beijing by February 10, 2020.
 As a population-importing metropolis, Beijing has taken migitation efforts in response to the outbreak. 
@@ -218,17 +218,16 @@ To assess the overall behavior pattern changes, we picked out the locations of t
 \section{Tools and Methods}
 
 \subsection{Parallel Computing}
-Traditional geospatial tools such as PostGIS, QGIS are no longer able to deal with large-scale spatial queries huge amount of BSS spatiotemporal data (66.8GB) due to limited of computer performance stand-alone machine.
+Traditional geospatial tools such as PostGIS, QGIS are no longer able to deal with large-scale spatial queries huge amount of BSS spatiotemporal data (66.8GB) due to limited of computer performance of stand-alone machine.
 To obtain the co-location patterns in such datasets with numerous POIs, we proceeded with GeoSpark SQL \cite{huang2017geospark}, which performs spatial queries via parallel computing on cluster computing framework Spark\footnote{\url{https://spark.apache.org/}}.
 Among the spatial queries, we utilized \texttt{spatial\_join(geom1, geom2)}, querying if \texttt{geom1} is inside \texttt{geom2} and \texttt{distance\_join(geom1, geom2, dist)} querying if the distance of \texttt{geom1} and \texttt{geom2} is less than \texttt{dist}.
 These queries are nearly partition independent, recomputing is needed only on the borders of partition, thus our parallel efficiency is high given proper configuration and partitioning.
 
 \subsection{Phase Classification}\label{sec:phase_classification}
 In machine learning, it is often demanded to minimize the predefined loss function to perform the best classification such that elements within the same cluster are similar and elements across clusters are different.
-
 Likewise, we try to divide the study period into phases which have resembling share bike usage.
 
-\begin{Definition}[k-segmentation]
+\begin{Definition}[k-segmentation]\label{def:k-seg}
 Let $X=\{x_1,x_2,\ldots,x_N\}$ be a time series of length $N$.
 Given positive integer $k<N$ and index set $\mathbf{T}=\{n_0,\ldots,n_k\}$ with $n_0=0$, $n_k=N$ and $\forall i$, $n_i<n_{i+1}$, a k-segmentation of $X$ is the set of time series $X_i=\{x_{n_i+1},\ldots,x_{n_{i+1}}\}$ where $0\leq i\leq k-1$.
 \end{Definition}
@@ -240,7 +239,7 @@ In case $k$ and $N$ are small, the optimum can be found via exhaustive search.
 
 \subsection{Basic statistics}
 The evolution of share bike usage over time in different zones of Beijing, as well as their relationships with COVID-19 spreading status and facilities, are the focus of this research.
-To obtain these results, spatial analysis and statistics are implemented in Python with the help of ESRI ArcGIS 10.7. 
+To obtain these results, spatial analysis and statistics are implemented in Python with the help of ESRI ArcGIS 10.7 \footnote{\url{https://www.esri.com/en-us/arcgis/about-arcgis/overview}}. 
 
 \section{Result}
 
@@ -277,18 +276,18 @@ We compared the share bike usage on rush hours (8:00-09:00) during a period of 6
 % \end{figure}
 
 Figure \ref{fig:hour_comparison_8} % and Figure \ref{fig:hour_comparison_18}
- illustrate the temporal evolution of share bike usage.
+ illustrates the temporal evolution of share bike usage.
 
 \begin{figure}[ht]
     \centering
     \includegraphics[width=0.9\textwidth]{Figures/hour_8.eps}
-    \caption{share bike usage during 08:00-09:00 of year 2019 and 2020.}
+    \caption{Share bike usage during 08:00-09:00 of year 2019 and 2020.}
     \label{fig:hour_comparison_8}
 \end{figure}
 % \begin{figure}[ht]
 %     \centering
 %     \includegraphics[width=0.9\textwidth]{Figures/hour_18.eps}
-%     \caption{share bike usage during 18:00-19:00 of year 2019 and 2020.}
+%     \caption{Share bike usage during 18:00-19:00 of year 2019 and 2020.}
 %     \label{fig:hour_comparison_18}
 % \end{figure}
 
@@ -319,7 +318,7 @@ Share bike usage data are presented in the form $\bar{x}\pm2\sigma$.
         02 Jan-20 Jan 2020 & $2.58\pm1.10$ & $1.37\pm0.74$ & $12.7\pm6.3$\\
         \hline
         \hline
-        & 08:00-09:00 & 18:00-19:00 & All-day\\
+        & 08:00-09:00 (all week)  & 18:00-19:00 (all week) & All-day\\
         \hline
         04 Feb-10 Feb 2019 & $0.30\pm0.05$ & $0.24\pm0.08$ & $4.90\pm1.56$\\
         \hline
@@ -329,16 +328,16 @@ Share bike usage data are presented in the form $\bar{x}\pm2\sigma$.
     \caption{Overall comparison of year 2019 and 2020.}\label{tab:overall_comparison}
 \end{table}
 
-The upper part shows in ordinary days, share bike usage in 2020 in on the same level of that of 2019, suggesting share bike demand is evolving in a smooth way.
-However, the lower part shows the case of Chinese New Year holiday, overall share bike usage drops to less than 40\% compared with the same period in 2019, suggesting companies stopped working due to Chinese New Year holiday like the case of 2019, and social activities also halted. 
+The upper part shows in the rush hours of ordinary days, share bike usage in 2020 in on the same level of that of 2019, suggesting share bike demand is evolving in a smooth way.
+However, the lower part shows the case of Chinese New Year holiday, the overall share bike usage drops to less than 40\% compared with the same period in 2019, suggesting companies stopped working due to Chinese New Year holiday like the case of 2019, and social activities also halted. 
 
 \subsection{Co-location Analysis with POIs}\label{sec:colo-poi}
 
-From the previous section, it is implied the dates in Table \ref{tab:important_dates} may not be the optimal boundaries of different phases, for example Feb 17 does not appear.
-We computed the best phase classificationm using definition in Section \ref{sec:phase_classification}.
+According to Figure \ref{fig:hour_comparison_8}, it is implied the dates in Table \ref{tab:important_dates} may not be the optimal boundaries of different phases, as there is no obvious share bike usage change after Feb 10.
+We computed the best phase classificationm using Definition \ref{def:k-seg} in Section \ref{sec:phase_classification}.
 We classified the period into three phases: before pandemics, during pandemics, pandemics mitigated.
 Here $k=3$ and $N=64$, we found the best classified phases using exhaustive search and assign them with reasonable explanations: 01 Jan-21 Jan (before the pandemic), 22 Jan-16 Feb (critical phase of the pandemic) and 17 Feb-01 Mar (epidemics mitigated).
-We computed then the BS usage in these phases.
+We computed then the share bike usage in these phases.
 
 \begin{table}[ht]
     \centering
@@ -374,7 +373,7 @@ Ratio $b/a$ shows that the bike usage of all categories decreased to one quarter
 Ratio $c/a$ shows the bike usage of all categories have recovered to some extent but far from the situation of usual time after the partial restart of activities.
 
 As can be inferred in Figure \ref{fig:BSS_metro} and Figure \ref{fig:BSS_malls} in Appendix, metro stations and malls always position in the center of massive share bike clusters.
-In Figure \ref{fig:BSS_companies}, tech companies are crowded in the northwest of Beijing which take the biggest BS usage.
+In Figure \ref{fig:BSS_companies}, tech companies are crowded in the northwest of Beijing which take the biggest share bike usage.
 However, the mobility does not recover even after the pandemic was mitigated.
 
 \subsection{Co-location Analysis with Infected RAs}
@@ -407,7 +406,7 @@ Strict quarantine was practised here to mitigate the pandemic.
 Surrounding RAs were also strongly impacted because of the residents got into panic and keep themselves at home.
 According to ratio $c/a$, the share bike usage of infected RAs and their surrounding RAs have recovered roughly to the same level compared to other RAs from the pandemic.
 
-As can be seen from the BS usage of 16 Jan in Figure \ref{fig:BSS_communities}, the infected RAs are actually situated in the city center, with huge pedestrian flow rate surrounded by massive share bikes.
+As can be seen from the share bike usage of 16 Jan in Figure \ref{fig:BSS_communities}, the infected RAs are actually situated in the city center, with huge pedestrian flow rate surrounded by massive share bikes.
 On 15 Feb, there is nearly no share bike usage around these infected RAs.
 On 2 Mar, nearly no massive share bike usage can be observed around the infected RAs, unlike metro stations and shopping plazas.
 
@@ -490,7 +489,7 @@ It is worth noticing that only slight differences could be observed between week
 There is a higher demand for share bikes on workdays in the downtown area as before.
 However, the high-intensity areas shrinked on weekends, implying that residents were more inclined to reduce the risk of increased exposure by going outside under the threat of COVID-19. 
 
-Inferred from the spatiotemporal characteristics above, the outbreak was divided into 3 phases to better reflect the dynamics of the COVID-19 epidemic.
+According to the spatiotemporal analysis above, we divide the outbreak timeline into 3 phases to better reflect the dynamics of the COVID-19 epidemic.
 
 \textbf{Phase a}: dates before 21 Jan, 2020, are considered as the first period, when no strong COVID-19–specific interventions were imposed.
 
@@ -511,15 +510,15 @@ The average values of aggregated daily share bikes records from each pandemic ph
     \centering
     \begin{subfigure}{.28\textwidth}
         \includegraphics[width=\textwidth]{Figures/BSSPhase1_2020.eps}
-        \caption{Phase a of 2020}\label{fig:p_a_2020}
+        \caption{\textbf{Phase a} of 2020}\label{fig:p_a_2020}
     \end{subfigure}
     \begin{subfigure}{.28\textwidth}
         \includegraphics[width=\textwidth]{Figures/BSSPhase2_2020.eps}
-        \caption{Phase b of 2020}\label{fig:p_b_2020}
+        \caption{\textbf{Phase b} of 2020}\label{fig:p_b_2020}
     \end{subfigure}
     \begin{subfigure}{.28\textwidth}
         \includegraphics[width=\textwidth]{Figures/BSSPhase3_2020.eps}
-        \caption{Phase c of 2020}\label{fig:p_c_2020}
+        \caption{\textbf{Phase c} of 2020}\label{fig:p_c_2020}
     \end{subfigure}
     \begin{subfigure}{.14\textwidth}
         \includegraphics[width=\textwidth]{Figures/Overall_spatial_patterns/legend5.eps}
@@ -528,15 +527,15 @@ The average values of aggregated daily share bikes records from each pandemic ph
     \vspace{6pt}
     \begin{subfigure}{.28\textwidth}
         \includegraphics[width=\textwidth]{Figures/BSSPhase1_2019.eps}
-        \caption{Phase a of 2019}\label{fig:p_a_2019}
+        \caption{\textbf{Phase a} of 2019}\label{fig:p_a_2019}
     \end{subfigure}
     \begin{subfigure}{.28\textwidth}
         \includegraphics[width=\textwidth]{Figures/BSSPhase2_2019.eps}
-        \caption{Phase b of 2019}\label{fig:p_b_2019}
+        \caption{\textbf{Phase b} of 2019}\label{fig:p_b_2019}
     \end{subfigure}
     \begin{subfigure}{.28\textwidth}
         \includegraphics[width=\textwidth]{Figures/BSSPhase3_2019.eps}
-        \caption{Phase c of 2019}\label{fig:p_c_2019}
+        \caption{\textbf{Phase c} of 2019}\label{fig:p_c_2019}
     \end{subfigure}
     \begin{subfigure}{.14\textwidth}
         \includegraphics[width=\textwidth]{Figures/Overall_spatial_patterns/legend5.eps}
@@ -545,20 +544,20 @@ The average values of aggregated daily share bikes records from each pandemic ph
     \vspace{6pt}
     \begin{subfigure}{.28\textwidth}
         \includegraphics[width=\textwidth]{Figures/BSSMinusmp1.eps}
-        \caption{Difference image of Phase a}\label{fig:p_a_dif}
+        \caption{Difference between a and d)}\label{fig:p_a_dif}
     \end{subfigure}
         \begin{subfigure}{.28\textwidth}
         \includegraphics[width=\textwidth]{Figures/BSSMinusmp2.eps}
-        \caption{Difference image of Phase b}\label{fig:p_b_dif}
+        \caption{Difference between b and e)}\label{fig:p_b_dif}
     \end{subfigure}
         \begin{subfigure}{.28\textwidth}
         \includegraphics[width=\textwidth]{Figures/BSSMinusmp3.eps}
-        \caption{Difference image of Phase c}\label{fig:p_c_dif}
+        \caption{Difference between c and f)}\label{fig:p_c_dif}
     \end{subfigure}
     \begin{subfigure}{.14\textwidth}
         \includegraphics[width=\textwidth]{Figures/AnnualDifLegend.eps}
     \end{subfigure}
-    \caption{Comparison of averaged share bikes records subjecting to different pandemic periods between 2019 and 2020.}
+    \caption{Comparison of share bikes usage between 2019 and 2020 in different pandemic periods.}
     \label{fig:compare_2019_and_2020}
 \end{figure}
 
@@ -617,7 +616,7 @@ As a result, the number of newly confirmed COVID-19 cases was effectively suppre
     \begin{subfigure}{.3\textwidth}
         \includegraphics[width=\textwidth]{Figures/Relation_with_confrimed_cases/legend7.eps}
     \end{subfigure}
-    \caption{Relationships between aggregated share bikes records and confirmed cases during the quarantine period.}
+    \caption{Relationships between aggregated share bikes records and confirmed cases during \textbf{phase b}.}
     \label{fig:BSS_phase1_2}
 \end{figure}
 
