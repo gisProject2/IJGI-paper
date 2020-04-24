@@ -162,7 +162,7 @@ Co-location analysis between the temporal usage patterns and facilities location
 \subsection{Study area}
 This study was conducted in the city of Beijing, the capital of China.
 As shown in Figure \ref{fig:study_area}, Beijing locates at the North China Plain, occupying an area of 16,411km$^2$ (39.4{\degree}-41.6{\degree}N, 115.7{\degree}-117.4{\degree}E).
-In 2019, the municipal population of Beijing have reached 21.53 million. According to Beijing Health Commission, 352 confirmed cases\footnote{\url{http://wjw.beijing.gov.cn/xwzx_20031/wnxw/202002/t20200212_1628835.html} (in Chinese)} were found in Beijing by February 10, 2020.
+In 2019, the municipal population of Beijing have reached 21.53 million. According to Beijing Health Commission, the COVID-19 confirmed cases \footnote{\url{http://wjw.beijing.gov.cn/xwzx_20031/wnxw/202003/t20200305_1679143.html} (in Chinese)} bring the cumulative total in Beijing to 418 by 05 Mar, 2020.
 As a population-importing metropolis, Beijing has taken migitation efforts in response to the outbreak. 
 Under this circumstance, the activities of residents have been influenced and showing special spatiotemporal patterns different from ordinary days.
 
@@ -205,7 +205,6 @@ Among hundreds of categories, we chose six mid ones characterizing productive an
 \end{figure}
 
 \textbf{Locations of Confirmed Cases}
-The COVID-19 confirmed cases bring the cumulative total in Beijing to 418 by 05 Mar, 2020.
 The daily cumulative counts of clinically diagnosed cases subjected to each district from Jan 20 to Mar 5, 2020 were collected from the daily update on the novel coronavirus pneumonia outbreak dashboard provided by National Health Commission of the People's Republic of China\footnote{\url{http://www.nhc.gov.cn/xcs/yqtb/list_gzbd.shtml} (in Chinese)} .
 According to the timeline \cite{li2020early} of the outbreak, we picked several important dates shown in Figure \ref{fig:number_of_confirmed_cases}, visualizing the evolution of the overall pandemic situation of Beijing.
 To assess the overall behavior pattern changes, we picked out the locations of total 87 infected RAs (see Figure \ref{fig:locations_of_confirmed_cases}), which were retrieved from Beijing Municipal Health Commission\footnote{\url{http://wjw.beijing.gov.cn/xwzx_20031/wnxw/202003/t20200305_1679143.html} (as of March 05, 2020, in Chinese)}.
@@ -485,7 +484,7 @@ These subfigures are dominated by green and light green corresponding to low-int
 Status continued until 09 Feb, when the spread of COVID-19 was slowered down by imposing control measures including social distancing and home quarantine, and productive and social activities were allowed to restart partially.
 
 Figure \ref{fig:pattern_02_10}-\ref{fig:pattern_03_01} during 10 Feb to 01 Mar, 2020, show a gradual increase in the mobility of the share bikes, but only restored around $30\%$ of the pre-epidemic levels.
-As consistent with the Figure \ref{fig:hour_comparison_8}, there is a fluctuation near 14 Feb due to the increase in confrimed cases, which will be discussed in the next section.
+As consistent with the Figure \ref{fig:hour_comparison_8}, there is a fluctuation near 14 Feb due to the increase in confrimed cases, which will be discussed in the section \ref{sec:activities_confirmed_cases}.
 It is worth noticing that only slight differences could be observed between weekdays and weekends before 17 Feb and the weekday-weekend oscillation returned afterwards.
 
 There is a higher demand for share bikes on workdays in the downtown area as before.
@@ -578,7 +577,7 @@ In previous years, Figure \ref{fig:p_c_2019} indicated that mobility would insta
 According to Figure \ref{fig:p_c_2020}, the rehabilitation was in progress, but much slower during epidemic mitigated period.
 The remarkable difference referred from Figure \ref{fig:p_c_dif} verified this sustained impact on the daily lives of citizens.
 
-\subsection{Relevance between cycling activities and confirmed cases during epidemic phase} 
+\subsection{Relationships between share bikes activities and confirmed cases during different pandemic periods} \label{sec:activities_confirmed_cases}
 
 This part aims at characterizing the behavior patterns of disease-spreading individuals by evaluating share bike usages with respect to different pandemic periods.%thus provide reference for authorities to gradually lift the most restrictive measures with more precision and confidence.
 
@@ -618,7 +617,7 @@ As a result, the number of newly confirmed COVID-19 cases was effectively suppre
     \begin{subfigure}{.3\textwidth}
         \includegraphics[width=\textwidth]{Figures/Relation_with_confrimed_cases/legend7.eps}
     \end{subfigure}
-    \caption{Relationships between aggregated share bikes records and confirmed cases during the quarantine period.}
+    \caption{Relationships between aggregated share bikes records and confirmed cases during \textbf{phase b}.}
     \label{fig:BSS_phase1_2}
 \end{figure}
 
@@ -660,7 +659,7 @@ It should be highlighted that the accumulated confirmed cases stay substantially
         \includegraphics[width=\textwidth]{Figures/Relation_with_confrimed_cases/NewDistrictSSBD2020_02_29.eps}
         \caption{29 Feb}\label{fig:correlation_02_29}
     \end{subfigure}
-    \caption{Relationships between aggregated share bikes records and confirmed cases during the mitigation period.}
+    \caption{Relationships between aggregated share bikes records and confirmed cases during \textbf{phase c}.}
     \label{fig:BSS_phase_3}
 \end{figure}
 
@@ -681,7 +680,7 @@ Our results are references to epidemiological researches and inform policy makin
 \section{Future Work}
 
 Since the government implemented multiple interventions at the same time or in a short timeframe to control the outbreak, individual strategies could not be evaluated.
-Principal component analysis could be helpful to extract the modes contributed by each preventive measure.
+Multi-dimensional principal component analysis could be helpful to extract the modes contributed by each preventive measure.
 
 Also, our current work has extracted the features of mobility reflected by BSS.
 Another possible extension is to build a dynamic model based on the features predicting the share bike usage and potential social event/reaction of public during the pandemic or emergencies.
