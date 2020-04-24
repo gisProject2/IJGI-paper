@@ -161,7 +161,7 @@ Co-location analysis between the temporal usage patterns and facilities location
 This study is conducted in the city of Beijing, the capital of China.
 As shown in Figure \ref{fig:study_area}, Beijing locates at the North China Plain, occupying an area of 16,411km$^2$ (39.4{\degree}-41.6{\degree}N, 115.7{\degree}-117.4{\degree}E).
 In 2019, the municipal population of Beijing have reached 21.53 million. According to Beijing Health Commission, 352 confirmed cases\footnote{\url{http://wjw.beijing.gov.cn/xwzx_20031/wnxw/202002/t20200212_1628835.html} (in Chinese)} were found in Beijing by February 10, 2020.
-As a population-importing metropolis, Beijing has taken measures in response to the outbreak. 
+As a population-importing metropolis, Beijing has taken migitation efforts in response to the outbreak. 
 Under this circumstance, the activities of residents have been influenced and showing special spatiotemporal patterns different from ordinary days.
 
 \subsection{Data Sets}
@@ -481,6 +481,7 @@ These subfigures are dominated by green and light green corresponding to low-int
 Status continued until 09 Feb, when the spread of COVID-19 was slowered down by imposing control measures including social distancing and home quarantine, and productive and social activities were allowed to restart partially.
 
 Figure \ref{fig:pattern_02_10}-\ref{fig:pattern_03_01} during 10 Feb to 01 Mar, 2020, show a gradual increase in the mobility of the share bikes, but only restored around $30\%$ of the pre-epidemic levels.
+As consistent with the Figure \ref{fig:hour_comparison_8}, there is a fluctuation near 14 Feb due to the increase in confrimed cases, which will be discussed in the next section.
 It is worth noticing that only slight differences could be observed between weekdays and weekends before 17 Feb and the weekday-weekend oscillation returned afterwards.
 
 There is a higher demand for share bikes on workdays in the downtown area as before.
@@ -492,7 +493,7 @@ Inferred from the spatiotemporal characteristics above, the outbreak was divided
 
 \textbf{Phase b}: dates between 22 Jan and 17 Feb, include Chinese New Year holiday 2020. During this period, traffic suspension and home quarantine were implemented for pandemics prevention purposes.
 
-\textbf{Phase c}: is after 10 Feb, when productive and social activities restarted partially since the pandemics was migitated and under effective control.
+\textbf{Phase c}: is after 17 Feb, when productive and social activities restarted partially since the pandemics was migitated and under effective control.
 
 % In the following sections, we will focus on …… and investigate ……
 
@@ -618,12 +619,12 @@ As a result, the number of newly confirmed COVID-19 cases was effectively suppre
 \end{figure}
 
 Figure \ref{fig:BSS_phase_3} depicts the share bike usages in \textbf{phase c}, when productive and social activities were allowed to restart partially.
+
 %aim to identify and characterize disease-spreading human interactions, thus allowing authorities to gradually lift the most restrictive measures with more precision and confidence.
-During the period of epidemic mitigation, aggregated share bike usage gradually rebounded with stable accumulated confirmed cases, which can be inferred from Figure \ref{fig:correlation_02_12}- Figure \ref{fig:correlation_02_20}.
-The recovery of city is unbalanced in the spatial domain.
-An increase is observed in the urban districts, wheras changes are not significant in other areas.
-The difference is obvious when comparing weekdays to weekends.
-A reduction in mobility on weekends could be inferred from comparison between Figure \ref{fig:correlation_02_24} and Figure \ref{fig:correlation_02_28}, which was attributed to the awareness of the risk of infection of residents.
+During the mitigation period, aggregated share bike usage gradually rebounded with stable accumulated confirmed cases during the weekdays, which can be inferred from Figure \ref{fig:correlation_02_12}-Figure \ref{fig:correlation_02_28}.
+The recovery of city is unbalanced in the spatial domain, concentrating in urban districts, wheras changes are not significant in other areas.
+Another finding is the different patterns between weekdays and weekends.
+A reduction in mobility on weekends could be inferred from comparison between Figure \ref{fig:correlation_02_28} and Figure \ref{fig:correlation_02_29}, which was attributed to the awareness of the risk of infection of residents.
 
 It should be highlighted that the accumulated confirmed cases stay substantially stable across this period, suggesting control measures were effective and necessary in the containment of the spread of COVID-19 during the resilience of Beijing.
 
@@ -634,8 +635,8 @@ It should be highlighted that the accumulated confirmed cases stay substantially
         \caption{12 Feb}\label{fig:correlation_02_12}
     \end{subfigure}
     \begin{subfigure}{.3\textwidth}
-        \includegraphics[width=\textwidth]{Figures/Relation_with_confrimed_cases/NewDistrictSSBD2020_02_16.eps}
-        \caption{16 Feb}\label{fig:correlation_02_16}
+        \includegraphics[width=\textwidth]{Figures/Relation_with_confrimed_cases/NewDistrictSSBD2020_02_17.eps}
+        \caption{17 Feb}\label{fig:correlation_02_17}
     \end{subfigure}
     \begin{subfigure}{.3\textwidth}
         \includegraphics[width=\textwidth]{Figures/Relation_with_confrimed_cases/NewDistrictSSBD2020_02_20.eps}
@@ -652,7 +653,8 @@ It should be highlighted that the accumulated confirmed cases stay substantially
         \caption{28 Feb}\label{fig:correlation_02_28}
     \end{subfigure}
     \begin{subfigure}{.3\textwidth}
-        \includegraphics[width=\textwidth]{Figures/Relation_with_confrimed_cases/legend7.eps}
+        \includegraphics[width=\textwidth]{Figures/Relation_with_confrimed_cases/NewDistrictSSBD2020_02_29.eps}
+        \caption{29 Feb}\label{fig:correlation_02_29}
     \end{subfigure}
     \caption{Relationships between aggregated share bikes records and confirmed cases during the mitigation period.}
     \label{fig:BSS_phase_3}
@@ -671,15 +673,16 @@ The cumulative confirmed cases stayed stable substantially after restarting of p
 Co-location analyis shows the infected RAs situated in the city center are mostly impacted, even after the pandemic is mitigated;
 Among POIs, share bike usage of tech companies has the biggest change before and during the pandemic as these companies are most suitable for ``work from home'', \textit{etc}.
 
-These results are references to epidemiological researches and inform policy making in the context of the current COVID-19 outbreak, and help to prevent the emergence of pandemics in the future.
-However, the government implemented multiple interventions at the same time or in a short timeframe to control the outbreak, therefore individual strategies could not be evaluated.
-Correlation analysis was performed based on confirmed cases data extracted from the infectious disease reporting system. 
-With additional information concerning epidemiological characteristics, spatiotemporal epidemic model is planned to predict the spread of pandemic in the future.
+Our results are references to epidemiological researches and inform policy making in the context of the current COVID-19 outbreak, and help to prevent the emergence of pandemics in the future.
 
 \section{Future Work}
 
+Since the government implemented multiple interventions at the same time or in a short timeframe to control the outbreak, individual strategies could not be evaluated.
+Moreover, correlation analysis was performed based on confirmed cases data extracted from the infectious disease reporting system, lacking in clinical details. 
+With additional information concerning epidemiological characteristics, a spatiotemporal epidemic model is planned to predict the spread of pandemic in the future.
+
 Our current work has extracted the features of mobility reflected by BSS.
-A possible extension is to build a dynamic model based on the features predicting the share bike usage and potential social event/reaction of public during the pandemic or emergencies.
+Another possible extension is to build a dynamic model based on the features predicting the share bike usage and potential social event/reaction of public during the pandemic or emergencies.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \vspace{6pt} 
