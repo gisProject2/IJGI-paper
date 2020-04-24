@@ -73,9 +73,9 @@ $^{2}$ \quad China Location-Based Service, 100191 Beijing, China; xw.chai@chinal
 \corres{Correspondence:  guoxian@bucea.edu.cn; Tel.: +86 (010) 6120 9335}
 
 \abstract{During the epidemics of COVID-19, not only China but the whole world is experiencing a serious crisis on public health and economy, and the epidemics have become pandemic.
-As estimating the overall loss in China is a complex task, we try to reveal the behavior change of people over time \& space in order to infer the impact on daily life of and overall economy.
+As estimating the overall loss and the effectiveness of preventive measures in China is a complex task, we try to reveal the behavior change of people over time \& space in order to infer the impact on daily life of and overall economy.
 Spatiotemporal behavior patterns can be reflected by share bike usage because great majority of Chinese urban residents use share bikes to connect public transports and both ends of travel.
-Taking records of Bike Sharing Systems (BSSs) in Beijing, this paper characterizes not only temporal behavior patterns of share bike users: during ordinary days, holidays and the pandemic, but also spatial behavior patterns: around malls, metros, normal communities and infected communities, etc.
+Taking records of Bike Sharing Systems (BSSs) in Beijing, this paper characterizes not only temporal behavior patterns of share bike users: during ordinary days, holidays and the pandemic, but also spatial behavior patterns: around malls, metros, normal communities and infected communities, \textit{etc}.
 This paper illustrates the evolution of share bikes usage during the pandemic and discover the critical time \& places showing the significant impact on the productive and social activities.
 The association of public health interventions with improved control of the COVID-19 outbreak was extrapolated by conducting co-location analysis temporally. 
 These findings may provide critical information on how to respond to other epidemic events.
@@ -106,7 +106,7 @@ In this paper, we focus on the spatiotemporal patterns of public behavior respon
 To achieve this goal, VGI (Volunteered Geographical Information) plays an important role, in which online surveys and mobile phone positioning data could be references, but they do not cover all the population especially those who care about their privacy and are not willing to offer their precise position \cite{Li2016ISPRS}.  
 
 Wide-spread Bike Sharing System (BSS) in China provides with a possibility for analyzing such patterns of residents.
-The 3rd generation BSS emerges in China in 2015 thanks to rapid development of GIS-based and IoT-based system. 
+The 3rd generation BSS (free-floating BSS) emerges in China in 2015 thanks to rapid development of GIS-based and IoT-based system. 
 Compared to its predecessors, bikes of the 3rd generation BSS (hereinafter referred to as BSS) are no longer constrained by docking stations (so-called free floating bikes).
 They are often spread along the roads, congest around shopping/residential areas (RAs) and cover most of the urban residents. 
 As for city of Beijing, the amount of share bikes reached its peak in 2017 and the governors began removing excess supply afterwards. 
@@ -165,7 +165,7 @@ As a population-importing metropolis, Beijing has taken migitation efforts in re
 Under this circumstance, the activities of residents have been influenced and showing special spatiotemporal patterns different from ordinary days.
 
 \subsection{Data Sets}
-\textbf{BSS spatiotemporal data} Temporal positioning datasets come from 900 thousand share bikes belonging to 3 main BSS operators (Mobike, DiDi Bike, Hellobike and Ofo) in Beijing.
+\textbf{BSS spatiotemporal data} Temporal positioning datasets come from 900 thousand share bikes belonging to 4 main BSS operators (Mobike, DiDi Bike, Hellobike and Ofo) in Beijing.
 The datasets date from March 2018 to March 2020 (66.8 GB) and cover 1.5 million usage per day contributed by 11 million users which account for one half of the total population of Beijing.
 Records of the datasets contain the positioning and timing information of locking \& unlocking bikes, excluding that of rebalancing operations.
 This feature suggests that the movement of bikes are done by users.
@@ -296,7 +296,7 @@ During these periods, schools and workplaces were closed as part of the Chinese 
 The overall closure was then forced to be extended to mitigate the pandemic.
 
 % We also plotted the graph of share bike usage during rush hour (8:00-10:00 and 18:00-20:00) which reflects the productive activities.
-share bike usage on rush hours exhibits the periodicity of productive activities: high on weekdays and low on weekends, which fits our general knowledge.
+Share bike usage on rush hours exhibits the periodicity of productive activities: high on weekdays and low on weekends, which fits our general knowledge.
 However, this pattern does not appear on 10 Feb 2020 when the government declared the partial restart of certain productive and social activities.
 This anomaly suggests that the activities were not resumed at all until Feb 17, one week after the partial restart, corresponding to the fact that the impact of the pandemic was lasting till the end of our study period.
 
@@ -311,12 +311,14 @@ Share bike usage data are presented in the form $\bar{x}\pm2\sigma$.
         \hline
         \multirow{2}{*}{Phase} &\multicolumn{3}{c|}{Daily average share bike usage ($10^{5}$)}\\
         \cline{2-4}
-        & 08:00-09:00 (weekday) & 18:00-19:00 (weekday) & All-day\\
+        & 08:00-09:00 (on weekdays) & 18:00-19:00 (on weekdays) & All-day\\
         \hline
         02 Jan-20 Jan 2019 & $2.46\pm0.59$ & $1.30\pm0.39$ & $15.0\pm4.5$\\
         \hline
         02 Jan-20 Jan 2020 & $2.58\pm1.10$ & $1.37\pm0.74$ & $12.7\pm6.3$\\
         \hline
+        \hline
+        & 08:00-09:00 & 18:00-19:00 & All-day\\
         \hline
         04 Feb-10 Feb 2019 & $0.30\pm0.05$ & $0.24\pm0.08$ & $4.90\pm1.56$\\
         \hline
@@ -662,7 +664,6 @@ It should be highlighted that the accumulated confirmed cases stay substantially
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
 \section{Conclusion}
 
 Motivated by the current COVID-19 outbreak and rapid development in BSS, this paper reveals the period-wise spatiotemporal patterns and co-location patterns of the share bike usage before \& during the pandemic in Beijing, China.
@@ -690,7 +691,6 @@ Another possible extension is to build a dynamic model based on the features pre
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% optional
 %\supplementary{The following are available online at \linksupplementary{s1}, Figure S1: title, Table S1: title, Video S1: title.}
-
 
 \acknowledgments{This study was supported by National Key R\&D Program of China (2018YFB2100701), and Research Program of Beijing Advanced Innovation Center for Future Urban Design (UDC2019031321), and the National Natural Science Foundation of China(41601389).}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -830,4 +830,3 @@ RA & Residential Area
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \end{document}
-
