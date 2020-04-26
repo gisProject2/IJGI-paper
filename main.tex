@@ -3,7 +3,9 @@
 
 %=================================================================
 % \documentclass[ijgi,submit,moreauthors,pdftex]{Definitions/mdpi} 
-\documentclass[preprints,ijgi,submit,moreauthors]{Definitions/mdpi} 
+% \documentclass[preprints,ijgi,submit,moreauthors]{Definitions/mdpi} 
+
+\documentclass[preprints,article,accept,moreauthors,pdftex]{Definitions/mdpi}
 % If you would like to post an early version of this manuscript as a preprint, you may use preprint as the journal and change 'submit' to 'accept'. The document class line would be, e.g., \documentclass[preprints,article,accept,moreauthors,pdftex]{mdpi}. This is especially recommended for submission to arXiv, where line numbers should be removed before posting. For preprints.org, the editorial staff will make this change immediately prior to posting.
 
 %---------
@@ -178,19 +180,19 @@ Among hundreds of categories, we chose six mid ones characterizing productive an
 \begin{figure}[ht]
     \centering
     \begin{subfigure}{.23\textwidth}
-        \includegraphics[width=\textwidth]{Figures/ConfirmedDistrictD2020_01_25.eps}
+    	\includegraphics[width=\textwidth]{Figures/ConfirmedDistrictD2020_01_25.eps}
         \caption{25 Jan, 2020}
     \end{subfigure}
     \begin{subfigure}{.23\textwidth}
-        \includegraphics[width=\textwidth]{Figures/ConfirmedDistrictD2020_01_30.eps}
+		\includegraphics[width=\textwidth]{Figures/ConfirmedDistrictD2020_01_30.eps}
         \caption{30 Jan, 2020}
     \end{subfigure}
     \begin{subfigure}{.23\textwidth}
-        \includegraphics[width=\textwidth]{Figures/ConfirmedDistrictD2020_02_05.eps}
+    	\includegraphics[width=\textwidth]{Figures/ConfirmedDistrictD2020_02_05.eps}
         \caption{05 Feb, 2020}
     \end{subfigure}
     \begin{subfigure}{.23\textwidth}
-        \includegraphics[width=\textwidth]{Figures/ConfirmedDistrictD2020_02_10.eps}
+    	\includegraphics[width=\textwidth]{Figures/ConfirmedDistrictD2020_02_10.eps}
         \caption{10 Feb, 2020}
     \end{subfigure}
 
@@ -416,51 +418,84 @@ We can conclude the residents in Beijing followed exactly the suppression strate
 \begin{figure}[ht]
     \centering
     \begin{subfigure}{.23\textwidth}
-        \includegraphics[width=\textwidth]{Figures/Overall_spatial_patterns/FN5_D2020_01_21.eps}
+    	\begin{tikzpicture}
+            \node (a) {\includegraphics[width=\textwidth]{basic2.png}};
+            \node at (a) {\includegraphics[width=\textwidth]{Figures/Overall_spatial_patterns/FN5_D2020_01_21.eps}};
+        \end{tikzpicture}
         \caption{21 Jan}
     \end{subfigure}
     \begin{subfigure}{.23\textwidth}
-        \includegraphics[width=\textwidth]{Figures/Overall_spatial_patterns/FN5_D2020_01_25.eps}
+    	\begin{tikzpicture}
+            \node (a) {\includegraphics[width=\textwidth]{basic2.png}};
+            \node at (a) {\includegraphics[width=\textwidth]{Figures/Overall_spatial_patterns/FN5_D2020_01_25.eps}};
+        \end{tikzpicture}
         \caption{25 Jan}
     \end{subfigure}
     \begin{subfigure}{.23\textwidth}
-        \includegraphics[width=\textwidth]{Figures/Overall_spatial_patterns/FN5_D2020_01_29.eps}
+    	\begin{tikzpicture}
+            \node (a) {\includegraphics[width=\textwidth]{basic2.png}};
+            \node at (a) {\includegraphics[width=\textwidth]{Figures/Overall_spatial_patterns/FN5_D2020_01_29.eps}};
+        \end{tikzpicture}
         \caption{29 Jan}
     \end{subfigure}
         \begin{subfigure}{.23\textwidth}
-        \includegraphics[width=\textwidth]{Figures/Overall_spatial_patterns/FN5_D2020_02_02.eps}
+    	\begin{tikzpicture}
+            \node (a) {\includegraphics[width=\textwidth]{basic2.png}};
+            \node at (a) {\includegraphics[width=\textwidth]{Figures/Overall_spatial_patterns/FN5_D2020_02_02.eps}};
+        \end{tikzpicture}
         \caption{02 Feb}
     \end{subfigure}
     
     \vspace{6pt}
     \begin{subfigure}{.23\textwidth}
-        \includegraphics[width=\textwidth]{Figures/Overall_spatial_patterns/FN5_D2020_02_06.eps}
+    	\begin{tikzpicture}
+            \node (a) {\includegraphics[width=\textwidth]{basic2.png}};
+            \node at (a) {\includegraphics[width=\textwidth]{Figures/Overall_spatial_patterns/FN5_D2020_02_06.eps}};
+        \end{tikzpicture}
         \caption{06 Feb}
     \end{subfigure}
     \begin{subfigure}{.23\textwidth}
-        \includegraphics[width=\textwidth]{Figures/Overall_spatial_patterns/FN5_D2020_02_10.eps}
+    	\begin{tikzpicture}
+            \node (a) {\includegraphics[width=\textwidth]{basic2.png}};
+            \node at (a) {\includegraphics[width=\textwidth]{Figures/Overall_spatial_patterns/FN5_D2020_02_10.eps}};
+        \end{tikzpicture}
         \caption{10 Feb}\label{fig:pattern_02_10}
     \end{subfigure}
     \begin{subfigure}{.23\textwidth}
-        \includegraphics[width=\textwidth]{Figures/Overall_spatial_patterns/FN5_D2020_02_14.eps}
+    	\begin{tikzpicture}
+            \node (a) {\includegraphics[width=\textwidth]{basic2.png}};
+            \node at (a) {\includegraphics[width=\textwidth]{Figures/Overall_spatial_patterns/FN5_D2020_02_14.eps}};
+        \end{tikzpicture}
         \caption{14 Feb}
     \end{subfigure}
         \begin{subfigure}{.23\textwidth}
-        \includegraphics[width=\textwidth]{Figures/Overall_spatial_patterns/FN5_D2020_02_18.eps}
+    	\begin{tikzpicture}
+            \node (a) {\includegraphics[width=\textwidth]{basic2.png}};
+            \node at (a) {\includegraphics[width=\textwidth]{Figures/Overall_spatial_patterns/FN5_D2020_02_18.eps}};
+        \end{tikzpicture}
         \caption{18 Feb}
     \end{subfigure}
     
     \vspace{6pt}
     \begin{subfigure}{.23\textwidth}
-        \includegraphics[width=\textwidth]{Figures/Overall_spatial_patterns/FN5_D2020_02_22.eps}
+    	\begin{tikzpicture}
+            \node (a) {\includegraphics[width=\textwidth]{basic2.png}};
+            \node at (a) {\includegraphics[width=\textwidth]{Figures/Overall_spatial_patterns/FN5_D2020_02_22.eps}};
+        \end{tikzpicture}
         \caption{24 Feb}
     \end{subfigure}
     \begin{subfigure}{.23\textwidth}
-        \includegraphics[width=\textwidth]{Figures/Overall_spatial_patterns/FN5_D2020_02_26.eps}
+    	\begin{tikzpicture}
+            \node (a) {\includegraphics[width=\textwidth]{basic2.png}};
+            \node at (a) {\includegraphics[width=\textwidth]{Figures/Overall_spatial_patterns/FN5_D2020_02_26.eps}};
+        \end{tikzpicture}
         \caption{26 Feb}
     \end{subfigure}
     \begin{subfigure}{.23\textwidth}
-        \includegraphics[width=\textwidth]{Figures/Overall_spatial_patterns/FN5_D2020_03_01.eps}
+    	\begin{tikzpicture}
+            \node (a) {\includegraphics[width=\textwidth]{basic2.png}};
+            \node at (a) {\includegraphics[width=\textwidth]{Figures/Overall_spatial_patterns/FN5_D2020_03_01.eps}};
+        \end{tikzpicture}
         \caption{01 Mar}\label{fig:pattern_03_01}
     \end{subfigure}
     \begin{subfigure}{.13\textwidth}
@@ -508,15 +543,24 @@ The average values of aggregated daily share bikes records from each pandemic ph
 \begin{figure}[ht]
     \centering
     \begin{subfigure}{.28\textwidth}
-        \includegraphics[width=\textwidth]{Figures/BSSPhase1_2020.eps}
+    	\begin{tikzpicture}
+            \node (a) {\includegraphics[width=\textwidth]{basic2.png}};
+            \node at (a) {\includegraphics[width=\textwidth]{Figures/BSSPhase1_2020.eps}};
+        \end{tikzpicture}
         \caption{\textbf{Phase a} of 2020}\label{fig:p_a_2020}
     \end{subfigure}
     \begin{subfigure}{.28\textwidth}
-        \includegraphics[width=\textwidth]{Figures/BSSPhase2_2020.eps}
+    	\begin{tikzpicture}
+            \node (a) {\includegraphics[width=\textwidth]{basic2.png}};
+            \node at (a) {\includegraphics[width=\textwidth]{Figures/BSSPhase2_2020.eps}};
+        \end{tikzpicture}
         \caption{\textbf{Phase b} of 2020}\label{fig:p_b_2020}
     \end{subfigure}
     \begin{subfigure}{.28\textwidth}
-        \includegraphics[width=\textwidth]{Figures/BSSPhase3_2020.eps}
+    	\begin{tikzpicture}
+            \node (a) {\includegraphics[width=\textwidth]{basic2.png}};
+            \node at (a) {\includegraphics[width=\textwidth]{Figures/BSSPhase3_2020.eps}};
+        \end{tikzpicture}
         \caption{\textbf{Phase c} of 2020}\label{fig:p_c_2020}
     \end{subfigure}
     \begin{subfigure}{.14\textwidth}
@@ -525,15 +569,24 @@ The average values of aggregated daily share bikes records from each pandemic ph
     
     \vspace{6pt}
     \begin{subfigure}{.28\textwidth}
-        \includegraphics[width=\textwidth]{Figures/BSSPhase1_2019.eps}
+    	\begin{tikzpicture}
+            \node (a) {\includegraphics[width=\textwidth]{basic2.png}};
+            \node at (a) {\includegraphics[width=\textwidth]{Figures/BSSPhase1_2019.eps}};
+        \end{tikzpicture}
         \caption{\textbf{Phase a} of 2019}\label{fig:p_a_2019}
     \end{subfigure}
     \begin{subfigure}{.28\textwidth}
-        \includegraphics[width=\textwidth]{Figures/BSSPhase2_2019.eps}
+    	\begin{tikzpicture}
+            \node (a) {\includegraphics[width=\textwidth]{basic2.png}};
+            \node at (a) {\includegraphics[width=\textwidth]{Figures/BSSPhase2_2019.eps}};
+        \end{tikzpicture}
         \caption{\textbf{Phase b} of 2019}\label{fig:p_b_2019}
     \end{subfigure}
     \begin{subfigure}{.28\textwidth}
-        \includegraphics[width=\textwidth]{Figures/BSSPhase3_2019.eps}
+    	\begin{tikzpicture}
+            \node (a) {\includegraphics[width=\textwidth]{basic2.png}};
+            \node at (a) {\includegraphics[width=\textwidth]{Figures/BSSPhase3_2019.eps}};
+        \end{tikzpicture}
         \caption{\textbf{Phase c} of 2019}\label{fig:p_c_2019}
     \end{subfigure}
     \begin{subfigure}{.14\textwidth}
@@ -542,15 +595,24 @@ The average values of aggregated daily share bikes records from each pandemic ph
     
     \vspace{6pt}
     \begin{subfigure}{.28\textwidth}
-        \includegraphics[width=\textwidth]{Figures/BSSMinusmp1.eps}
+    	\begin{tikzpicture}
+            \node (a) {\includegraphics[width=\textwidth]{basic2.png}};
+            \node at (a) {\includegraphics[width=\textwidth]{Figures/BSSMinusmp1.eps}};
+        \end{tikzpicture}
         \caption{Difference between a and d)}\label{fig:p_a_dif}
     \end{subfigure}
         \begin{subfigure}{.28\textwidth}
-        \includegraphics[width=\textwidth]{Figures/BSSMinusmp2.eps}
+    	\begin{tikzpicture}
+            \node (a) {\includegraphics[width=\textwidth]{basic2.png}};
+            \node at (a) {\includegraphics[width=\textwidth]{Figures/BSSMinusmp2.eps}};
+        \end{tikzpicture}
         \caption{Difference between b and e)}\label{fig:p_b_dif}
     \end{subfigure}
         \begin{subfigure}{.28\textwidth}
-        \includegraphics[width=\textwidth]{Figures/BSSMinusmp3.eps}
+    	\begin{tikzpicture}
+            \node (a) {\includegraphics[width=\textwidth]{basic2.png}};
+            \node at (a) {\includegraphics[width=\textwidth]{Figures/BSSMinusmp3.eps}};
+        \end{tikzpicture}
         \caption{Difference between c and f)}\label{fig:p_c_dif}
     \end{subfigure}
     \begin{subfigure}{.14\textwidth}
@@ -591,25 +653,40 @@ As a result, the number of newly confirmed COVID-19 cases was effectively suppre
 \begin{figure}[ht]
     \centering
     \begin{subfigure}{.3\textwidth}
-        \includegraphics[width=\textwidth]{Figures/Relation_with_confrimed_cases/NewDistrictSSBD2020_01_21.eps}
+    	\begin{tikzpicture}
+            \node (a) {\includegraphics[width=\textwidth]{basic2.png}};
+            \node at (a) {\includegraphics[width=\textwidth]{Figures/Relation_with_confrimed_cases/NewDistrictSSBD2020_01_21.eps}};
+        \end{tikzpicture}
         \caption{21 Jan}
     \end{subfigure}
     \begin{subfigure}{.3\textwidth}
-        \includegraphics[width=\textwidth]{Figures/Relation_with_confrimed_cases/NewDistrictSSBD2020_01_25.eps}
+    	\begin{tikzpicture}
+            \node (a) {\includegraphics[width=\textwidth]{basic2.png}};
+            \node at (a) {\includegraphics[width=\textwidth]{Figures/Relation_with_confrimed_cases/NewDistrictSSBD2020_01_25.eps}};
+        \end{tikzpicture}
         \caption{25 Jan}
     \end{subfigure}
     \begin{subfigure}{.3\textwidth}
-        \includegraphics[width=\textwidth]{Figures/Relation_with_confrimed_cases/NewDistrictSSBD2020_01_30.eps}
+    	\begin{tikzpicture}
+            \node (a) {\includegraphics[width=\textwidth]{basic2.png}};
+            \node at (a) {\includegraphics[width=\textwidth]{Figures/Relation_with_confrimed_cases/NewDistrictSSBD2020_01_30.eps}};
+        \end{tikzpicture}
         \caption{30 Jan}
     \end{subfigure}
 
     \vspace{6pt}
     \begin{subfigure}{.3\textwidth}
-        \includegraphics[width=\textwidth]{Figures/Relation_with_confrimed_cases/NewDistrictSSBD2020_02_04.eps}
+    	\begin{tikzpicture}
+            \node (a) {\includegraphics[width=\textwidth]{basic2.png}};
+            \node at (a) {\includegraphics[width=\textwidth]{Figures/Relation_with_confrimed_cases/NewDistrictSSBD2020_02_04.eps}};
+        \end{tikzpicture}
         \caption{04 Feb}
     \end{subfigure}
     \begin{subfigure}{.3\textwidth}
-        \includegraphics[width=\textwidth]{Figures/Relation_with_confrimed_cases/NewDistrictSSBD2020_02_08.eps}
+    	\begin{tikzpicture}
+            \node (a) {\includegraphics[width=\textwidth]{basic2.png}};
+            \node at (a) {\includegraphics[width=\textwidth]{Figures/Relation_with_confrimed_cases/NewDistrictSSBD2020_02_08.eps}};
+        \end{tikzpicture}
         \caption{08 Feb}
     \end{subfigure}
     \begin{subfigure}{.3\textwidth}
@@ -632,29 +709,47 @@ It should be highlighted that the accumulated confirmed cases stay substantially
 \begin{figure}[ht]
     \centering
     \begin{subfigure}{.3\textwidth}
-        \includegraphics[width=\textwidth]{Figures/Relation_with_confrimed_cases/NewDistrictSSBD2020_02_12.eps}
+    	\begin{tikzpicture}
+            \node (a) {\includegraphics[width=\textwidth]{basic2.png}};
+            \node at (a) {\includegraphics[width=\textwidth]{Figures/Relation_with_confrimed_cases/NewDistrictSSBD2020_02_12.eps}};
+        \end{tikzpicture}
         \caption{12 Feb}\label{fig:correlation_02_12}
     \end{subfigure}
     \begin{subfigure}{.3\textwidth}
-        \includegraphics[width=\textwidth]{Figures/Relation_with_confrimed_cases/NewDistrictSSBD2020_02_17.eps}
+    	\begin{tikzpicture}
+            \node (a) {\includegraphics[width=\textwidth]{basic2.png}};
+            \node at (a) {\includegraphics[width=\textwidth]{Figures/Relation_with_confrimed_cases/NewDistrictSSBD2020_02_17.eps}};
+        \end{tikzpicture}
         \caption{17 Feb}\label{fig:correlation_02_17}
     \end{subfigure}
     \begin{subfigure}{.3\textwidth}
-        \includegraphics[width=\textwidth]{Figures/Relation_with_confrimed_cases/NewDistrictSSBD2020_02_20.eps}
+    	\begin{tikzpicture}
+            \node (a) {\includegraphics[width=\textwidth]{basic2.png}};
+            \node at (a) {\includegraphics[width=\textwidth]{Figures/Relation_with_confrimed_cases/NewDistrictSSBD2020_02_20.eps}};
+        \end{tikzpicture}
         \caption{20 Feb}\label{fig:correlation_02_20}
     \end{subfigure}
     
     \vspace{6pt}
     \begin{subfigure}{.3\textwidth}
-        \includegraphics[width=\textwidth]{Figures/Relation_with_confrimed_cases/NewDistrictSSBD2020_02_24.eps}
+    	\begin{tikzpicture}
+            \node (a) {\includegraphics[width=\textwidth]{basic2.png}};
+            \node at (a) {\includegraphics[width=\textwidth]{Figures/Relation_with_confrimed_cases/NewDistrictSSBD2020_02_24.eps}};
+        \end{tikzpicture}
         \caption{24 Feb}\label{fig:correlation_02_24}
     \end{subfigure}
     \begin{subfigure}{.3\textwidth}
-        \includegraphics[width=\textwidth]{Figures/Relation_with_confrimed_cases/NewDistrictSSBD2020_02_28.eps}
+    	\begin{tikzpicture}
+            \node (a) {\includegraphics[width=\textwidth]{basic2.png}};
+            \node at (a) {\includegraphics[width=\textwidth]{Figures/Relation_with_confrimed_cases/NewDistrictSSBD2020_02_28.eps}};
+        \end{tikzpicture}
         \caption{28 Feb}\label{fig:correlation_02_28}
     \end{subfigure}
     \begin{subfigure}{.3\textwidth}
-        \includegraphics[width=\textwidth]{Figures/Relation_with_confrimed_cases/NewDistrictSSBD2020_02_29.eps}
+    	\begin{tikzpicture}
+            \node (a) {\includegraphics[width=\textwidth]{basic2.png}};
+            \node at (a) {\includegraphics[width=\textwidth]{Figures/Relation_with_confrimed_cases/NewDistrictSSBD2020_02_29.eps}};
+        \end{tikzpicture}
         \caption{29 Feb}\label{fig:correlation_02_29}
     \end{subfigure}
     \caption{Relationships between aggregated share bikes records and confirmed cases during \textbf{phase c}.}
@@ -719,16 +814,25 @@ RA & Residential Area
 
 \begin{figure}[H]
     \centering
-    \begin{subfigure}{.32\textwidth}
-        \includegraphics[width=\textwidth]{Figures/Relation_with_POIs/POIsRAD2020_01_16.pdf}
+    \begin{subfigure}{.3\textwidth}
+    	\begin{tikzpicture}
+            \node (a) {\includegraphics[width=\textwidth]{basic2.png}};
+            \node[opacity=0.5] at (a) {\includegraphics[width=\textwidth]{Figures/Relation_with_POIs/POIsRAD2020_01_16.pdf}};
+        \end{tikzpicture}
         \caption{16 Jan}
     \end{subfigure}
-    \begin{subfigure}{.32\textwidth}
-        \includegraphics[width=\textwidth]{Figures/Relation_with_POIs/POIsRAD2020_02_15.pdf}
+    \begin{subfigure}{.3\textwidth}
+    	\begin{tikzpicture}
+            \node (a) {\includegraphics[width=\textwidth]{basic2.png}};
+            \node[opacity=0.5] at (a) {\includegraphics[width=\textwidth]{Figures/Relation_with_POIs/POIsRAD2020_02_15.pdf}};
+        \end{tikzpicture}
         \caption{15 Feb}
     \end{subfigure}
-    \begin{subfigure}{.32\textwidth}
-        \includegraphics[width=\textwidth]{Figures/Relation_with_POIs/POIsRAD2020_03_02.pdf}
+    \begin{subfigure}{.3\textwidth}
+    	\begin{tikzpicture}
+            \node (a) {\includegraphics[width=\textwidth]{basic2.png}};
+            \node[opacity=0.5] at (a) {\includegraphics[width=\textwidth]{Figures/Relation_with_POIs/POIsRAD2020_03_02.pdf}};
+        \end{tikzpicture}
         \caption{02 Mar}
     \end{subfigure}
 
@@ -744,16 +848,25 @@ RA & Residential Area
 
 \begin{figure}[H]
     \centering
-    \begin{subfigure}{.32\textwidth}
-        \includegraphics[width=\textwidth]{Figures/Relation_with_POIs/POIsMetroD2020_01_16.pdf}
+    \begin{subfigure}{.3\textwidth}
+    	\begin{tikzpicture}
+            \node (a) {\includegraphics[width=\textwidth]{basic2.png}};
+            \node[opacity=0.5] at (a) {\includegraphics[width=\textwidth]{Figures/Relation_with_POIs/POIsMetroD2020_01_16.pdf}};
+        \end{tikzpicture}
         \caption{16 Jan}
     \end{subfigure}
-    \begin{subfigure}{.32\textwidth}
-        \includegraphics[width=\textwidth]{Figures/Relation_with_POIs/POIsMetroD2020_02_15.pdf}
+    \begin{subfigure}{.3\textwidth}
+    	\begin{tikzpicture}
+            \node (a) {\includegraphics[width=\textwidth]{basic2.png}};
+            \node[opacity=0.5] at (a) {\includegraphics[width=\textwidth]{Figures/Relation_with_POIs/POIsMetroD2020_02_15.pdf}};
+        \end{tikzpicture}
         \caption{15 Feb}
     \end{subfigure}
-    \begin{subfigure}{.32\textwidth}
-        \includegraphics[width=\textwidth]{Figures/Relation_with_POIs/POIsMetroD2020_03_02.pdf}
+    \begin{subfigure}{.3\textwidth}
+    	\begin{tikzpicture}
+            \node (a) {\includegraphics[width=\textwidth]{basic2.png}};
+            \node[opacity=0.5] at (a) {\includegraphics[width=\textwidth]{Figures/Relation_with_POIs/POIsMetroD2020_03_02.pdf}};
+        \end{tikzpicture}
         \caption{02 Mar}
     \end{subfigure}
 
@@ -769,16 +882,25 @@ RA & Residential Area
 
 \begin{figure}[H]
     \centering
-    \begin{subfigure}{.32\textwidth}
-        \includegraphics[width=\textwidth]{Figures/Relation_with_POIs/POIsMallD2020_01_16.pdf}
+    \begin{subfigure}{.3\textwidth}
+    	\begin{tikzpicture}
+            \node (a) {\includegraphics[width=\textwidth]{basic2.png}};
+            \node[opacity=0.5] at (a) {\includegraphics[width=\textwidth]{Figures/Relation_with_POIs/POIsMallD2020_01_16.pdf}};
+        \end{tikzpicture}
         \caption{16 Jan}
     \end{subfigure}
-    \begin{subfigure}{.32\textwidth}
-        \includegraphics[width=\textwidth]{Figures/Relation_with_POIs/POIsMallD2020_02_15.pdf}
+    \begin{subfigure}{.3\textwidth}
+    	\begin{tikzpicture}
+            \node (a) {\includegraphics[width=\textwidth]{basic2.png}};
+            \node[opacity=0.5] at (a) {\includegraphics[width=\textwidth]{Figures/Relation_with_POIs/POIsMallD2020_02_15.pdf}};
+        \end{tikzpicture}
         \caption{15 Feb}
     \end{subfigure}
-    \begin{subfigure}{.32\textwidth}
-        \includegraphics[width=\textwidth]{Figures/Relation_with_POIs/POIsMallD2020_03_02.pdf}
+    \begin{subfigure}{.3\textwidth}
+    	\begin{tikzpicture}
+            \node (a) {\includegraphics[width=\textwidth]{basic2.png}};
+            \node[opacity=0.5] at (a) {\includegraphics[width=\textwidth]{Figures/Relation_with_POIs/POIsMallD2020_03_02.pdf}};
+        \end{tikzpicture}
         \caption{02 Mar}
     \end{subfigure}
 
@@ -793,16 +915,26 @@ RA & Residential Area
 % \textcolor{red}{Visualization and analysis on companies and BSS usage with respect to epidemic period.}
 \begin{figure}[H]
     \centering
-    \begin{subfigure}{.32\textwidth}
-        \includegraphics[width=\textwidth]{Figures/Relation_with_POIs/POIsITD2020_01_16.pdf}
+    \begin{subfigure}{.3\textwidth}
+    	\begin{tikzpicture}
+            \node (a) {\includegraphics[width=\textwidth]{basic2.png}};
+            \node[opacity=0.5] at (a) {\includegraphics[width=\textwidth]{Figures/Relation_with_POIs/POIsITD2020_01_16.pdf}};
+        \end{tikzpicture}
         \caption{16 Jan}
     \end{subfigure}
-    \begin{subfigure}{.32\textwidth}
-        \includegraphics[width=\textwidth]{Figures/Relation_with_POIs/POIsITD2020_02_15.pdf}
+    \begin{subfigure}{.3\textwidth}
+    	\begin{tikzpicture}
+            \node (a) {\includegraphics[width=\textwidth]{basic2.png}};
+            \node[opacity=0.5] at (a) {\includegraphics[width=\textwidth]{Figures/Relation_with_POIs/POIsITD2020_02_15.pdf}};
+        \end{tikzpicture}
+        
         \caption{15 Feb}
     \end{subfigure}
-    \begin{subfigure}{.32\textwidth}
-        \includegraphics[width=\textwidth]{Figures/Relation_with_POIs/POIsITD2020_03_02.pdf}
+    \begin{subfigure}{.3\textwidth}
+    	\begin{tikzpicture}
+            \node (a) {\includegraphics[width=\textwidth]{basic2.png}};
+            \node[opacity=0.5] at (a) {\includegraphics[width=\textwidth]{Figures/Relation_with_POIs/POIsITD2020_03_02.pdf}};
+        \end{tikzpicture}
         \caption{02 Mar}
     \end{subfigure}
 
