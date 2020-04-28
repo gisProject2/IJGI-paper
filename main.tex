@@ -96,8 +96,7 @@ These findings could provide critical information on how to respond to the curre
 \pdfminorversion=7
 \begin{document}
 \section{Introduction}
-In December 2019, a local outbreak of pneumonia was detected in Wuhan, China, identified afterwards as COVID-19 and the virus as SARS-CoV-2\footnote{\url{https://www.who.int/emergencies/diseases/novel-coronavirus-2019/technical-guidance/naming-the-coronavirus-disease-(covid-2019)-and-the-virus-that-causes-it}}.
-COVID-19 quickly spread to the whole country and majority of countries worldwide.
+COVID-19 is a rapidly spreading infectious disease caused by the novel coronavirus SARS-COV-2, which has now established a global pandemic\footnote{\url{https://www.who.int/emergencies/diseases/novel-coronavirus-2019/technical-guidance/naming-the-coronavirus-disease-(covid-2019)-and-the-virus-that-causes-it}}.
 According to a situation report of WHO\footnote{\url{https://www.who.int/docs/default-source/coronaviruse/situation-reports/20200422-sitrep-93-covid-19.pdf}}, the worldwide total confirmed cases have reached 2,471,136 including 84,287 that of China as of 22 April, 2020.
 
 It is well-accepted that COVID-19 pandemic inflicts huge impact on public health and most of the domains of economy, from the Chinese New Year holiday till today (April 2020).
@@ -107,8 +106,14 @@ Ferguson et al.\ \cite{ferguson2020report} have studied two main strategies in t
 \textit{mitigation}, case of Great Britain and the United States, may not able to deal with all those with severe disease and resulting in high mortality.
 In this paper, we focus on the spatiotemporal patterns of public behavior response to the COVID-19 pandemic in Beijing, China.
 
-To achieve this goal, VGI (Volunteered Geographical Information) plays an important role, in which online surveys and mobile phone positioning data could be references, but they do not cover all the population especially those who care about their privacy and are not willing to offer their precise position \cite{Li2016ISPRS}.  
+To achieve this goal, VGI (Volunteered Geographical Information) plays an important role, in which online surveys and mobile phone positioning data could be references, but they do not cover all the population especially those who care about their privacy and are not willing to offer their precise position \cite{Li2016ISPRS}. 
+The emergence of geospatial big data has great potential to benefit the applications in disease surveillance and disaster response \cite{Yu2018Big, Goodchild2010Crowdsourcing, Huang2015Predicating}.
+Horanont et al.\ \cite{Horanont2013Auto} made use of mobile phone data collected after the 2011 Great Japan Earthquake and provided useful information on how humans react in disaster scenarios and how the evacuation process can be monitored.
+After the 2015 Nepal Earthquake, Wilson et al.\ \cite{Wilson2016Rapid} used call detail records pertaining to phone metadata tracking numbers and times of calls to estimate population distribution and socioeconomic status for risk assessment.
+With geotagged social media data, Chae et al.\ \cite{CHAE2013Public} conducted comprehensive research in spatiotemporal analysis and created a spatial decision support environment that assists in evacuation planning and disaster management.
+Wesolowski et al.\ \cite{Wesolowski2012Quantifying} used spatially explicit mobile phone data and malaria prevalence information from Kenya to identify the dynamics of human carriers that drive parasite importation between regions. 
 
+Understanding and modeling residents flow significantly contribute to citywide emergency management and post-disaster recovery.
 Wide-spread Bike Sharing System (BSS) in China provides with a possibility for analyzing such patterns of residents.
 The 3rd generation BSS (free-floating BSS) emerges in China in 2015 thanks to rapid development of GIS-based and IoT-based system. 
 Compared to its predecessors, bikes of the 3rd generation BSS (hereinafter referred to as BSS) are no longer constrained by docking stations (so-called free floating bikes).
@@ -117,32 +122,32 @@ As for city of Beijing, the amount of share bikes reached its peak in 2017 and t
 After two years of development and regulation of BSS, the demand and the supply of share bikes meet a balance in 2019, which could be regarded as a stable data source.
 BSS records contain time and location information of bike usages from anonymous users, providing a valuable indicator of human presence, thus offering a promising alternative data source for increasing the spatial and temporal detail of the mobility and the activities of residents during pandemic.
 According to Daxue Consulting \cite{bssmodel}, in Beijing, 93\% of travels less than 5km are quicker done by bike and public transport than with the car, which suggests share bikes has a potential reflection on the local mobility of residents.
+The activities of residents in various regions can be easily captured with BSS data, and used to address the issues such as traffic planning, urban vitality assessment.
+Du et al.\ \cite{du2018better} studied the travel patterns of BSS in Nanjing via limited questionnaires.
+Xu et al.\ \cite{xu2019unravel} characterized the share bike temporal flow and spatial distribution in Singapore.
+Kaggle organized a competition of predicting share bike demands\footnote{\url{https://www.kaggle.com/c/bike-sharing-demand}} based on limited entries.
+There are also studies of BSS focusing on rebalancing strategies \cite{pal2017free, ai2019deep,chen2016dynamic}.
+While BSS data analytics has been successfully applied in many sectors, their application in pandemic response is still at its early stages.
+Moreover, due to limited emerging understanding of the new virus and its transmission mechanism, revealing its impacts on public behavior remains challenging.
+As far as we know, there is no study on the impact of social events and/or emergencies based on the 3rd generation BSS.
 
 In this study, we use share bike usage records to measure period-wise spatiotemporal patterns and co-location patterns. 
 To demonstrate the specific impact of the COVID-19 on individuals, comparison between the patterns of 2019 and 2020 and correlation analysis with the progress of confirmed cases have been implemented.
 The changes in behavior of residents subjecting to different pandemic phases can be inferred from the co-location analysis between the BSS patterns and POI locations, which provides insights into pandemic evolution and public reactions.
 These results on human mobiliy are potential to assist policy-making and facilitate research on epidemiology especially epidemical forcast.
 
-\section*{Related Work}
-The emergence of geospatial big data has great potential to benefit the applications in disease surveillance and disaster response \cite{Yu2018Big, Goodchild2010Crowdsourcing, Huang2015Predicating}.
-Horanont et al.\ \cite{Horanont2013Auto} made use of mobile phone data collected after the 2011 Great Japan Earthquake and provided useful information on how humans react in disaster scenarios and how the evacuation process can be monitored.
-After the 2015 Nepal Earthquake, Wilson et al.\ \cite{Wilson2016Rapid} used call detail records pertaining to phone metadata tracking numbers and times of calls to estimate population distribution and socioeconomic status for risk assessment.
-With geotagged social media data, Chae et al.\ \cite{CHAE2013Public} conducted comprehensive research in spatiotemporal analysis and created a spatial decision support environment that assists in evacuation planning and disaster management.
-Wesolowski et al.\ \cite{Wesolowski2012Quantifying} used spatially explicit mobile phone data and malaria prevalence information from Kenya to identify the dynamics of human carriers that drive parasite importation between regions.
-
-Understanding and modeling residents flow significantly contribute to citywide emergency management and post-disaster recovery.
-The activities of residents in various regions can be easily captured with BSS data, and used to address the issues such as traffic planning, urban vitality assessment.
-Du et al.\ \cite{du2018better} studied the travel patterns of BSS in Nanjing via limited questionnaires.
-Xu et al.\ \cite{xu2019unravel} characterized the share bike temporal flow and spatial distribution in Singapore.
-Kaggle organized a competition of predicting share bike demands\footnote{\url{https://www.kaggle.com/c/bike-sharing-demand}} based on limited entries.
-There are also studies of BSS focusing on rebalancing strategies \cite{pal2017free, ai2019deep,chen2016dynamic}.
-As far as we know, there is no study on the impact of social events and/or emergencies based on the 3rd generation BSS.
-
-While BSS data analytics has been successfully applied in many sectors, their application in pandemic response is still at its early stages.
-Moreover, due to limited emerging understanding of the new virus and its transmission mechanism, revealing its impacts on public behavior remains challenging.
 To address this issue, we use share bike usage records to measure period-wise spatiotemporal patterns and co-location patterns. 
 Results indicate that large mobility reductions appear due to the onset of the COVID-19 threat and administrative restrictions.
 Co-location analysis between the temporal usage patterns and facilities locations reveals the influence of pandemic in different phases.
+
+
+
+
+
+
+
+
+
 
 \section*{Contribution} As the pandemic of COVID-19 and the Chinese New Year meet by coincidence, we tried to avoid the influence of this national holiday, then assess the impact of the COVID-19 pandemic and the influence of suppression strategy via four aspects:
 \begin{enumerate}
