@@ -76,12 +76,12 @@ $^{2}$ \quad China Location-Based Service, 100191 Beijing, China; xw.chai@chinal
 \corres{Correspondence:  guoxian@bucea.edu.cn; Tel.: +86 (010) 6120 9335}
 
 \abstract{During the epidemics of COVID-19, the whole world is experiencing a serious crisis on public health and economy.
-Detailed information in the behavior of residents during epidemic benefits the emergency management when one tries to design intervention strategies and resilience measures.
+Detailed information in the behavior of residents during epidemic benefits emergency management when one tries to design intervention strategies and resilience measures.
 From the perspective of movements, the widely used Bike Sharing System (BSS) in China is capable of characterizing the behavior patterns over time \& space within big cities.
-Although share bike usages has been applied in many sectors, they are rarely reported in pandemic researches.
-Based on long time sequenced share bike records collected in Beijing, we analyzed the spatiotemporal behavior patterns of local residents, figured out the key time nodes of different pandemic periods and demonstrated the mobility reductions due to the onset of the COVID-19 threat and administrative restrictions. 
+Although share bikes have been applied in many sectors, they are rarely reported in pandemic researches.
+Based on long time-sequenced share bike records collected in Beijing, we analyzed the spatiotemporal behavior patterns of residents, figured out the key time nodes of different pandemic periods, and demonstrated the mobility reductions due to the onset of the COVID-19 threat and administrative restrictions. 
 The impact of the pandemic on the productive and social activities was estimated by performing co-location analysis between behavior patterns and POIs.
-Discussions with evolving confirmed COVID-19 cases suggest the effectiveness and necessity of the public interventions in the COVID-19 containment during resilience period.
+Discussions with evolving confirmed COVID-19 cases suggest the effectiveness and necessity of the public interventions in the COVID-19 containment during the resilience period.
 These findings could provide critical information on how to respond to the current COVID-19 outbreak and other epidemic events.
 }
 
@@ -97,13 +97,13 @@ These findings could provide critical information on how to respond to the curre
 \begin{document}
 \section{Introduction}
 COVID-19 is a rapidly spreading infectious disease caused by the novel coronavirus SARS-COV-2, which has now established a global pandemic\footnote{\url{https://www.who.int/emergencies/diseases/novel-coronavirus-2019/technical-guidance/naming-the-coronavirus-disease-(covid-2019)-and-the-virus-that-causes-it}}.
-According to a situation report of WHO\footnote{\url{https://www.who.int/docs/default-source/coronaviruse/situation-reports/20200422-sitrep-93-covid-19.pdf}}, the worldwide total confirmed cases have reached 2,471,136 including 84,287 that of China as of 22 April, 2020.
-It is well-accepted that COVID-19 pandemic inflicts huge impact on public health and most of the domains of economy, from the Chinese New Year holiday till today (April 2020).
+According to a situation report of WHO\footnote{\url{https://www.who.int/docs/default-source/coronaviruse/situation-reports/20200422-sitrep-93-covid-19.pdf}}, the worldwide total confirmed cases have reached 2,471,136 including 84,287 that of China as of 22 April 2020.
+It is well-accepted that COVID-19 pandemic inflicts a huge impact on public health and most of the domains of economy, from the Chinese New Year holiday till today (April 2020).
 
 Current COVID-19-related epidemiological studies mainly focus on transmission dynamics \cite{li2020early,pitzer2009demographic} and preventive measures \cite{chinazzi2020effect,van2006today} based on the timeline of outbreak.
-Besides clinical treatment, public health interventions including home quarantines, curfews, and facility closures have been imposed to control the epidemic.
+Besides clinical treatment, public health interventions including home quarantines and facility closures have been imposed to control the epidemic.
 Measuring changes in residents' behavior is urgent for enhancing emergency management and post-disaster recovery.
-However, few studies have been reported to analyze quantitatively the spatiotemporal patterns of public behavior during pandemic situations, which is essential for planning preventive strategy and impact assessments on economy and society.
+However, few studies have been reported to analyze quantitatively the spatiotemporal patterns of public behavior during pandemic situations, which is essential for planning preventive strategies and impact assessments on the economy and society.
 Ferguson et al.\ \cite{ferguson2020report} have studied two main strategies in the prevention of infectious diseases: \textit{suppression}, case of China and South Korea, with enormous social and economic costs which may cause secondary disasters on health and well-being in the short and longer-term;
 \textit{mitigation}, case of Great Britain and the United States, may not able to deal with all those with severe disease and resulting in high mortality.
 
@@ -115,15 +115,15 @@ Wesolowski et al.\ \cite{Wesolowski2012Quantifying} used spatially explicit mobi
 In this paper, we focus on the spatiotemporal patterns of public behavior response to the COVID-19 pandemic in Beijing, China.
 To achieve this goal, VGI (Volunteered Geographical Information) plays an important role, in which online surveys and mobile phone positioning data could be references, but they do not cover all the population especially those who care about their privacy and are not willing to offer their precise position \cite{Li2016ISPRS}. 
 
-Wide-spread Bike Sharing System (BSS) in China provides with a possibility for analyzing such patterns of residents.
-The 3rd generation BSS (free-floating BSS) emerges in China in 2015 thanks to rapid development of GIS-based and IoT-based system. 
-Compared to its predecessors, bikes of the 3rd generation BSS (hereinafter referred to as BSS) are no longer constrained by docking stations (so-called free floating bikes).
-They are often spread along the roads, congest around shopping/residential areas (RAs) and cover most of the urban residents. 
-As for city of Beijing, the amount of share bikes reached its peak in 2017 and the governors began removing excess supply afterwards. 
+Wide-spread Bike Sharing System (BSS) in China provides a possibility for analyzing such patterns of residents.
+The 3rd generation BSS (free-floating BSS) emerges in China in 2015 thanks to the rapid development of GIS-based and IoT-based system. 
+Compared to its predecessors, bikes of the 3rd generation BSS (hereinafter referred to as BSS) are no longer constrained by docking stations (so-called free-floating bikes).
+They are often spread along the roads, congest around shopping/residential areas (RAs), and cover most of the urban residents. 
+As for the city of Beijing, the number of share bikes reached its peak in 2017 and the governors began removing excess supply afterward. 
 After two years of development and regulation of BSS, the demand and the supply of share bikes meet a balance in 2019, which could be regarded as a stable data source.
-BSS records contain time and location information of bike usages from anonymous users, providing a valuable indicator of human presence, thus offering a promising alternative data source for increasing the spatial and temporal detail of the mobility and the activities of residents during pandemic.
-According to Daxue Consulting \cite{bssmodel}, in Beijing, 93\% of travels less than 5km are quicker done by bike and public transport than with the car, which suggests share bikes has a potential reflection on the local mobility of residents.
-The activities of residents in various regions can be easily captured with BSS data, and used to address the issues such as traffic planning, urban vitality assessment.
+BSS records contain time and location information of bike usages from anonymous users, providing a valuable indicator of human presence, thus offering a promising alternative data source for increasing the spatial and temporal detail of the mobility and the activities of residents during the pandemic.
+According to Daxue Consulting \cite{bssmodel}, in Beijing, 93\% of travels less than 5km are quicker done by bike and public transport than with the car, which suggests share bikes have a potential reflection on the local mobility of residents.
+The activities of residents in various regions can be easily captured with BSS data, and be used to address the issues such as traffic planning, urban vitality assessment.
 Du et al.\ \cite{du2018better} studied the travel patterns of BSS in Nanjing via limited questionnaires.
 Xu et al.\ \cite{xu2019unravel} characterized the share bike temporal flow and spatial distribution in Singapore.
 Kaggle organized a competition of predicting share bike demands\footnote{\url{https://www.kaggle.com/c/bike-sharing-demand}} based on limited entries.
@@ -133,9 +133,9 @@ Moreover, due to limited emerging understanding of the new virus and its transmi
 As far as we know, there is no study on the impact of social events and/or emergencies based on the 3rd generation BSS.
 
 In this study, we use share bike usage records to measure period-wise spatiotemporal patterns and co-location patterns. 
-To demonstrate the impact of the COVID-19 on mobility of individuals, comparison between the patterns of 2019 and 2020 and correlation analysis with the progress of confirmed cases have been implemented.
-The changes in behavior of residents subjecting to different pandemic phases can be inferred from the co-location analysis between the BSS patterns and POI locations, which provides insights into pandemic evolution and public reactions.
-These results on human mobiliy are potential to assist policy-making and facilitate research on epidemiology especially epidemical forcast.
+To demonstrate the impact of the COVID-19 on the mobility of individuals, a comparison between the patterns of 2019 and 2020 and correlation analysis with the progress of confirmed cases have been implemented.
+The changes in the behavior of residents subjecting to different pandemic phases can be inferred from the co-location analysis between the BSS patterns and POI locations, which provides insights into pandemic evolution and public reactions.
+These results on human mobility are the potential to assist policy-making and facilitate research on epidemiology, especially epidemical forecasts.
 
 To address this issue, we use share bike usage records to measure period-wise spatiotemporal patterns and co-location patterns. 
 Results indicate that large mobility reductions appear due to the onset of the COVID-19 threat and administrative restrictions.
@@ -145,7 +145,7 @@ As the pandemic of COVID-19 and the Chinese New Year met by coincidence, we trie
 \begin{enumerate}
     \item Global view of infection in the districts of Beijing
     \item Identification of the different phases of the pandemic by segmenting the whole time series while keeping the maximal similarity inside the segments
-    \item Analysis of the evolution of bike usage in the phases: ordinary days, the emergence of SARS-CoV-2 and the days of pandemic
+    \item Analysis of the evolution of bike usage in the phases: ordinary days, the emergence of SARS-CoV-2 and the days of the pandemic
     \item Analysis of co-location patterns of BSS with different types of POIs to reveal the impact on the corresponding businesses
 \end{enumerate}
 
@@ -573,7 +573,7 @@ Both Chinese New Year holiday shutdowns and pandemic resulted in the aforementio
 Therefore, comparison was conducted with data from the same period in 2019, thus removing the impact of the Chinese New Year holiday and evaluating the specific influence of the pandemic.  
 The average values of aggregated daily share bikes records from each pandemic phase were reported.
 
-\begin{figure}[!h]
+\begin{figure}[!ht]
     \centering
     \begin{subfigure}{.28\textwidth}
     	\begin{tikzpicture}[inner sep = 0pt]
@@ -692,7 +692,7 @@ The aggregated share bike intensity in downtown area changed from red to green.
 Starting on January 25, 2020, highly restrictive measures were implemented by local government: individuals were asked to follow a series of social distancing measures.
 As a result, the number of newly confirmed COVID-19 cases was effectively suppressed.
 
-\begin{figure}[!h]
+\begin{figure}[!ht]
     \centering
     \begin{subfigure}{.3\textwidth}
     	\begin{tikzpicture}[inner sep = 0pt]
@@ -748,7 +748,7 @@ A reduction in mobility on weekends could be inferred from comparison between Fi
 
 It should be highlighted that the accumulated confirmed cases stay substantially stable across this period, suggesting control measures were effective and necessary in the containment of the spread of COVID-19 during the resilience of Beijing.
 
-\begin{figure}[!h]
+\begin{figure}[!ht]
     \centering
     \begin{subfigure}{.3\textwidth}
     	\begin{tikzpicture}[inner sep = 0pt]
