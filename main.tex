@@ -166,7 +166,6 @@ In 2019, the municipal population of Beijing have reached 21.53 million. Accordi
 As a population-importing metropolis, Beijing has taken migitation efforts in response to the outbreak. 
 Under this circumstance, the activities of residents have been influenced and showing special spatiotemporal patterns different from ordinary days.
 
-\section{Tools and Methods}
 
 \subsection{Parallel Computing}
 Traditional geospatial tools such as PostGIS, QGIS are no longer able to deal with large-scale spatial queries huge amount of BSS spatiotemporal data (66.8GB) due to limited of computer performance of stand-alone machine.
@@ -198,6 +197,7 @@ To obtain these results, spatial analysis and statistics are implemented in Pyth
 The datasets date from March 2018 to March 2020 (66.8 GB) and cover 1.5 million usage per day contributed by 11 million users which account for one half of the total population of Beijing.
 Records of the datasets contain the positioning and timing information of locking \& unlocking bikes, excluding that of rebalancing operations.
 This feature suggests that the movement of bikes are done by users.
+All analysis we perform is statistically aggregated, removing the ability to characterize the behavior of any single device.
 Certain districts (Chaoyang, Fengtai and Shijingshan) are not comprised in the datasets due to different policies of local governments.
 
 \textbf{Points Of Interest (POIs)} POIs of Beijing are collected from AutoNavi API\footnote{\url{https://lbs.amap.com/api/webservice/guide/api/georegeo} (in Chinese)}.
@@ -242,34 +242,6 @@ To assess the overall behavior pattern changes, we picked out the locations of t
     \caption{Locations of confirmed cases in Beijing.}
     \label{fig:locations_of_confirmed_cases}
 \end{figure}
-
-\section{Tools and Methods}
-
-\subsection{Parallel Computing}
-Traditional geospatial tools such as PostGIS, QGIS are no longer able to deal with large-scale spatial queries huge amount of BSS spatiotemporal data (66.8GB) due to limited of computer performance of stand-alone machine.
-To obtain the co-location patterns in such datasets with numerous POIs, we proceeded with GeoSpark SQL \cite{huang2017geospark}, which performs spatial queries via parallel computing on cluster computing framework Spark\footnote{\url{https://spark.apache.org/}}.
-Among the spatial queries, we utilized \texttt{spatial\_join(geom1, geom2)}, querying if \texttt{geom1} is inside \texttt{geom2} and \texttt{distance\_join(geom1, geom2, dist)} querying if the distance of \texttt{geom1} and \texttt{geom2} is less than \texttt{dist}.
-These queries are nearly partition independent, recomputing is needed only on the borders of partition, thus our parallel efficiency is high given proper configuration and partitioning.
-
-\subsection{Phase Classification}\label{sec:phase_classification}
-In machine learning, it is often demanded to minimize the predefined loss function to perform the best classification such that elements within the same cluster are similar and elements across clusters are different.
-Likewise, we try to divide the study period into phases which have resembling share bike usage.
-
-\begin{Definition}[k-segmentation]\label{def:k-seg}
-Let $X=\{x_1,x_2,\ldots,x_N\}$ be a time series of length $N$.
-Given positive integer $k<N$ and index set $\mathbf{T}=\{n_0,\ldots,n_k\}$ with $n_0=0$, $n_k=N$ and $\forall i$, $n_i<n_{i+1}$, a k-segmentation of $X$ is the set of time series $X_i=\{x_{n_i+1},\ldots,x_{n_{i+1}}\}$ where $0\leq i\leq k-1$.
-\end{Definition}
-
-To evaluate the quality of k-segmentation, we use $\sigma=\sum_{i=1}^{k}{\sigma_i}$ as loss function where $\sigma_i$ is the standard deviation of division $X_i$. 
-The goal is to find the best $T$ to minimize $\sigma$, \textit{i.e.,} $\arg\min_{\mathbf{T}}\sigma(\mathbf{T})$.
-This problem is solved in time $O(N^2k)$ \cite{terzi2006efficient}.
-In case $k$ and $N$ are small, the optimum can be found via exhaustive search.
-
-\subsection{Basic statistics}
-The evolution of share bike usage over time in different zones of Beijing, as well as their relationships with COVID-19 spreading status and facilities, are the focus of this research.
-To obtain these results, spatial analysis and statistics are implemented in Python with the help of ESRI ArcGIS 10.7 \footnote{\url{https://www.esri.com/en-us/arcgis/about-arcgis/overview}}. 
-
-\section{Result}
 
 If we throw a first glance on the total share bike usage from 01 Jan to 02 Mar, $4.56\times10^7$ in 2019 and $1.61\times10^7$ in 2020, we found out the share bike usage of 2020 is about only one third of that of 2019.
 In the following sections, we are going to analyze in details the features of share bike users.
