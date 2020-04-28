@@ -123,6 +123,7 @@ As for the city of Beijing, the number of share bikes reached its peak in 2017 a
 After two years of development and regulation of BSS, the demand and the supply of share bikes meet a balance in 2019, which could be regarded as a stable data source.
 BSS records contain time and location information of bike usages from anonymous users, providing a valuable indicator of human presence, thus offering a promising alternative data source for increasing the spatial and temporal detail of the mobility and the activities of residents during the pandemic.
 According to Daxue Consulting \cite{bssmodel}, in Beijing, 93\% of travels less than 5km are quicker done by bike and public transport than with the car, which suggests share bikes have a potential reflection on the local mobility of residents.
+
 The activities of residents in various regions can be easily captured with BSS data, and be used to address the issues such as traffic planning, urban vitality assessment.
 Du et al.\ \cite{du2018better} studied the travel patterns of BSS in Nanjing via limited questionnaires.
 Xu et al.\ \cite{xu2019unravel} characterized the share bike temporal flow and spatial distribution in Singapore.
@@ -132,25 +133,23 @@ While BSS data analytics has been successfully applied in many sectors, their ap
 Moreover, due to limited emerging understanding of the new virus and its transmission mechanism, revealing its impacts on public behavior remains challenging.
 As far as we know, there is no study on the impact of social events and/or emergencies based on the 3rd generation BSS.
 
-In this study, we use share bike usage records to measure period-wise spatiotemporal patterns and co-location patterns. 
-To demonstrate the impact of the COVID-19 on the mobility of individuals, a comparison between the patterns of 2019 and 2020 and correlation analysis with the progress of confirmed cases have been implemented.
-The changes in the behavior of residents subjecting to different pandemic phases can be inferred from the co-location analysis between the BSS patterns and POI locations, which provides insights into pandemic evolution and public reactions.
-These results on human mobility are the potential to assist policy-making and facilitate research on epidemiology, especially epidemical forecasts.
+In this study, we use share bike usage records and the COVID-19 cases to measure period-wise spatiotemporal behavior patterns in Beijing. 
+Identification of the key time nodes in different pandemic period is conducted by segmenting the whole time series while keeping the maximal similarity inside the segments.
+Subjecting to different pandemic periods, co-location analysis is subsequently implemented between the usage patterns and different types of POIs, which reveals the public reactions and assess the impact of the COVID-19 pandemic.
+Comparison between the patterns of 2019 and 2020 is considered to remove the effect of the Chinese New Year holiday. 
+Finally, the effectiveness of suppression strategies is studied by comparing the change of behavior patterns to the progress of confirmed cases.
+%These results on human mobility are the potential to assist policy-making and facilitate research on epidemiology, especially epidemical forecasts.
+The main novelty of our proposed work is to depict public responses to the progress of COVID-19 from spatiotemporal perspective by the interpreting the behavior patterns of residents extracted from long time-sequenced share bike records. 
+Therefore, the impact of the COVID-19 pandemic and the influence of suppression strategy could be analyzed in a citywide scale, providing references in more details for policy-making and epidemiology research. 
 
-To address this issue, we use share bike usage records to measure period-wise spatiotemporal patterns and co-location patterns. 
-Results indicate that large mobility reductions appear due to the onset of the COVID-19 threat and administrative restrictions.
-Co-location analysis between the temporal usage patterns and facilities locations reveals the influence of pandemic in different phases.
-The main contributions of this article are as follows:
-As the pandemic of COVID-19 and the Chinese New Year met by coincidence, we tried to avoid the influence of this national holiday, then assess the impact of the COVID-19 pandemic and the influence of suppression strategy via four aspects:
-\begin{enumerate}
-    \item Global view of infection in the districts of Beijing
-    \item Identification of the different phases of the pandemic by segmenting the whole time series while keeping the maximal similarity inside the segments
-    \item Analysis of the evolution of bike usage in the phases: ordinary days, the emergence of SARS-CoV-2 and the days of the pandemic
-    \item Analysis of co-location patterns of BSS with different types of POIs to reveal the impact on the corresponding businesses
-\end{enumerate}
+The remainder of this paper is organized as follows. 
+Section \ref{sec:method} describes the study area and analysis methods.
+Section \ref{sec:experimental results} reports the spatiotemporal change in behavior patterns regarding to the local COVID-9 progress and co-location analysis with POIs.
+Discussions are presented in section \ref{sec:discussions} on comparison with previous year, and relation with confirmed cases during different pandemic periods.
+Section \ref{sec:conclusion} concludes with some remarks and section \ref{sec:future} hints future research lines.
 
 
-\section{Methods}
+\section{Study area and methods}\label{sec:method}
 
 \begin{figure}[ht]
     \centering
@@ -191,7 +190,7 @@ In case $k$ and $N$ are small, the optimum can be found via exhaustive search.
 The evolution of share bike usage over time in different zones of Beijing, as well as their relationships with COVID-19 spreading status and facilities, are the focus of this research.
 To obtain these results, spatial analysis and statistics are implemented in Python with the help of ESRI ArcGIS 10.7 \footnote{\url{https://www.esri.com/en-us/arcgis/about-arcgis/overview}}. 
 
-\section{Data and experimental results}
+\section{Experimental results}\label{sec:experimental results}
 \subsection{Description of data sets}
 \textbf{BSS spatiotemporal data} Temporal positioning datasets come from 900 thousand share bikes belonging to 4 main BSS operators (Mobike, DiDi Bike, Hellobike, and Ofo) in Beijing.
 The datasets date from March 2018 to March 2020 (66.8 GB) and cover 1.5 million uses per day contributed by 11 million users which account for one half of the total population of Beijing.
@@ -538,7 +537,7 @@ According to the spatiotemporal analysis above, we divide the outbreak timeline 
 
 % In the following sections, we will focus on …… and investigate ……
 
-\section{Discussions}
+\section{Discussions}\label{sec:discussions}
 \subsection{Comparison between 2019 and 2020}% in the same period}
 
 Both Chinese New Year holiday shutdowns and pandemic resulted in the aforementioned mobility decrease.
@@ -778,7 +777,7 @@ It should be highlighted that the accumulated confirmed cases stay substantially
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Conclusion}
+\section{Conclusion}\label{sec:conclusion}
 
 Motivated by the current COVID-19 outbreak and rapid development in BSS, this paper reveals the period-wise spatiotemporal patterns and co-location patterns of the share bike usage before \& during the pandemic in Beijing, China.
 We investigated the impact of the pandemic on the mobility of individuals and the rehabilitation process of Beijing.
@@ -790,7 +789,7 @@ Among POIs, share bike usage of tech companies has the biggest change before and
 
 Our results are references to epidemiological researches and inform policymaking in the context of the current COVID-19 outbreak, and help to prevent the emergence of pandemics in the future.
 
-\section{Future Work}
+\section{Future Work}\label{sec:future}
 
 Since the government implemented multiple interventions at the same time or in a short timeframe to control the outbreak, individual strategies could not be evaluated.
 Multi-dimensional principal component analysis could be helpful to extract the modes contributed by each preventive measure.
