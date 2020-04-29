@@ -134,7 +134,7 @@ Moreover, due to limited emerging understanding of the new virus and its transmi
 As far as we know, there is no study on the impact of social events and/or emergencies based on the 3rd generation BSS.
 
 In this study, we associated share bike usage records with COVID-19 confirmed cases to measure period-wise spatiotemporal behavior patterns in Beijing. 
-As preconditioning, a comparison between the same period of 2019 and 2020 was conducted remove the effect of the Chinese New Year holiday. 
+As preconditioning, a comparison between the same period of 2019 and 2020 was conducted to remove the effect of the Chinese New Year holiday. 
 Identification of the key time nodes in different pandemic period was conducted by segmenting the whole time series while keeping the maximal similarity inside the segments.
 In different pandemic periods, we implemented co-location analysis between the usage patterns and different types of POIs, which reveals the public reactions and assess the impact of the COVID-19 pandemic.
 Finally, we analyzed the correlation between the change of behavior patterns and the progress of confirmed cases, and assess the effectiveness of suppression strategies.
@@ -167,14 +167,17 @@ Under this circumstance, the activities of residents have been influenced and sh
 
 
 \subsection{Parallel Computing}
-Traditional geospatial tools such as PostGIS, QGIS are no longer able to deal with large-scale spatial queries huge amount of BSS spatiotemporal data (66.8GB) due to limited of computer performance of stand-alone machine.
-To obtain the co-location patterns in such datasets with numerous POIs, we proceeded with GeoSpark SQL \cite{huang2017geospark}, which performs spatial queries via parallel computing on cluster computing framework Spark\footnote{\url{https://spark.apache.org/}}.
-Among the spatial queries, we utilized \texttt{spatial\_join(geom1, geom2)}, querying if \texttt{geom1} is inside \texttt{geom2} and \texttt{distance\_join(geom1, geom2, dist)} querying if the distance of \texttt{geom1} and \texttt{geom2} is less than \texttt{dist}.
+Traditional geospatial tools such as PostGIS\footnote{\url{https://postgis.net/}} or QGIS\footnote{\url{https://qgis.org/}} are no longer able to deal with large-scale spatial queries huge amount of BSS spatiotemporal data (66.8GB) due to limited of computer performance of stand-alone machine.
+The computation in this paper was done on a computing cluster consisting of 5 machines with Intel(R) Xeon(R), CPU E5-2640 v2 @2.00GHz, 8 cores, 61.7GB memory, 20480KB cache. 
+
+\subsection{Co-location Analysis}
+To obtain the co-location patterns in such datasets with numerous POIs, we proceeded with GeoSpark SQL \cite{huang2017geospark}, which allows spatial queries via parallel computing on cluster computing framework Spark\footnote{\url{https://spark.apache.org/}}.
+Among the spatial queries, we utilized \texttt{spatial\_join(geom1, geom2)}, querying if object \texttt{geom1} is inside \texttt{geom2} and \texttt{distance\_join(geom1, geom2, dist)} querying if the distance of \texttt{geom1} and \texttt{geom2} is less than \texttt{dist}.
 These queries are nearly partition independent, recomputing is needed only on the borders of partition, thus our parallel efficiency is high given proper configuration and partitioning.
 
 \subsection{Phase Classification}\label{sec:phase_classification}
-In machine learning, it is often demanded to minimize the predefined loss function to perform the best classification such that elements within the same cluster are similar and elements across clusters are different.
-Likewise, we try to divide the study period into phases that have resembling share bike usage.
+In the domain of machine learning, it is often demanded to minimize the predefined loss function to perform the best classification such that elements within the same cluster are similar and elements across clusters are different.
+Likewise, we try to divide the study period into phases that have resembling patterns of share bike usage.
 
 \begin{Definition}[k-segmentation]\label{def:k-seg}
 Let $X=\{x_1,x_2,\ldots,x_N\}$ be a time series of length $N$.
