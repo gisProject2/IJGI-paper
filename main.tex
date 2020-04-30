@@ -100,18 +100,16 @@ COVID-19 is a rapidly spreading infectious disease caused by the novel coronavir
 According to a situation report of WHO\footnote{\url{https://www.who.int/docs/default-source/coronaviruse/situation-reports/20200422-sitrep-93-covid-19.pdf}}, the worldwide total confirmed cases have reached 2,471,136 including 84,287 that of China as of 22 April 2020.
 It is well-accepted that COVID-19 pandemic inflicts a huge impact on public health and most of the domains of economy, from the Chinese New Year holiday till today (April 2020).
 
-In literature, behavior of residents since it were influenced by disasters
-Under the threat of pandemic, behavior of residents seems to be highly influenced by various factors, such as disasterdisaster intensity, damage level, government inventions, news reports and etc.
-Besides clinical treatment, public health interventions including home quarantines and facility closures have been imposed to control the epidemic.
-%TODO 疫情的威胁程度直接影响居民出行，表现在behavior上的减弱；而居民的behavior is in association with 生产、经济活动，在已有研究中作为衡量灾后恢复的一项重要指标。
-%在以往研究中，“行为模式在应急环境”由于能反应disaster阶段等多方面因素，而逐步被研究者重视，展开研究。下的意义，表现和尚存问题
-population mobility pattern seem to be highly influenced by disaster states and various factors,
-Measuring changes in residents' behavior is urgent for enhancing emergency management and post-disaster recovery.
-
+Under the threat of pandemic, the activities of residents are inevitably influenced and restricted.
+Since it is associated with productive and social activities, behavior of residents is used as one of the evaluation indicators for post-disaster reconstruction in literature \cite{Wang2016Research, Akter2019Big}.
+Measuring changes in residents' behavior is urgent for enhancing emergency management and post-disaster recovery of current COVID-19 outbreak.
+%Besides clinical treatment, public health interventions including home quarantines and facility closures have been imposed to control the epidemic.
 Current COVID-19-related epidemiological studies mainly focus on transmission dynamics \cite{li2020early,pitzer2009demographic} and preventive measures \cite{chinazzi2020effect,van2006today} based on the timeline of outbreak.
 However, few studies have been reported to analyze quantitatively the spatiotemporal patterns of public behavior during pandemic situations, which is essential for planning preventive strategies and impact assessments on the economy and society.
 Ferguson et al.\ \cite{ferguson2020report} have studied two main strategies in the prevention of infectious diseases: \textit{suppression}, case of China and South Korea, with enormous social and economic costs which may cause secondary disasters on health and well-being in the short and longer-term;
 \textit{mitigation}, case of Great Britain and the United States, may not able to deal with all those with severe disease and resulting in high mortality.
+Available studies on human mobility patterns during disasters mainly focus on short-term emergencies(e.g. fires and earthquakes)\cite{Song2010Modelling,Song2014Prediction}.
+Research on the dynamics of residents' behavior in a detailed scale during long-term pandemic is very limited.
 
 The emergence of geospatial big data has great potential to benefit the applications in disease surveillance and disaster response in the past \cite{Yu2018Big, Goodchild2010Crowdsourcing, Huang2015Predicating}.
 Horanont et al.\ \cite{Horanont2013Auto} made use of mobile phone data collected after the 2011 Great Japan Earthquake and provided useful information on how humans react in disaster scenarios and how the evacuation process can be monitored.
@@ -224,16 +222,18 @@ To assess the overall behavior pattern changes, we picked out the locations of a
     \label{fig:locations_of_confirmed_cases}
 \end{figure}
 
-\section{Methodology}\label{sec:method}
+\section{Methodology of Share Bike Usage based Behavior Pattern Analysis Framework}\label{sec:method}
 
-Figure \ref{fig:diagram} shows the work flow of our study.
+Figure \ref{fig:diagram} shows the work flow of our study to assess the reactions of residents to COVID-19 by above data sets.
 To deal with large-scale spatial queries of huge amount of BSS spatiotemporal data (66.8GB), we made use of parallel computing all along the two main threads:
 \begin{enumerate}
-	\item GeoSpark acts as an engine processing co-location analysis of POI and BSS data, and the result is aggregated and visualized by ArcGIS in the form of heatmap.
-	\item Spark SQL is used to process temporal queries in BSS data then obtain mean, and standard error.
+	\item GeoSpark acts as an engine processing co-location analysis of POI and BSS data, and the result is aggregated and visualized by ArcGIS in the form of heatmap. This thread is designed to quantify the spatial relationships between POIs and share bike usage. Details will be given in subsection \ref{sec:co-location}.
+	\item Spark SQL is used to process temporal queries in BSS data then obtain mean, and standard error. This thread will identify key time nodes based on the changes of share bike usage corresponding to COVID-19 and explorate the temporal characteristics of share bike usage. Details will be given in subsection \ref{sec:phase_classification}.
 	A next-step process (visualization and optimization) is done in Python.
 \end{enumerate}
+Geographic visualization is supported by ESRI ArcGIS 10.7 \footnote{\url{https://www.esri.com/en-us/arcgis/about-arcgis/overview}}.
 By synthesizing the results above, we managed to reveal behavior patterns of share bike usage during pandemic.
+Key algorithms to two threads are as follows. 
 
 \begin{figure}[ht]
     \centering
@@ -242,10 +242,10 @@ By synthesizing the results above, we managed to reveal behavior patterns of sha
     \label{fig:diagram}
 \end{figure}
 
-Geospatial visualization and computing are implemented in ESRI ArcGIS 10.7 \footnote{\url{https://www.esri.com/en-us/arcgis/about-arcgis/overview}}.
-Besides, two strategies are included to quantify the responses of residents to COVID-19.
-Subsection \ref{sec:phase_classification} introduces a phase classification strategy to identify key time nodes based on the changes of share bike usage corresponding to COVID-19.
-The design of co-location analysis is presented in Subsection \ref{sec:co-location}, which is used to quantify the spatial relationships between POIs and share bike usage.  
+\subsection{Co-location Analysis}\label{sec:co-location}
+To obtain the co-location patterns in such datasets with numerous POIs, we proceeded with GeoSpark SQL \cite{huang2017geospark}, which allows spatial queries via parallel computing on cluster computing framework Spark\footnote{\url{https://spark.apache.org/}}.
+Among the spatial queries, we utilized \texttt{spatial\_join(geom1, geom2)}, querying if object \texttt{geom1} is inside \texttt{geom2} and \texttt{distance\_join(geom1, geom2, dist)} querying if the distance of \texttt{geom1} and \texttt{geom2} is less than \texttt{dist}.
+These queries are nearly partition independent, recomputing is needed only on the borders of partition, thus our parallel efficiency is high given proper configuration and partitioning.
 
 \subsection{Phase Classification}\label{sec:phase_classification}
 In the domain of machine learning, it is often demanded to minimize the predefined loss function to perform the best classification such that elements within the same cluster are similar and elements across clusters are different.
@@ -261,17 +261,11 @@ The goal is to find the best $T$ to minimize $\sigma$, \textit{i.e.}\ $\arg\min_
 This problem is solved in time $O(N^2k)$ \cite{terzi2006efficient}.
 In case $k$ and $N$ are small, the optimum can be found via exhaustive search.
 
-\subsection{Co-location Analysis}\label{sec:co-location}
-To obtain the co-location patterns in such datasets with numerous POIs, we proceeded with GeoSpark SQL \cite{huang2017geospark}, which allows spatial queries via parallel computing on cluster computing framework Spark\footnote{\url{https://spark.apache.org/}}.
-Among the spatial queries, we utilized \texttt{spatial\_join(geom1, geom2)}, querying if object \texttt{geom1} is inside \texttt{geom2} and \texttt{distance\_join(geom1, geom2, dist)} querying if the distance of \texttt{geom1} and \texttt{geom2} is less than \texttt{dist}.
-These queries are nearly partition independent, recomputing is needed only on the borders of partition, thus our parallel efficiency is high given proper configuration and partitioning.
-
 
 \section{Experimental results}\label{sec:experimental results}
 The computation in this paper was done on a computing cluster consisting of 5 machines with Intel(R) Xeon(R), CPU E5-2640 v2 @2.00GHz, 8 cores, 61.7GB memory, 20480KB cache memory. 
-
 If we throw a first glance on the total share bike usage from 01 Jan to 02 Mar, $4.56\times10^7$ in 2019, and $1.61\times10^7$ in 2020, we found out the share bike usage of 2020 is about only one-third of that of 2019.
-In the following sections, we are going to analyze in detail the features of share bike users.
+In this section, we present extensive experimental results of the spatiotemporal change in behavior patterns regarding the local COVID-9 progress, and association with POIs.
 
 \subsection{Temporal Patterns of Share Bike Usage}
 To better characterize the behavior patterns with respect to the COVID-19 epidemic dynamics, we first selected the following important referential dates in Table \ref{tab:important_dates} that could affect the virus transmission in Beijing: 
@@ -566,6 +560,8 @@ According to the spatiotemporal analysis above, we divide the outbreak timeline 
 % In the following sections, we will focus on …… and investigate ……
 
 \section{Discussions}\label{sec:discussions}
+In this section, we first compare bike usage of 2019 and 2020, to demonstrate the influence of pandemic in residents activities apart from the impact of holiday.
+Associated with distribution of confirmed cases, the variations of behavior patterns are interpreted concerning different pandemic periods subsequently.  
 \subsection{Comparison between 2019 and 2020}% in the same period}
 
 Both Chinese New Year holiday shutdowns and pandemic resulted in the aforementioned mobility decrease.
@@ -680,8 +676,7 @@ The remarkable difference referred from Figure \ref{fig:p_c_dif} verified this s
 
 \subsection{Relationships between Share Bike Usage and Confirmed Cases during Pandemic Periods} \label{sec:activities_confirmed_cases}
 
-This part aims at characterizing the behavior patterns of disease-spreading individuals by evaluating share bike usage concerning different pandemic periods.%thus provide references for authorities to gradually lift the most restrictive measures with more precision and confidence.
-
+This part aims at characterizing the variations of behavior patterns by evaluating share bike usage concerning different pandemic periods.
 Figure \ref{fig:BSS_phase1_2} shows the share bike usage in \textbf{phase b}, \textit{i.e.,} the quarantine period.
 Same as previous sections, aggregated share bike records were rendered with a color ramp from grey to green to red.
 Confirmed cases in each district are displayed by blue circles, where the cumulative number of cases is shown by the size of circles.
@@ -807,11 +802,12 @@ It should be highlighted that the accumulated confirmed cases stay substantially
 
 \section{Conclusion}\label{sec:conclusion}
 The wide-spread BSS is an alternative data source for characterizing the spatial and temporal detail of the mobility and the activities of residents.
-Motivated by the current COVID-19 outbreak and rapid development in BSS, this paper reveals the period-wise spatiotemporal patterns and co-location patterns of the share bike usage before \& during the pandemic in Beijing, China.
+Motivated by the current COVID-19 outbreak and rapid development in BSS, this paper constructs a framework targeting at extracting and analyzing behavior pattern based on long time-sequenced share bike usage. 
+%Results reveal the period-wise spatiotemporal patterns and co-location patterns of the share bike usage before \& during the pandemic in Beijing, China.
 
-We investigated the impact of the pandemic on the behavior of residents and the rehabilitation process on the city scale.
-After removing the factor of the Chinese New Year holiday, the results suggest that social and productive activities of residents were hugely affected by the COVID-19, reflected in the drastic decrease of share bike usage (down to less than $40\%$ of that of the same period in 2019). 
-The cumulative confirmed cases stayed stable substantially after the restarting of productive activities, implying the ongoing control measures were necessary and effective in the containment of the spread of COVID-19 when opening-up.
+Based on share bike usage, we investigated the impact of the pandemic on the behavior of residents and the rehabilitation process on the city scale.
+After removing the factor of the Chinese New Year holiday, our results suggest that social and productive activities of residents were hugely affected by the COVID-19, reflected in the drastic decrease of share bike usage (down to less than $40\%$ of that of the same period in 2019). 
+It has been figured out that the cumulative confirmed cases stayed stable substantially after the restarting of productive activities, implying the ongoing control measures were necessary and effective in the containment of the spread of COVID-19 when opening-up.
 Co-location analysis shows the infected RAs situated in the city center are most impacted, even after the pandemic is mitigated;
 Among POIs, share bike usage of tech companies has the biggest change before and during the pandemic as these companies are most suitable for ``work from home'', \textit{etc}.
 These findings provide supplementary details to the public reactions during the pandemic.
