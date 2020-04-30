@@ -103,6 +103,7 @@ It is well-accepted that COVID-19 pandemic inflicts a huge impact on public heal
 Current COVID-19-related epidemiological studies mainly focus on transmission dynamics \cite{li2020early,pitzer2009demographic} and preventive measures \cite{chinazzi2020effect,van2006today} based on the timeline of outbreak.
 Besides clinical treatment, public health interventions including home quarantines and facility closures have been imposed to control the epidemic.
 Measuring changes in residents' behavior is urgent for enhancing emergency management and post-disaster recovery.
+
 However, few studies have been reported to analyze quantitatively the spatiotemporal patterns of public behavior during pandemic situations, which is essential for planning preventive strategies and impact assessments on the economy and society.
 Ferguson et al.\ \cite{ferguson2020report} have studied two main strategies in the prevention of infectious diseases: \textit{suppression}, case of China and South Korea, with enormous social and economic costs which may cause secondary disasters on health and well-being in the short and longer-term;
 \textit{mitigation}, case of Great Britain and the United States, may not able to deal with all those with severe disease and resulting in high mortality.
@@ -143,7 +144,7 @@ The main novelty of our proposed work is to depict public responses to the progr
 Therefore, the impact of the COVID-19 pandemic and the influence of suppression strategy could be analyzed on a citywide scale, providing references in more detail for policy-making and epidemiology research. 
 
 The remainder of this paper is organized as follows. 
-Section \ref{sec:method} describes the study area and analysis methods.
+Section \ref{sec:data} \& \ref{sec:method} describes the study area and proposed methods.
 Section \ref{sec:experimental results} reports the spatiotemporal change in behavior patterns regarding the local COVID-9 progress and co-location analysis with POIs.
 Discussions are presented in Section \ref{sec:discussions} in comparison with the previous year, and relation with confirmed cases during different pandemic periods.
 Section \ref{sec:conclusion} concludes with some remarks and Section \ref{sec:future} hints future research lines.
@@ -218,7 +219,8 @@ To assess the overall behavior pattern changes, we picked out the locations of a
     \label{fig:locations_of_confirmed_cases}
 \end{figure}
 
-\section{Methodology}
+
+\section{Methodology}\label{sec:method}
 To deal with large-scale spatial queries huge amount of BSS spatiotemporal data (66.8GB), the computation in this paper was done on a computing cluster consisting of 5 machines with Intel(R) Xeon(R), CPU E5-2640 v2 @2.00GHz, 8 cores, 61.7GB memory, 20480KB cache memory. 
 Geospatial visualization and computing are implemented in ESRI ArcGIS 10.7 \footnote{\url{https://www.esri.com/en-us/arcgis/about-arcgis/overview}}.
 Besides, two strategies are included to quantify the responses of residents to COVID-19.
