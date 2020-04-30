@@ -149,7 +149,7 @@ Discussions are presented in Section \ref{sec:discussions} in comparison with th
 Section \ref{sec:conclusion} concludes with some remarks and Section \ref{sec:future} hints future research lines.
 
 
-\section{Study area and methods}\label{sec:method}
+\section{Study areas and data}\label{sec:data}
 
 \begin{figure}[ht]
     \centering
@@ -165,33 +165,6 @@ In 2019, the municipal population of Beijing has reached 21.53 million. Accordin
 As a population-importing metropolis, Beijing has taken several efforts in response to the outbreak. 
 Under this circumstance, the activities of residents have been influenced and showing special spatiotemporal patterns different from ordinary days.
 
-\subsection{Methods}
-To deal with large-scale spatial queries huge amount of BSS spatiotemporal data (66.8GB), the computation in this paper was done on a computing cluster consisting of 5 machines with Intel(R) Xeon(R), CPU E5-2640 v2 @2.00GHz, 8 cores, 61.7GB memory, 20480KB cache memory. 
-Geospatial visualization and computing are implemented in ESRI ArcGIS 10.7 \footnote{\url{https://www.esri.com/en-us/arcgis/about-arcgis/overview}}.
-Besides, two strategies are included to quantify the responses of residents to COVID-19.
-Subsection \ref{sec:phase_classification} introduces a phase classification strategy to identify key time nodes based on the changes of share bike usage corresponding to COVID-19.
-The design of co-location analysis is presented in Subsection \ref{sec:co-location}, which is used to quantify the spatial relationships between POIs and share bike usage.  
-
-\subsubsection{Phase Classification}\label{sec:phase_classification}
-In the domain of machine learning, it is often demanded to minimize the predefined loss function to perform the best classification such that elements within the same cluster are similar and elements across clusters are different.
-Likewise, we try to divide the study period into phases that have resembling patterns of share bike usage.
-
-\begin{Definition}[k-segmentation]\label{def:k-seg}
-Let $X=\{x_1,x_2,\ldots,x_N\}$ be a time series of length $N$.
-Given positive integer $k<N$ and index set $\mathbf{T}=\{n_0,\ldots,n_k\}$ with $n_0=0$, $n_k=N$ and $\forall i$, $n_i<n_{i+1}$, a k-segmentation of $X$ is the set of time series $X_i=\{x_{n_i+1},\ldots,x_{n_{i+1}}\}$ where $0\leq i\leq k-1$.
-\end{Definition}
-
-To evaluate the quality of k-segmentation, we use $\sigma=\sum_{i=1}^{k}{\sigma_i}$ as loss function where $\sigma_i$ is the standard deviation of division $X_i$. 
-The goal is to find the best $T$ to minimize $\sigma$, \textit{i.e.}\ $\arg\min_{\mathbf{T}}\sigma(\mathbf{T})$.
-This problem is solved in time $O(N^2k)$ \cite{terzi2006efficient}.
-In case $k$ and $N$ are small, the optimum can be found via exhaustive search.
-
-\subsubsection{Co-location Analysis}\label{sec:co-location}
-To obtain the co-location patterns in such datasets with numerous POIs, we proceeded with GeoSpark SQL \cite{huang2017geospark}, which allows spatial queries via parallel computing on cluster computing framework Spark\footnote{\url{https://spark.apache.org/}}.
-Among the spatial queries, we utilized \texttt{spatial\_join(geom1, geom2)}, querying if object \texttt{geom1} is inside \texttt{geom2} and \texttt{distance\_join(geom1, geom2, dist)} querying if the distance of \texttt{geom1} and \texttt{geom2} is less than \texttt{dist}.
-These queries are nearly partition independent, recomputing is needed only on the borders of partition, thus our parallel efficiency is high given proper configuration and partitioning.
-
-\section{Experimental results}\label{sec:experimental results}
 \subsection{Description of data sets}
 Before describing our results in spatiotemporal patterns of share bike usage, it is first important to introduce data sets adopted in our experiments.
 
@@ -245,6 +218,34 @@ To assess the overall behavior pattern changes, we picked out the locations of a
     \label{fig:locations_of_confirmed_cases}
 \end{figure}
 
+\section{Methodology}
+To deal with large-scale spatial queries huge amount of BSS spatiotemporal data (66.8GB), the computation in this paper was done on a computing cluster consisting of 5 machines with Intel(R) Xeon(R), CPU E5-2640 v2 @2.00GHz, 8 cores, 61.7GB memory, 20480KB cache memory. 
+Geospatial visualization and computing are implemented in ESRI ArcGIS 10.7 \footnote{\url{https://www.esri.com/en-us/arcgis/about-arcgis/overview}}.
+Besides, two strategies are included to quantify the responses of residents to COVID-19.
+Subsection \ref{sec:phase_classification} introduces a phase classification strategy to identify key time nodes based on the changes of share bike usage corresponding to COVID-19.
+The design of co-location analysis is presented in Subsection \ref{sec:co-location}, which is used to quantify the spatial relationships between POIs and share bike usage.  
+
+\subsection{Phase Classification}\label{sec:phase_classification}
+In the domain of machine learning, it is often demanded to minimize the predefined loss function to perform the best classification such that elements within the same cluster are similar and elements across clusters are different.
+Likewise, we try to divide the study period into phases that have resembling patterns of share bike usage.
+
+\begin{Definition}[k-segmentation]\label{def:k-seg}
+Let $X=\{x_1,x_2,\ldots,x_N\}$ be a time series of length $N$.
+Given positive integer $k<N$ and index set $\mathbf{T}=\{n_0,\ldots,n_k\}$ with $n_0=0$, $n_k=N$ and $\forall i$, $n_i<n_{i+1}$, a k-segmentation of $X$ is the set of time series $X_i=\{x_{n_i+1},\ldots,x_{n_{i+1}}\}$ where $0\leq i\leq k-1$.
+\end{Definition}
+
+To evaluate the quality of k-segmentation, we use $\sigma=\sum_{i=1}^{k}{\sigma_i}$ as loss function where $\sigma_i$ is the standard deviation of division $X_i$. 
+The goal is to find the best $T$ to minimize $\sigma$, \textit{i.e.}\ $\arg\min_{\mathbf{T}}\sigma(\mathbf{T})$.
+This problem is solved in time $O(N^2k)$ \cite{terzi2006efficient}.
+In case $k$ and $N$ are small, the optimum can be found via exhaustive search.
+
+\subsection{Co-location Analysis}\label{sec:co-location}
+To obtain the co-location patterns in such datasets with numerous POIs, we proceeded with GeoSpark SQL \cite{huang2017geospark}, which allows spatial queries via parallel computing on cluster computing framework Spark\footnote{\url{https://spark.apache.org/}}.
+Among the spatial queries, we utilized \texttt{spatial\_join(geom1, geom2)}, querying if object \texttt{geom1} is inside \texttt{geom2} and \texttt{distance\_join(geom1, geom2, dist)} querying if the distance of \texttt{geom1} and \texttt{geom2} is less than \texttt{dist}.
+These queries are nearly partition independent, recomputing is needed only on the borders of partition, thus our parallel efficiency is high given proper configuration and partitioning.
+
+
+\section{Experimental results}\label{sec:experimental results}
 If we throw a first glance on the total share bike usage from 01 Jan to 02 Mar, $4.56\times10^7$ in 2019, and $1.61\times10^7$ in 2020, we found out the share bike usage of 2020 is about only one-third of that of 2019.
 In the following sections, we are going to analyze in detail the features of share bike users.
 
