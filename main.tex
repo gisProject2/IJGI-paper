@@ -135,17 +135,17 @@ As far as we know, there is no study on the impact of social events and/or emerg
 
 In this study, we associated share bike usage records with COVID-19 confirmed cases to measure period-wise spatiotemporal behavior patterns in Beijing. 
 As preconditioning, a comparison between the same period of 2019 and 2020 was conducted to remove the effect of the Chinese New Year holiday. 
-Identification of the key time nodes in different pandemic period was conducted by segmenting the whole time series while keeping the maximal similarity inside the segments.
-In different pandemic periods, we implemented co-location analysis between the usage patterns and different types of POIs, which reveals the public reactions and assess the impact of the COVID-19 pandemic.
+Identification of the key time nodes in different pandemic periods was conducted by segmenting the whole time series while keeping the maximal similarity inside the segments.
+In different pandemic periods, we implemented a co-location analysis between the usage patterns and different types of POIs, which reveals the public reactions and assess the impact of the COVID-19 pandemic.
 Finally, we analyzed the correlation between the change of behavior patterns and the progress of confirmed cases, and assess the effectiveness of suppression strategies.
 %These results on human mobility are the potential to assist policy-making and facilitate research on epidemiology, especially epidemical forecasts.
 The main novelty of our proposed work is to depict public responses to the progress of COVID-19 from spatiotemporal perspective by interpreting the behavior patterns of residents extracted from long time-sequenced share bike records. 
-Therefore, the impact of the COVID-19 pandemic and the influence of suppression strategy could be analyzed on a citywide scale, providing references in more details for policy-making and epidemiology research. 
+Therefore, the impact of the COVID-19 pandemic and the influence of suppression strategy could be analyzed on a citywide scale, providing references in more detail for policy-making and epidemiology research. 
 
 The remainder of this paper is organized as follows. 
 Section \ref{sec:method} describes the study area and analysis methods.
 Section \ref{sec:experimental results} reports the spatiotemporal change in behavior patterns regarding the local COVID-9 progress and co-location analysis with POIs.
-Discussions are presented in Section \ref{sec:discussions} on comparison with the previous year, and relation with confirmed cases during different pandemic periods.
+Discussions are presented in Section \ref{sec:discussions} in comparison with the previous year, and relation with confirmed cases during different pandemic periods.
 Section \ref{sec:conclusion} concludes with some remarks and Section \ref{sec:future} hints future research lines.
 
 
@@ -166,11 +166,11 @@ As a population-importing metropolis, Beijing has taken several efforts in respo
 Under this circumstance, the activities of residents have been influenced and showing special spatiotemporal patterns different from ordinary days.
 
 \subsection{Methods}
-To deal with large-scale spatial queries huge amount of BSS spatiotemporal data (66.8GB), the computation in this paper was done on a computing cluster consisting of 5 machines with Intel(R) Xeon(R), CPU E5-2640 v2 @2.00GHz, 8 cores, 61.7GB memory, 20480KB cache. 
+To deal with large-scale spatial queries huge amount of BSS spatiotemporal data (66.8GB), the computation in this paper was done on a computing cluster consisting of 5 machines with Intel(R) Xeon(R), CPU E5-2640 v2 @2.00GHz, 8 cores, 61.7GB memory, 20480KB cache memory. 
 Geospatial visualization and computing are implemented in ESRI ArcGIS 10.7 \footnote{\url{https://www.esri.com/en-us/arcgis/about-arcgis/overview}}.
-In addition, two strategies are included to quantify the residents responses to COVID-19.
-Subsection \ref{sec:phase_classification} introduces a phase classification strategy to identify key time nodes based on the changes of share bike usgaes corresponding to COVID-19.
-The design of co-location analysis strategy is presented in Subsection \ref{sec:co-location}, which is used to quantify the spatial relationships between POIs and share bike usgaes.  
+Besides, two strategies are included to quantify the responses of residents to COVID-19.
+Subsection \ref{sec:phase_classification} introduces a phase classification strategy to identify key time nodes based on the changes of share bike usage corresponding to COVID-19.
+The design of co-location analysis is presented in Subsection \ref{sec:co-location}, which is used to quantify the spatial relationships between POIs and share bike usage.  
 
 \subsubsection{Phase Classification}\label{sec:phase_classification}
 In the domain of machine learning, it is often demanded to minimize the predefined loss function to perform the best classification such that elements within the same cluster are similar and elements across clusters are different.
@@ -248,7 +248,7 @@ To assess the overall behavior pattern changes, we picked out the locations of a
 If we throw a first glance on the total share bike usage from 01 Jan to 02 Mar, $4.56\times10^7$ in 2019, and $1.61\times10^7$ in 2020, we found out the share bike usage of 2020 is about only one-third of that of 2019.
 In the following sections, we are going to analyze in detail the features of share bike users.
 
-\subsection{Temporal patterns of share bike records}
+\subsection{Temporal Patterns of Share Bike Usage}
 To better characterize the behavior patterns with respect to the COVID-19 epidemic dynamics, we first selected the following important referential dates in Table \ref{tab:important_dates} that could affect the virus transmission in Beijing: 
 
 \begin{table}[ht]
@@ -418,7 +418,7 @@ On 2 Mar, nearly no massive share bike usage can be observed around the infected
 
 We can conclude the residents in Beijing followed exactly the suppression strategy whether the RAs were infected or not: quarantine, \textit{cordon sanitaire}, and social distancing.
 
-\subsection{Spatiotemporal patterns of share bike records}
+\subsection{Spatiotemporal Patterns of Share Bike Usage}
 
 \begin{figure}[ht]
     \centering
@@ -653,7 +653,7 @@ In previous years, Figure \ref{fig:p_c_2019} indicated that mobility would insta
 According to Figure \ref{fig:p_c_2020}, the rehabilitation was in progress, but much slower during the epidemic mitigated period.
 The remarkable difference referred from Figure \ref{fig:p_c_dif} verified this sustained impact on the daily lives of citizens.
 
-\subsection{Relationships between share bikes activities and confirmed cases during different pandemic periods} \label{sec:activities_confirmed_cases}
+\subsection{Relationships between Share Bike Usage and Confirmed Cases during Pandemic Periods} \label{sec:activities_confirmed_cases}
 
 This part aims at characterizing the behavior patterns of disease-spreading individuals by evaluating share bike usage concerning different pandemic periods.%thus provide references for authorities to gradually lift the most restrictive measures with more precision and confidence.
 
@@ -784,9 +784,9 @@ It should be highlighted that the accumulated confirmed cases stay substantially
 The wide-spread BSS is an alternative data source for characterizing the spatial and temporal detail of the mobility and the activities of residents.
 Motivated by the current COVID-19 outbreak and rapid development in BSS, this paper reveals the period-wise spatiotemporal patterns and co-location patterns of the share bike usage before \& during the pandemic in Beijing, China.
 
-We investigated the impact of the pandemic on the behavior of residents and the rehabilitation process in the city scale.
-By removing the factor of the Chinese New Year holiday, results exhibit that social and productive activities of residents were hugely affected by the COVID-19, reflected in the drastic decrease of share bike usage (down to less than $40\%$ of that of the same period in 2019). 
-The cumulative confirmed cases stayed stable substantially after restarting of productive activities, implying the ongonging control measures were necessary and effective in the containment of the spread of COVID-19 when opening-up.
+We investigated the impact of the pandemic on the behavior of residents and the rehabilitation process on the city scale.
+After removing the factor of the Chinese New Year holiday, the results suggest that social and productive activities of residents were hugely affected by the COVID-19, reflected in the drastic decrease of share bike usage (down to less than $40\%$ of that of the same period in 2019). 
+The cumulative confirmed cases stayed stable substantially after the restarting of productive activities, implying the ongoing control measures were necessary and effective in the containment of the spread of COVID-19 when opening-up.
 Co-location analysis shows the infected RAs situated in the city center are most impacted, even after the pandemic is mitigated;
 Among POIs, share bike usage of tech companies has the biggest change before and during the pandemic as these companies are most suitable for ``work from home'', \textit{etc}.
 These findings provide supplementary details to the public reactions during the pandemic.
