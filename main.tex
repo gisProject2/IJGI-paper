@@ -218,8 +218,24 @@ To assess the overall behavior pattern changes, we picked out the locations of a
     \label{fig:locations_of_confirmed_cases}
 \end{figure}
 
-\section{Methodology}
-To deal with large-scale spatial queries huge amount of BSS spatiotemporal data (66.8GB), the computation in this paper was done on a computing cluster consisting of 5 machines with Intel(R) Xeon(R), CPU E5-2640 v2 @2.00GHz, 8 cores, 61.7GB memory, 20480KB cache memory. 
+\section{Methodology}\label{sec:method}
+
+Figure \ref{fig:diagram} shows the work flow of our study.
+To deal with large-scale spatial queries of huge amount of BSS spatiotemporal data (66.8GB), we made use of parallel computing all along the two main threads:
+\begin{enumerate}
+	\item GeoSpark acts as an engine processing co-location analysis of POI and BSS data, and the result is aggregated and visualized by ArcGIS in the form of heatmap.
+	\item Spark SQL is used to process temporal queries in BSS data then obtain mean, and standard error.
+	A next-step process (visualization and optimization) is done in Python.
+\end{enumerate}
+By synthesizing the results above, we managed to reveal some behavior patterns of share bike usage.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=.7\textwidth]{diagram.pdf}
+    \caption{Workflow chart}
+    \label{fig:diagram}
+\end{figure}
+
 Geospatial visualization and computing are implemented in ESRI ArcGIS 10.7 \footnote{\url{https://www.esri.com/en-us/arcgis/about-arcgis/overview}}.
 Besides, two strategies are included to quantify the responses of residents to COVID-19.
 Subsection \ref{sec:phase_classification} introduces a phase classification strategy to identify key time nodes based on the changes of share bike usage corresponding to COVID-19.
@@ -246,6 +262,8 @@ These queries are nearly partition independent, recomputing is needed only on th
 
 
 \section{Experimental results}\label{sec:experimental results}
+The computation in this paper was done on a computing cluster consisting of 5 machines with Intel(R) Xeon(R), CPU E5-2640 v2 @2.00GHz, 8 cores, 61.7GB memory, 20480KB cache memory. 
+
 If we throw a first glance on the total share bike usage from 01 Jan to 02 Mar, $4.56\times10^7$ in 2019, and $1.61\times10^7$ in 2020, we found out the share bike usage of 2020 is about only one-third of that of 2019.
 In the following sections, we are going to analyze in detail the features of share bike users.
 
