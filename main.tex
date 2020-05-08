@@ -326,7 +326,7 @@ The overall closure was then forced to be extended to mitigate the pandemic.
 % We also plotted the graph of share bike usage during rush hour (8:00-10:00 and 18:00-20:00) which reflects the productive activities.
 Share bike usage on rush hours exhibits the periodicity of productive activities: high on weekdays and low on weekends, which fits our general knowledge.
 However, this pattern does not appear on 10 Feb 2020 when the government declared the partial restart of certain productive and social activities.
-This anomaly suggests that the activities were not resumed at all until Feb 17, one week after the partial restart, corresponding to the fact that the impact of the pandemic was lasting till the end of our study period.
+This anomaly suggests that the activities were not resumed at all at least until Feb 17, one week after the partial restart, corresponding to the fact that the impact of the pandemic was lasting till the end of our study period.
 
 Table \ref{tab:overall_comparison} gives a rough quantitative view over the impact of the pandemic.
 
@@ -363,10 +363,41 @@ However, the lower part shows the case of the Chinese New Year holiday, the over
 \subsection{Co-location Analysis with POIs}\label{sec:colo-poi}
 
 According to Figure \ref{fig:hour_comparison_8}, it is implied the dates in Table \ref{tab:important_dates} may not be the optimal boundaries of different phases, as there is no obvious share bike usage change after Feb 10.
-We computed the best phase classification using Definition \ref{def:k-seg} in Section \ref{sec:phase_classification}.
-We classified the period into three phases: before pandemics, during pandemics, pandemics mitigated.
-Here $k=3$ and $N=64$, we found the best classified phases using exhaustive search and assign them with reasonable explanations: 01 Jan-21 Jan (before the pandemic), 22 Jan-16 Feb (critical phase of the pandemic) and 17 Feb-01 Mar (epidemics mitigated).
-We computed then share bike usage in these phases.
+
+We obtained a time series by computing the share bike usage within 200m of each POI every day in the period 02 Jan to 02 Mar 2020.
+The we segmented the time series into three phases using Definition \ref{def:k-seg} in Section \ref{sec:phase_classification}.
+Here $k=3$ and $N=62$, we found the best classified phases with minimum sum of standard deviation using exhaustive search.
+According to the result in in Table \ref{tab:segment}, these phases can be identified as: before pandemics ($a$), during pandemics ($b$), pandemics mitigated ($c$).
+
+\begin{table}[ht]
+	\centering
+	\begin{tabular}{|l|l|l|}
+		\hline
+		Category & Split point 1 & Split point 2\\
+		\hline
+		Tech company & 23 Jan & 24 Feb\\
+		\hline
+		Other company & 23 Jan & 28 Feb\\
+		\hline
+		RA & 24 Jan & 24 Feb\\
+		\hline
+		Subway station & 24 Jan & 24 Feb\\
+		\hline
+		Shopping plaza & 24 Jan & 24 Feb\\
+		\hline
+		Supermarket & 24 Jan & 24 Feb\\
+		\hline
+		Overall & 23 Jan & 24 Feb \\
+		\hline
+	\end{tabular}
+	\caption{Segmentation of period 02 Jan to 02 Mar 2020}\label{tab:segment}
+\end{table}
+
+A minor difference between the share bike usage near companies and that near living facilities can be explained by a lag between the end of work and the start of vacation.
+Social and productive activities have not resumed until 24 Feb which is two weeks after the declaration of partial restart.
+The companies except for tech companies correspond mostly to real economy are delayed another one week.
+
+We then computed the average share bike usage in these phases respectively.
 
 \begin{table}[ht]
     \centering
@@ -374,7 +405,7 @@ We computed then share bike usage in these phases.
         \hline
         \multirow{2}{*}{Category} & \multirow{2}{*}{\makecell[c]{POI\\amount}} & \multicolumn{5}{c|}{Daily average bike usage within 200m radius of POIs per POI}\\
         \cline{3-7}
-        & & 01 Jan-21 Jan ($a$) & 22 Jan-16 Feb ($b$) & 17 Feb-02 Mar ($c$) & $b/a$ & $c/a$\\ %$a/m$\\
+        & & $a$ & $b$ & $c$ & $b/a$ & $c/a$\\ %$a/m$\\
         \hline
         RA & $5657$ & $158.3\pm86.9$ & $36.6\pm14.4$ & $39.9\pm13.9$ & $23.1\%$ & $25.2\%$\\ %$109.0\%$\\
         \hline
@@ -396,7 +427,6 @@ We computed then share bike usage in these phases.
 \end{table}
 
 Table \ref{tab:bike_usage_poi} depicts the bike usage of the six chosen categories.
-Phase $a$ and $b$ have the same duration, 21 days.     
 % In abuse of definition ``convexity'', we use the comparison between the mean of $a$ and $b$ and phase $m$ (mid) to describe the curve: the curve is more bending, \textit{\textit{i.e.,}} impacted if ratio $c=(b+a)/2m$ is larger.
 Ratio $b/a$ shows that the bike usage of all categories decreased to one quarter, and tech companies dropped the most in both value and proportion, one possible explanation is they suit best ``work from home''. 
 Ratio $c/a$ shows the bike usage of all categories has recovered to some extent but far from the situation of usual time after the partial restart of activities.
