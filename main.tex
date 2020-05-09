@@ -78,12 +78,13 @@ $^{2}$ \quad China Location-Based Service, 100191 Beijing, China; xw.chai@chinal
 \abstract{During the epidemics of COVID-19, the whole world is experiencing a serious crisis on public health and economy.
 Detailed information in the behavior of residents during epidemic benefits emergency management when one tries to design intervention strategies and resilience measures.
 From the perspective of movements, the widely used Bike Sharing System (BSS) in China is capable of characterizing the behavior patterns over time \& space within big cities.
-Although share bikes are playing a role as data sources in many sectors, they are rarely reported in pandemic researches.
-Based on the share bike records in Beijing, we constructed a behavior pattern analysis framework. 
-With this two-thread framework, we analyzed the spatiotemporal behavior patterns of residents, figured out the key time nodes of different pandemic periods, and demonstrated the variations in mobility due to the onset of the COVID-19 threat and administrative restrictions. 
-The impact of the pandemic on the productive and social activities was estimated by performing co-location analysis between behavior patterns and POIs.
+Although share bikes are playing an important role as data sources in data mining, they could be of help but are rarely reported in pandemic-related researches.
+Based on the share bike records in Beijing, we constructed a behavior pattern analysis framework, then
+%With this two-thread framework, 
+analyzed the spatiotemporal behavior patterns of residents, figured out the key time nodes of different pandemic periods, and demonstrated the variations in mobility due to the onset of the COVID-19 threat and administrative restrictions. 
+The impact of the pandemic on the productive and social activities was assessed by performing co-location analysis between behavior patterns and POIs.
 Discussions with evolving confirmed COVID-19 cases suggest the effectiveness and necessity of the public interventions in the COVID-19 containment during the resilience period.
-These findings could provide critical information on how to respond to the current COVID-19 outbreak and other epidemic events.
+These findings provide critical information on how to respond to the current COVID-19 outbreak and other epidemic events.
 }
 
 \keyword{Bike sharing system; COVID-19; behavior pattern; spatiotemporal analysis; co-location analysis}
@@ -166,7 +167,7 @@ Section \ref{sec:conclusion} concludes with some remarks and Section \ref{sec:fu
 \subsection{Study Area}
 This study was conducted in the city of Beijing, the capital of China.
 As shown in Figure \ref{fig:study_area}, Beijing locates at the North China Plain, occupying an area of 16,411km$^2$ (39.4{\degree}-41.6{\degree}N, 115.7{\degree}-117.4{\degree}E).
-In 2019, the municipal population of Beijing has reached 21.53 million. According to the Beijing Health Commission, the COVID-19 confirmed cases \footnote{\url{http://wjw.beijing.gov.cn/xwzx_20031/wnxw/202003/t20200305_1679143.html} (in Chinese)} bring the cumulative total in Beijing to 418 by 05 Mar 2020.
+In 2019, the municipal population of Beijing has reached 21.53 million. According to the Beijing Health Commission, the COVID-19 confirmed cases\footnote{\url{http://wjw.beijing.gov.cn/xwzx_20031/wnxw/202003/t20200305_1679143.html} (in Chinese)} bring the cumulative total in Beijing to 418 by 05 Mar 2020.
 As a population-importing metropolis, Beijing has taken several efforts in response to the outbreak. 
 Under this circumstance, the activities of residents have been influenced and showing special spatiotemporal patterns different from ordinary days.
 
@@ -175,8 +176,8 @@ Before describing our results in spatiotemporal patterns of share bike usage, it
 
 \textbf{BSS spatiotemporal data} Temporal positioning datasets come from 900 thousand share bikes belonging to 4 main BSS operators (Mobike, DiDi Bike, Hellobike, and Ofo) in Beijing.
 The datasets date from March 2018 to March 2020 (66.8 GB) and cover 1.5 million uses per day contributed by 11 million users which account for one half of the total population of Beijing.
-Records of the datasets contain the positioning and timing information of locking \& unlocking bikes, excluding that of rebalancing operations.
-This feature suggests that the movement of bikes is done by users.
+Records of the datasets contain the positioning and timing information of locking \& unlocking of bikes, excluding that of rebalancing operations.
+This feature suggests that the movement of bikes is purely done by users.
 All analysis we perform is statistically aggregated, removing the ability to characterize the behavior of any single device.
 Certain districts (Chaoyang, Fengtai, and Shijingshan) are not comprised in the datasets due to different policies of local governments.
 
@@ -247,13 +248,13 @@ By synthesizing the results above, we managed to reveal behavior patterns of sha
 \end{figure}
 
 \subsection{Co-location Analysis}\label{sec:co-location}
-To obtain the co-location patterns in such datasets with numerous POIs, we proceeded with GeoSpark, which allows spatial queries via parallel computing on cluster computing framework Spark\footnote{\url{https://spark.apache.org/}}.
+To obtain the co-location patterns in such datasets with numerous POIs, we proceeded with GeoSpark, which allows spatial queries via parallel computing on cluster computing framework Spark.
 Among the spatial queries, we utilized \texttt{spatial\_join(geom1, geom2)}, querying if object \texttt{geom1} is inside \texttt{geom2} and \texttt{distance\_join(geom1, geom2, dist)} querying if the distance of \texttt{geom1} and \texttt{geom2} is less than \texttt{dist}.
 These queries are nearly partition independent, recomputing is needed only on the borders of partition, thus our parallel efficiency is high given proper configuration and partitioning.
 
 \subsection{Phase Classification}\label{sec:phase_classification}
 In the domain of machine learning, it is often demanded to minimize the predefined loss function to perform the best classification such that elements within the same cluster are similar and elements across clusters are different.
-Likewise, we try to divide the study period into phases that have resembling patterns of share bike usage.
+Likewise, we try to segment the study period into phases that have the most resembling patterns using k-segmentation.
 
 \begin{Definition}[k-segmentation]\label{def:k-seg}
 Let $X=\{x_1,x_2,\ldots,x_N\}$ be a time series of length $N$.
@@ -261,14 +262,15 @@ Given positive integer $k<N$ and index set $\mathbf{T}=\{n_0,\ldots,n_k\}$ with 
 \end{Definition}
 
 To evaluate the quality of k-segmentation, we use $\sigma=\sum_{i=1}^{k}{\sigma_i}$ as loss function where $\sigma_i$ is the standard deviation of division $X_i$. 
-The goal is to find the best $T$ to minimize $\sigma$, \textit{i.e.}\ $\arg\min_{\mathbf{T}}\sigma(\mathbf{T})$.
+The goal is to find the best $T$ to minimize $\sigma$, \textit{i.e.,}\ $\arg\min_{\mathbf{T}}\sigma(\mathbf{T})$.
 This problem is solved in time $O(N^2k)$ \cite{terzi2006efficient}.
 In case $k$ and $N$ are small, the optimum can be found via exhaustive search.
 
 
 \section{Experimental results}\label{sec:experimental results}
 The computation in this paper was done on a computing cluster consisting of 5 machines with Intel(R) Xeon(R), CPU E5-2640 v2 @2.00GHz, 8 cores, 61.7GB memory, 20480KB cache memory. 
-If we throw a first glance on the total share bike usage from 01 Jan to 02 Mar, $4.56\times10^7$ in 2019, and $1.61\times10^7$ in 2020, we found out the share bike usage of 2020 is about only one-third of that of 2019.
+If we throw a first glance on the total share bike usage from 01 Jan to 02 Mar, which is $4.56\times10^7$ in 2019 and $1.61\times10^7$ in 2020 we found out the total of 2020 is about only one-third of that of 2019 in this period.
+
 In this section, we present extensive experimental results of the spatiotemporal change in behavior patterns regarding the local COVID-9 progress and the association with POIs.
 
 \subsection{Temporal Patterns of Share Bike Usage}
@@ -290,7 +292,7 @@ To better characterize the behavior patterns with respect to the COVID-19 epidem
 \end{table}
 
 As the outbreak of COVID-19 coincides with the Chinese New Year holiday 2020, we use the Chinese New Year holiday of 2019 as a comparison to assess the influence of this period on share bike usage.
-It is worth noticing that the Chinese New Year holidays are not equal-length, especially that of 2020, which is extended by executive order.
+It is worth noticing that the Chinese New Year holidays are not equal-length, because that of 2020 is extended by executive order.
 
 We compared the share bike usage on rush hours (8:00-09:00) during 64 days from 01 Jan to 02 March 2019 and 01 Jan to 01 March 2020 respectively (data of 29 Feb and 1 March 2020 were brought backward by one day due to the leap year 2020).
 % As can be seen in Figure \ref{fig:temporal_comparison}, in 2019, the usage drops down to $5\times 10^5$ because of the Chinese New Year holiday; 
@@ -407,11 +409,11 @@ We then computed the average share bike usage in these phases respectively.
         \cline{3-7}
         & & $a$ & $b$ & $c$ & $b/a$ & $c/a$\\ %$a/m$\\
         \hline
-        RA & $5657$ & $158.3\pm86.9$ & $36.6\pm14.4$ & $39.9\pm13.9$ & $23.1\%$ & $25.2\%$\\ %$109.0\%$\\
-        \hline
         Tech company & $3858$ & $200.4\pm112.9$ & $36.3\pm14.4$ & $41.1\pm18.0$ & $18.1\%$ & $20.5\%$\\ %$113.2\%$\\
         \hline
         Other company & $32301$ & $162.5\pm90.3$ & $35.8\pm14.5$ & $39.4\pm14.5$ & $22.0\%$ & $24.2\%$\\ %$110.1\%$\\
+        \hline
+        RA & $5657$ & $158.3\pm86.9$ & $36.6\pm14.4$ & $39.9\pm13.9$ & $23.1\%$ & $25.2\%$\\ %$109.0\%$\\
         \hline
         Subway station & $137$ & $113.8\pm66.6$ & $29.0\pm11.8$ & $31.7\pm10.6$ & $25.5\%$ & $27.9\%$\\ %$109.3\%$\\
         \hline
@@ -583,17 +585,13 @@ It is worth noticing that only slight differences could be observed between week
 There is a higher demand for share bikes on workdays in the downtown area than before.
 However, the high-intensity areas shrank on weekends, implying that residents were more inclined to reduce the risk of increased exposure by going outside under the threat of COVID-19. 
 
-According to the spatiotemporal analysis above, we divide the outbreak timeline into 3 phases to better reflect the dynamics of the COVID-19 epidemic:
+The spatiotemporal analysis above verifies the segmentation of the outbreak timeline into 3 phases in Table \ref{tab:segment}:
+
 \begin{itemize}
 	\item \textbf{Phase a}: dates before 21 Jan 2020, are considered as the first period when no strong COVID-19–specific interventions were imposed.
 	\item \textbf{Phase b}: dates between 22 Jan and 17 Feb, include the Chinese New Year holiday 2020. During this period, traffic suspension and home quarantine were implemented for pandemics prevention purposes.
 	\item \textbf{Phase c}: is after 17 Feb, when productive and social activities restarted partially since the pandemic was mitigated and under effective control.
 \end{itemize}
-
-
-
-
-
 
 % In the following sections, we will focus on …… and investigate ……
 
@@ -876,10 +874,11 @@ Another possible extension is to build a dynamic model based on the features pre
 
 \noindent 
 \begin{tabular}{@{}ll}
-GIS & Geographic Information System \\
 BSS & Bike Sharing System\\
+GIS & Geographic Information System \\
 POI & Point Of Interest \\
-RA & Residential Area
+RA & Residential Area\\
+VGI & Volunteered Geographical Information
 
 \end{tabular}}
 
