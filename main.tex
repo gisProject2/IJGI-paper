@@ -98,9 +98,9 @@ These findings provide critical information on how to respond to the current COV
 \Urlmuskip=0mu plus 10mu
 \pdfminorversion=7
 
-\def\scaleLegend{0.2}
+% \def\scaleLegend{0.2}
 \newcommand{\mainBasic}[1]{\node (a) {\includegraphics[width=\textwidth]{#1}};}
-\newcommand{\legendBar}[1]{\node at (a.south west)[anchor=south west]{\includegraphics[scale=\scaleLegend]{#1}};\northArrow}
+\newcommand{\legendBar}[1]{\node at (a.south west)[anchor=south west]{\includegraphics[scale=0.2]{#1}};\northArrow}
 \newcommand{\northArrow}{\node at (a.north east)[anchor=north east, xshift=-1.5mm, yshift=-1.5mm]{\includegraphics[width=0.05\textwidth]{north_arrow.pdf}};}
 \begin{document}
 \section{Introduction}
