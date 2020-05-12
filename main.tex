@@ -98,9 +98,9 @@ These findings provide critical information on how to respond to the current COV
 \Urlmuskip=0mu plus 10mu
 \pdfminorversion=7
 
-\def\scaleLegend{0.2}
+% \def\scaleLegend{0.2}
 \newcommand{\mainBasic}[1]{\node (a) {\includegraphics[width=\textwidth]{#1}};}
-\newcommand{\legendBar}[1]{\node at (a.south west)[anchor=south west]{\includegraphics[scale=\scaleLegend]{#1}};\northArrow}
+\newcommand{\legendBar}[1]{\node at (a.south west)[anchor=south west]{\includegraphics[scale=0.2]{#1}};\northArrow}
 \newcommand{\northArrow}{\node at (a.north east)[anchor=north east, xshift=-1.5mm, yshift=-1.5mm]{\includegraphics[width=0.05\textwidth]{north_arrow.pdf}};}
 \begin{document}
 \section{Introduction}
@@ -194,19 +194,35 @@ Among hundreds of categories, we chose six mid ones characterizing productive an
 \begin{figure}[ht]
     \centering
     \begin{subfigure}{.23\textwidth}
-        \includegraphics[width=\textwidth]{Figures/ConfirmedDistrictD2020_01_25-eps-converted-to.pdf}
+    	\frame{
+        \begin{tikzpicture}[inner sep = 0pt]
+        \node (a) {\includegraphics[width=\textwidth]{Figures/ConfirmedDistrictD2020_01_25-eps-converted-to.pdf}};
+        \northArrow
+        \end{tikzpicture}}
         \caption{25 Jan, 2020}
     \end{subfigure}
     \begin{subfigure}{.23\textwidth}
-        \includegraphics[width=\textwidth]{Figures/ConfirmedDistrictD2020_01_30-eps-converted-to.pdf}
+        \frame{
+        \begin{tikzpicture}[inner sep = 0pt]
+        \node (a) {\includegraphics[width=\textwidth]{Figures/ConfirmedDistrictD2020_01_30-eps-converted-to.pdf}};
+        \northArrow
+        \end{tikzpicture}}
         \caption{30 Jan, 2020}
     \end{subfigure}
     \begin{subfigure}{.23\textwidth}
-        \includegraphics[width=\textwidth]{Figures/ConfirmedDistrictD2020_02_05-eps-converted-to.pdf}
+        \frame{
+        \begin{tikzpicture}[inner sep = 0pt]
+        \node (a) {\includegraphics[width=\textwidth]{Figures/ConfirmedDistrictD2020_02_05-eps-converted-to.pdf}};
+        \northArrow
+        \end{tikzpicture}}
         \caption{05 Feb, 2020}
     \end{subfigure}
     \begin{subfigure}{.23\textwidth}
-        \includegraphics[width=\textwidth]{Figures/ConfirmedDistrictD2020_02_10-eps-converted-to.pdf}
+        \frame{
+        \begin{tikzpicture}[inner sep = 0pt]
+        \node (a) {\includegraphics[width=\textwidth]{Figures/ConfirmedDistrictD2020_02_10-eps-converted-to.pdf}};
+        \northArrow
+        \end{tikzpicture}}
         \caption{10 Feb, 2020}
     \end{subfigure}
 
@@ -225,7 +241,10 @@ To assess the overall behavior pattern changes, we picked out the locations of a
 
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=.5\textwidth]{Figures/Plot_location_confirmed_cases-eps-converted-to.pdf}
+    \begin{tikzpicture}[inner sep = 0pt]
+        \node (a) {\includegraphics[width=.5\textwidth]{Figures/Plot_location_confirmed_cases-eps-converted-to.pdf}};
+        \node at (a.north east)[anchor=north east, xshift=-1.5mm, yshift=-1.5mm]{\includegraphics[width=0.025\textwidth]{north_arrow.pdf}};
+    \end{tikzpicture}
     \caption{Locations of confirmed cases in Beijing.}
     \label{fig:locations_of_confirmed_cases}
 \end{figure}
