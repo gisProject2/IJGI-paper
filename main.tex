@@ -180,8 +180,8 @@ Under this circumstance, the activities of residents have been influenced and sh
 \subsection{Description of Data Sets}
 Before describing our results in spatiotemporal patterns of share bike usage, it is first important to introduce data sets adopted in our experiments.
 
-\textbf{BSS spatiotemporal data} Temporal positioning datasets come from 900 thousand share bikes belonging to 4 main BSS operators (Mobike, DiDi Bike, Hellobike, and Ofo) in Beijing.
-The datasets date from March 2018 to March 2020 (66.8 GB) and cover 1.5 million uses per day contributed by 11 million users which account for one half of the total population of Beijing.
+\textbf{BSS spatiotemporal data} Temporal positioning datasets come from 1.02 million share bikes belonging to 4 main BSS operators (Mobike, DiDi Bike, Hellobike, and Ofo) in Beijing.
+The datasets date from March 2019 to March 2020 (66.8 GB) and cover 1.5 million uses per day contributed by 11 million users which account for one half of the total population of Beijing.
 Records of the datasets contain the positioning and timing information of locking \& unlocking of bikes, excluding that of rebalancing operations.
 This feature suggests that the movement of bikes is purely done by users.
 All analysis we perform is statistically aggregated, removing the ability to characterize the behavior of any single device.
@@ -772,129 +772,6 @@ As a result, the number of newly confirmed COVID-19 cases was effectively suppre
     \begin{subfigure}{.3\textwidth}
         \begin{tikzpicture}[inner sep = 0pt]
             \mainBasic{Main_basic2.png}
-            \node at (a) {\includegraphics[width=\textwidth]{Figures/Relation_with_confrimed_cases/NewDistrictSSBD2020_01_21.eps}};%-eps-converted-to.pdf}};
-            \legendBar{Scalebar_basic2.eps}
-        \end{tikzpicture}
-        \caption{21 Jan}
-    \end{subfigure}
-    \begin{subfigure}{.3\textwidth}
-        \begin{tikzpicture}[inner sep = 0pt]
-            \mainBasic{Main_basic2.png}
-            \node at (a) {\includegraphics[width=\textwidth]{Figures/Relation_with_confrimed_cases/NewDistrictSSBD2020_01_25.eps}};%-eps-converted-to.pdf}};
-            \legendBar{Scalebar_basic2.eps}
-        \end{tikzpicture}
-        \caption{25 Jan}
-    \end{subfigure}
-    \begin{subfigure}{.3\textwidth}
-        \begin{tikzpicture}[inner sep = 0pt]
-            \mainBasic{Main_basic2.png}
-            \node at (a) {\includegraphics[width=\textwidth]{Figures/Relation_with_confrimed_cases/NewDistrictSSBD2020_01_30.eps}};%-eps-converted-to.pdf}};
-            \legendBar{Scalebar_basic2.eps}
-        \end{tikzpicture}
-        \caption{30 Jan}
-    \end{subfigure}
-
-    \vspace{6pt}
-    \begin{subfigure}{.3\textwidth}
-        \begin{tikzpicture}[inner sep = 0pt]
-            \mainBasic{Main_basic2.png}
-            \node at (a) {\includegraphics[width=\textwidth]{Figures/Relation_with_confrimed_cases/NewDistrictSSBD2020_02_04.eps}};%-eps-converted-to.pdf}};
-            \legendBar{Scalebar_basic2.eps}
-        \end{tikzpicture}
-        \caption{04 Feb}
-    \end{subfigure}
-    \begin{subfigure}{.3\textwidth}
-        \begin{tikzpicture}[inner sep = 0pt]
-            \mainBasic{Main_basic2.png}
-            \node at (a) {\includegraphics[width=\textwidth]{Figures/Relation_with_confrimed_cases/NewDistrictSSBD2020_02_08.eps}};%-eps-converted-to.pdf}};
-            \legendBar{Scalebar_basic2.eps}
-        \end{tikzpicture}
-        \caption{08 Feb}
-    \end{subfigure}
-    \begin{subfigure}{.15\textwidth}
-        \includegraphics[width=\textwidth]{Figures/Overall_spatial_patterns/legend5-eps-converted-to.pdf}%legend7-eps-converted-to.pdf}
-    \end{subfigure}
-    \caption{Relationships between aggregated share bike records and confirmed cases during \textbf{phase b}.}
-    \label{fig:BSS_phase1_2}
-\end{figure}
-
-Figure \ref{fig:BSS_phase_3} depicts the share bike usage in \textbf{phase c}, when productive and social activities were allowed to restart partially.
-
-%aim to identify and characterize disease-spreading human interactions, thus allowing authorities to gradually lift the most restrictive measures with more precision and confidence.
-During the mitigation period, aggregated share bike usage gradually rebounded with stable accumulated confirmed cases during the weekdays, which can be inferred from Figure \ref{fig:correlation_02_12}-Figure \ref{fig:correlation_02_28}.
-The recovery of the city is unbalanced in the spatial domain, concentrating in urban districts, whereas changes are not significant in other areas.
-Another finding is the different patterns between weekdays and weekends.
-A reduction in mobility on weekends could be inferred from the comparison between Figure \ref{fig:correlation_02_28} and Figure \ref{fig:correlation_02_29}, which was attributed to the awareness of the risk of infection of residents.
-
-It should be highlighted that the accumulated confirmed cases stay substantially stable across this period, suggesting control measures were effective and necessary in the containment of the spread of COVID-19 during the resilience of Beijing.
-
-\begin{figure}[!ht]
-    \centering
-    \begin{subfigure}{.3\textwidth}
-        \begin{tikzpicture}[inner sep = 0pt]
-            \mainBasic{Main_basic2.png}
-            \node at (a) {\includegraphics[width=\textwidth]{Figures/Relation_with_confrimed_cases/NewDistrictSSBD2020_02_12.eps}};%-eps-converted-to.pdf}};
-            \legendBar{Scalebar_basic2.eps}
-        \end{tikzpicture}
-        \caption{12 Feb}
-        \label{fig:correlation_02_12}
-    \end{subfigure}
-    \begin{subfigure}{.3\textwidth}
-        \begin{tikzpicture}[inner sep = 0pt]
-            \mainBasic{Main_basic2.png}
-            \node at (a) {\includegraphics[width=\textwidth]{Figures/Relation_with_confrimed_cases/NewDistrictSSBD2020_02_17.eps}};%-eps-converted-to.pdf}};
-            \legendBar{Scalebar_basic2.eps}
-        \end{tikzpicture}
-        \caption{17 Feb}
-        \label{fig:correlation_02_17}
-    \end{subfigure}
-    \begin{subfigure}{.3\textwidth}
-        \begin{tikzpicture}[inner sep = 0pt]
-            \mainBasic{Main_basic2.png}
-            \node at (a) {\includegraphics[width=\textwidth]{Figures/Relation_with_confrimed_cases/NewDistrictSSBD2020_02_20.eps}};%-eps-converted-to.pdf}};
-            \legendBar{Scalebar_basic2.eps}
-        \end{tikzpicture}
-        \caption{20 Feb}
-        \label{fig:correlation_02_20}
-    \end{subfigure}
-    
-    \vspace{6pt}
-    \begin{subfigure}{.3\textwidth}
-        \begin{tikzpicture}[inner sep = 0pt]
-            \mainBasic{Main_basic2.png}
-            \node at (a) {\includegraphics[width=\textwidth]{Figures/Relation_with_confrimed_cases/NewDistrictSSBD2020_02_24.eps}};%-eps-converted-to.pdf}};
-            \legendBar{Scalebar_basic2.eps}
-        \end{tikzpicture}
-        \caption{24 Feb}
-        \label{fig:correlation_02_24}
-    \end{subfigure}
-    \begin{subfigure}{.3\textwidth}
-        \begin{tikzpicture}[inner sep = 0pt]
-            \mainBasic{Main_basic2.png}
-            \node at (a) {\includegraphics[width=\textwidth]{Figures/Relation_with_confrimed_cases/NewDistrictSSBD2020_02_28.eps}};%-eps-converted-to.pdf}};
-            \legendBar{Scalebar_basic2.eps}
-        \end{tikzpicture}
-        \caption{28 Feb}
-        \label{fig:correlation_02_28}
-    \end{subfigure}
-    \begin{subfigure}{.3\textwidth}
-        \begin{tikzpicture}[inner sep = 0pt]
-            \mainBasic{Main_basic2.png}
-            \node at (a) {\includegraphics[width=\textwidth]{Figures/Relation_with_confrimed_cases/NewDistrictSSBD2020_02_29.eps}};%-eps-converted-to.pdf}};
-            \legendBar{Scalebar_basic2.eps}
-        \end{tikzpicture}
-        \caption{29 Feb}
-        \label{fig:correlation_02_29}
-    \end{subfigure}
-    \caption{Relationships between aggregated share bike records and confirmed cases during \textbf{phase c}.}
-    \label{fig:BSS_phase_3}
-\end{figure}
-
-\begin{figure}[!ht]
-    \centering
-    \begin{subfigure}{.3\textwidth}
-        \begin{tikzpicture}[inner sep = 0pt]
-            \mainBasic{Main_basic2.png}
             \node at (a) {\includegraphics[width=\textwidth]{Figures/Relation_with_confrimed_cases/NewDistrictSSB1D2020_01_21.pdf}};%-eps-converted-to.pdf}};
             \node[opacity=0.5] at (a) {\includegraphics[width=\textwidth]{Figures/Relation_with_confrimed_cases/NewDistrictSSB2D2020_01_21.pdf}};%-eps-converted-to.pdf}};
             \legendBar{Scalebar_basic2.eps}
@@ -948,8 +825,20 @@ It should be highlighted that the accumulated confirmed cases stay substantially
         \end{tikzpicture}
     \end{subfigure}
     \caption{Relationships between aggregated share bike records and confirmed cases during \textbf{phase b}.}
-    \label{fig:BSS_phase1_2_plan2}
+    \label{fig:BSS_phase1_2}
 \end{figure}
+
+Figure \ref{fig:BSS_phase_3} depicts the share bike usage in \textbf{phase c}, when productive and social activities were allowed to restart partially.
+
+%aim to identify and characterize disease-spreading human interactions, thus allowing authorities to gradually lift the most restrictive measures with more precision and confidence.
+During the mitigation period, aggregated share bike usage gradually rebounded with stable accumulated confirmed cases during the weekdays, which can be inferred from Figure \ref{fig:correlation_02_12}-Figure \ref{fig:correlation_02_28}.
+The recovery of the city is unbalanced in the spatial domain, concentrating in urban districts, whereas changes are not significant in other areas.
+Another finding is the different patterns between weekdays and weekends.
+A reduction in mobility on weekends could be inferred from the comparison between Figure \ref{fig:correlation_02_28} and Figure \ref{fig:correlation_02_29}, which was attributed to the awareness of the risk of infection of residents.
+
+It should be highlighted that the accumulated confirmed cases stay substantially stable across this period, suggesting control measures were effective and necessary in the containment of the spread of COVID-19 during the resilience of Beijing.
+
+
 
 \begin{figure}[!ht]
     \centering
@@ -1016,7 +905,7 @@ It should be highlighted that the accumulated confirmed cases stay substantially
         \label{fig:correlation_02_29}
     \end{subfigure}
     \caption{Relationships between aggregated share bike records and confirmed cases during \textbf{phase c}.}
-    \label{fig:BSS_phase_3_plan2}
+    \label{fig:BSS_phase_3}
 \end{figure}
 
 
