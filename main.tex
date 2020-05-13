@@ -940,7 +940,12 @@ It should be highlighted that the accumulated confirmed cases stay substantially
         \caption{08 Feb}
     \end{subfigure}
     \begin{subfigure}{.3\textwidth}
-        \includegraphics[width=\textwidth]{Figures/Relation_with_confrimed_cases/fig8legend.eps}%legend7-eps-converted-to.pdf}
+        \begin{tikzpicture}[inner sep = 0pt]
+            %\mainBasic{Main_basic2.png}
+            \node at (a) {\includegraphics[width=\textwidth]{Figures/Relation_with_confrimed_cases/fig8legend_base.eps}};%-eps-converted-to.pdf}};
+            \node[opacity=0.5] at (a) {\includegraphics[width=\textwidth]{Figures/Relation_with_confrimed_cases/fig8legend_bubble.eps}};%-eps-converted-to.pdf}};
+            %\legendBar{Scalebar_basic2.eps}
+        \end{tikzpicture}
     \end{subfigure}
     \caption{Relationships between aggregated share bike records and confirmed cases during \textbf{phase b}.}
     \label{fig:BSS_phase1_2_plan2}
